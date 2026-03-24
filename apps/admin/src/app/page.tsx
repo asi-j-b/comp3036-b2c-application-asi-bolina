@@ -1,6 +1,7 @@
 import { posts } from "@repo/db/data";
 import { isLoggedIn } from "../utils/auth";
 import styles from "./page.module.css";
+
 export default async function Home() {
   // use the is logged in function to check if user is authorised
   // we will use the cookie based approach
