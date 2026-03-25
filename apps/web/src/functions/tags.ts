@@ -8,6 +8,8 @@ export async function tags(posts: { tags: string; active: boolean }[]) {
     2. Split and Flatten: if a post has "react, CSS" you need to split it by the comma and flatten it so you just have a big list of individual words
     3. Count: just like categories, you'll likely want to count how many times each tag appears
   */
+  return posts
+    .filter((p) => p.active)
 
   return [];
 }
