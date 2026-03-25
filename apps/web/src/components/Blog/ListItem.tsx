@@ -13,8 +13,8 @@ export function BlogListItem({ post }: { post: Post }) {
         <Image
           src={post.imageUrl}
           alt={post.title}
-          fill
-        
+          width={300}
+          height={200}
         />
       </div>
     </article>
