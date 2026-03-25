@@ -21,5 +21,4 @@ export async function tags(posts: { tags: string; active: boolean }[]) {
       }
       return acc;
     }, [] as { name: string; count: number }[]);
-  return [];
 }

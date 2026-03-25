@@ -9,5 +9,7 @@ export function history(posts: { date: Date; active: boolean }[]): string[] {
   3. Uniqueify: Use a set or reduce to ensure January 2026 only appears once even if there 10 posts in that month
   4. Sort: Ensure the most recent dates are at the top
   */
+  .filter((p) => p.active)
+  date.localeString
   return [];
 }
