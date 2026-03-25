@@ -9,9 +9,14 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'plus.unsplash.com', // Added this because your data uses it too!
+        hostname: 'plus.unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        pathname: '/**',
+      }
     ],
   },
 };
