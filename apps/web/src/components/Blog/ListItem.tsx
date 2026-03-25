@@ -1,4 +1,5 @@
 import type { Post } from "@repo/db/data";
+import Image from 'next/image';
 
 export function BlogListItem({ post }: { post: Post }) {
   return (
@@ -8,6 +9,14 @@ export function BlogListItem({ post }: { post: Post }) {
       data-test-id={`blog-post-${post.id}`}
     >
       List Item
+      <div>
+        <Image
+          src={post.imageUrl}
+          alt={post.title}
+          fill
+        
+        />
+      </div>
     </article>
   );
 }
