@@ -10,6 +10,7 @@ export async function tags(posts: { tags: string; active: boolean }[]) {
   */
   return posts
     .filter((p) => p.active)
+    .flatMap((p) => p.tags.split(","))
 
   return [];
 }
