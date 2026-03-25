@@ -1,5 +1,6 @@
 import type { Post } from "@repo/db/data";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function BlogListItem({ post }: { post: Post }) {
   return (
@@ -8,8 +9,10 @@ export function BlogListItem({ post }: { post: Post }) {
       className="flex flex-row gap-8"
       data-test-id={`blog-post-${post.id}`}
     >
-      List Item
       <div>
+        <Link href={`/posts/${post.urlId}`}>
+          <h1>{post.title}</h1>
+        </Link>
         <Image
           src={post.imageUrl}
           alt={post.title}
