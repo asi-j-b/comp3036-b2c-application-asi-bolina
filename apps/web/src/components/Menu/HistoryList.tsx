@@ -1,5 +1,10 @@
+"use client";
+
 import { history } from "@/functions/history";
 import { type Post } from "@repo/db/data";
+import { SummaryItem } from "./SummaryItem";
+import { LinkList } from "./LinkList";
+import { useState, useEffect } from "react";
 
 const months = [
   "",

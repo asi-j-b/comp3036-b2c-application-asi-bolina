@@ -7,7 +7,7 @@ export function LeftMenu() {
   return (
     <div>
       {/* Sidebar component, swap this element with another sidebar if you like */}
-      <div>Top Links and blog name</div>
+      <div></div>
       <nav>
         <ul role="list" className="flex flex-1 flex-col gap-y-7">
           <li>
