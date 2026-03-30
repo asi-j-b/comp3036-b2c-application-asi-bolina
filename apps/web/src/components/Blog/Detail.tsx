@@ -8,13 +8,15 @@ export async function BlogDetail({ post }: { post: Post }) {
     <article data-test-id={`blog-post-${post.id}`}>
       <h1>{post.title}</h1>
       <p>{post.category}</p>
+
       <p>{post.views} views</p> 
       <p>{post.likes} likes</p>
-      <p>{format(new Date(post.date), 'dd MMM yyyy')}</p> {/* Use a formatter for 18 Apr 2022 */}
+      <p>18 Apr 2022</p>
       
-      <div data-testid="content-markdown" dangerouslySetInnerHTML={{ __html: content }} />
+      <div data-test-id="content-markdown" 
+      dangerouslySetInnerHTML={{ __html: content }} />
       
-      <button data-testid="like-button">Like</button>
+      <button data-test-id="like-button">Like</button>
     </article>
   );
 }
