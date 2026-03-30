@@ -1,6 +1,6 @@
 import type { Post } from "@repo/db/data";
 
-export function categories(posts: Post[]) {
+export async function categories(posts: Post[]) {
   return posts
     .filter((p) => p.active)
     .sort((a, b) => a.category.localeCompare(b.category))
