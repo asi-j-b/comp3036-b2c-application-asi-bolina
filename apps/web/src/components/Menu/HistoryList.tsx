@@ -42,7 +42,27 @@ export function HistoryList({
     loadHistory();
   }, [posts]);
 
-  // TODO: use the "history" function on "functions" directory to get the history
-  //       and render all history items using the SummaryItem component
-  return <div>History List</div>;
+  return (
+    <LinkList title="Archive">
+      {data.map((item) => {
+        const monthName = months[item.month];
+        const label = `${monthName} ${item.year}`;
+        const url = `/archive/${item.year}/${item.month}`;
+        return (
+          <SummaryItem
+            key={url}
+            name={label}
+            count={item.count}
+            // Logic to check if this specific month/year is currently selected
+            isSelected={
+              item.year.toString() === selectedYear && 
+              item.month.toString() === selectedMonth
+            }
+            link={url}
+            title={label}
+          />
+        );
+      })}
+    </LinkList>
+  );
 }
