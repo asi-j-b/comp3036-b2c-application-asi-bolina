@@ -47,7 +47,7 @@ export function HistoryList({
       {data.map((item) => {
         const monthName = months[item.month];
         const label = `${monthName}, ${item.year}`;
-        const url = `/archive/${item.year}/${item.month}`;
+        const url = `/history/${item.year}/${item.month}`;
         return (
           <SummaryItem
             key={url}

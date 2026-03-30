@@ -9,10 +9,10 @@ export function BlogListItem({ post }: { post: Post }) {
       <p>{post.description}</p>
       <span>{post.views} views</span>
       <span>{post.likes} likes</span>
-      <span>18 Apr 2022</span> {/* Make sure your date logic outputs this format */}
+      <span>18 Apr 2022</span> {}
       <div>
         {post.tags.split(',').map(tag => (
-          <span key={tag}>#{tag.trim()}</span> // The # is mandatory!
+          <span key={tag}>#{tag.trim()}</span>
         ))}
       </div>
     </article>
