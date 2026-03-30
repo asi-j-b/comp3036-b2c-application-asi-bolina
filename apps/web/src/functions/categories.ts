@@ -1,4 +1,4 @@
-import { posts, type Post } from "@repo/db/data";
+import type { Post } from "@repo/db/data";
 
 export function categories(posts: Post[]) {
   return posts

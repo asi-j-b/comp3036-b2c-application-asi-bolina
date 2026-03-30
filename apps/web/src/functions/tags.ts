@@ -1,6 +1,6 @@
-import { posts, type Post } from "@repo/db/data";
+import type { Post } from "@repo/db/data";
 
-export async function tags(posts: { tags: string; active: boolean }[]) {
+export async function tags(posts: Post[]) {
   return posts
     .filter((p) => p.active)
     .flatMap((p) => p.tags.split(","))
