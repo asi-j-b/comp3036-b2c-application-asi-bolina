@@ -8,20 +8,13 @@ export function LeftMenu() {
     <div>
       {/* Sidebar component, swap this element with another sidebar if you like */}
       <div></div>
-      <nav>
-        <ul role="list" className="flex flex-1 flex-col gap-y-7">
-          <li>
+        <nav>
+          <ul role="list" className="...">
             <CategoryList posts={posts} />
-          </li>
-          <li>
-            <HistoryList selectedYear="" selectedMonth="" posts={posts} />
-          </li>
-          <li>
-            <TagList selectedTag="" posts={posts} />
-          </li>
-          <li>Admin</li>
-        </ul>
-      </nav>
+            <TagList posts={posts} />
+            <HistoryList posts={posts} />
+          </ul>
+        </nav>
     </div>
   );
 }
