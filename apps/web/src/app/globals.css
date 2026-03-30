@@ -36,3 +36,8 @@ html {
   --color-wsu: var(--wsu);
   --color-wsu-light: var(--wsu-light);
 }
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
