@@ -18,14 +18,13 @@ export function CategoryList({ posts }: { posts: Post[] }) {
     loadCategories();
   }, [posts]);
 
-  // TODO: Implement proper category list
   return (
     <>
       {data.map((item) => (
         <SummaryItem
           key={item.name}
-          count={item.count}
           name={item.name}
+          count={item.count}
           isSelected={false}
           link={`/category/${toUrlPath(item.name)}`}
           title={item.name}
