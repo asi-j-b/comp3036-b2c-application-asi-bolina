@@ -10,13 +10,16 @@ export default async function Page({
 }) {
   const { name } = await params;
 
-  const filtered = posts.filter((post) =>
-    post.active && toUrlPath(post.category) === name.toLowerCase()
-  );
+  const filteredPosts = posts.filter((post) => {
+    return (
+      post.active && toUrlPath(post.category) === name.toLowerCase()
+    );
+    
+  });
 
   return (
     <AppLayout>
-      <Main posts={filtered} />
+      <Main posts={filteredPosts} />
     </AppLayout>
   );
 }

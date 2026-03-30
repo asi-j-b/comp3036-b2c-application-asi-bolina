@@ -6,7 +6,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
   if (posts.length === 0) {
     return (
       <div className="py-6">
-        <p>No posts found matching your criteria.</p>
+        <p>0 Posts</p>
       </div>
     );
   }
