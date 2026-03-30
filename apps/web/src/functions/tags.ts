@@ -1,6 +1,6 @@
 import type { Post } from "@repo/db/data";
 
-export async function tags(posts: Post[]) {
+export function tags(posts: Post[]) {
   return posts
     .filter((p) => p.active)
     .flatMap((p) => p.tags.split(","))
