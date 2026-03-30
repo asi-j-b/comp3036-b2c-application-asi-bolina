@@ -1,8 +1,6 @@
-// import { posts, type Post } from "../components/data";
+import { posts, type Post } from "@repo/db/data";
 
-export function categories<T>(
-  posts: { category: string; active: boolean }[],
-): { name: string; count: number }[] {
+export function categories(posts: Post[]) {
   return posts
     .filter((p) => p.active)
     .sort((a, b) => a.category.localeCompare(b.category))

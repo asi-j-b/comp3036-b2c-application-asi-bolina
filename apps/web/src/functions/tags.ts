@@ -1,4 +1,4 @@
-// import { posts, type Post } from "../components/data";
+import { posts, type Post } from "@repo/db/data";
 
 export async function tags(posts: { tags: string; active: boolean }[]) {
   return posts
