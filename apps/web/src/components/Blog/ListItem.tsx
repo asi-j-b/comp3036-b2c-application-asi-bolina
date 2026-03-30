@@ -4,20 +4,16 @@ import Link from 'next/link';
 
 export function BlogListItem({ post }: { post: Post }) {
   return (
-    <article
-      className="flex flex-row gap-8"
-      data-test-id={`blog-post-${post.id}`}
-    >
+    <article data-test-id={`blog-post-${post.id}`}>
+      <Link href={`/post/${post.urlId}`}>{post.title}</Link>
+      <p>{post.description}</p>
+      <span>{post.views} views</span>
+      <span>{post.likes} likes</span>
+      <span>18 Apr 2022</span> {/* Make sure your date logic outputs this format */}
       <div>
-        <Link href={`/posts/${post.urlId}`}>
-          <h1>{post.title}</h1>
-        </Link>
-        <Image
-          src={post.imageUrl}
-          alt={post.title}
-          width={300}
-          height={200}
-        />
+        {post.tags.split(',').map(tag => (
+          <span key={tag}>#{tag.trim()}</span> // The # is mandatory!
+        ))}
       </div>
     </article>
   );

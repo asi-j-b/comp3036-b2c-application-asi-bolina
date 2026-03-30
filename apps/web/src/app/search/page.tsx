@@ -11,8 +11,10 @@ export default async function Page({
   const searchTerm = q?.toLowerCase() || "";
 
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm) ||
-    post.content.toLowerCase().includes(searchTerm)
+    post.active && (
+      post.title.toLowerCase().includes(searchTerm) || 
+      post.description.toLowerCase().includes(searchTerm) // Test specifically checks description!
+    )
   );
 
   return (

@@ -12,14 +12,11 @@ export default async function Page({
     const tagName = name.toLowerCase();
 
     const filteredPosts = posts.filter((post) => {
-        // 1. Must be active
-        // 2. Split tags string and check if any tag matches the URL name
-        return (
-            post.active &&
-            post.tags
-                .split(",")
-                .some((tag) => toUrlPath(tag.trim()) === tagName)
-        );
+    const tagName = name.toLowerCase();
+    // We split the tags string and check each one
+    const postTags = post.tags.split(",").map(t => toUrlPath(t.trim()));
+    
+    return post.active && postTags.includes(tagName);
     });
 
     return (
