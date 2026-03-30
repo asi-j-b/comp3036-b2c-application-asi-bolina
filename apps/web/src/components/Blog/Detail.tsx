@@ -14,6 +14,12 @@ export async function BlogDetail({ post }: { post: Post }) {
       </h1>
       <p>{post.category.charAt(0).toUpperCase() + post.category.slice(1)}</p>
 
+      <div>
+        {post.tags.split(",").map((tag) => (
+          <span key={tag.trim()}>#{tag.trim()}</span>
+        ))}
+      </div>
+
       <p>{post.views} views</p> 
       <p>{post.likes} likes</p>
       <p>18 Apr 2022</p>
