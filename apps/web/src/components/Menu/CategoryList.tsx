@@ -3,7 +3,13 @@ import type { Post } from "@repo/db/data";
 import { toUrlPath } from "@repo/utils/url";
 import { SummaryItem } from "./SummaryItem";
 
-export function CategoryList({ posts }: { posts: Post[] }) {
+export function CategoryList({
+  posts,
+  selectedCategory,
+}: {
+  posts: Post[];
+  selectedCategory?: string;
+}) {
   // TODO: Implement proper category list
   return (
     <>
@@ -12,7 +18,7 @@ export function CategoryList({ posts }: { posts: Post[] }) {
           key={item.name}
           count={item.count}
           name={item.name}
-          isSelected={false}
+          isSelected={toUrlPath(item.name) === selectedCategory?.toLowerCase()}
           link={`/category/${toUrlPath(item.name)}`}
           title=""
         />

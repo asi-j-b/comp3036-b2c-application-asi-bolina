@@ -13,18 +13,15 @@ export async function TagList({ posts, selectedTag }: { posts: any[]; selectedTa
       <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
         Popular Tags
       </h3>
-      <div className="flex flex-wrap gap-2">
+      {/* Change 'flex-wrap' to 'flex-col' */}
+      <div className="flex flex-col gap-2 mt-2">
         {tagItems.map((tag) => (
-          <Link
-            key={tag.name}
+          <Link 
+            key={tag.name} 
             href={`/tag/${tag.name.toLowerCase()}`}
-            className={`px-3 py-1 rounded-full text-xs transition-colors ${
-              tag.name.toLowerCase() === selectedTag?.toLowerCase()
-                ? "bg-blue-600 text-white" // Highlight if selected
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
+            className="block py-1 hover:text-blue-600 border-b border-gray-50 text-sm"
           >
-            #{tag.name} <span className="opacity-50 ml-1">{tag.count}</span>
+            {tag.name}
           </Link>
         ))}
       </div>
