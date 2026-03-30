@@ -20,7 +20,7 @@ export async function BlogDetail({ post }: { post: Post }) {
         ))}
       </div>
 
-      <p>{post.views} views</p> 
+      <p>{post.views + 1} views</p> 
       <p>{post.likes} likes</p>
       <p>18 Apr 2022</p>
       
