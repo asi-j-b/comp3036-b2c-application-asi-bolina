@@ -46,7 +46,7 @@ export function HistoryList({
     <LinkList title="Archive">
       {data.map((item) => {
         const monthName = months[item.month];
-        const label = `${monthName} ${item.year}`;
+        const label = `${monthName}, ${item.year}`;
         const url = `/archive/${item.year}/${item.month}`;
         return (
           <SummaryItem
