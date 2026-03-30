@@ -7,7 +7,7 @@ export async function BlogDetail({ post }: { post: Post }) {
   return (
     <article data-test-id={`blog-post-${post.id}`}>
       <h1>{post.title}</h1>
-      <p>{post.category}</p>
+      <p>{post.category.charAt(0).toUpperCase() + post.category.slice(1)}</p>
 
       <p>{post.views} views</p> 
       <p>{post.likes} likes</p>
