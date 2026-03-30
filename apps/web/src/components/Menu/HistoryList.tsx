@@ -22,7 +22,7 @@ const months = [
   "December",
 ];
 
-export async function HistoryList({
+export function HistoryList({
   selectedYear,
   selectedMonth,
   posts,
@@ -31,7 +31,16 @@ export async function HistoryList({
   selectedMonth?: string;
   posts: Post[];
 }) {
-  const historyItems = history(posts);
+  const [data, setData] = useState<{ month: number; year: number; count: number }[]>([]);
+
+  useEffect(() => {
+    const loadHistory = async () => {
+      const result = await history(posts);
+      setData(result);
+    };
+
+    loadHistory();
+  }, [posts]);
 
   // TODO: use the "history" function on "functions" directory to get the history
   //       and render all history items using the SummaryItem component
