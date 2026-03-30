@@ -12,7 +12,7 @@ export default async function Page({
 
   const filteredPosts = posts.filter((post) => {
     return (
-      post.active && toUrlPath(post.category) === name.toLowerCase()
+      post.active && post.category.toLowerCase() === name.toLowerCase()
     );
     
   });

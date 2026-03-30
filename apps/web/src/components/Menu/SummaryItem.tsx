@@ -18,7 +18,7 @@ return (
       <Link href={link} title={title}> 
         <span>{isSelected ? <strong>{name}</strong> : name}</span>
         {count > 0 && (
-          <span data-testid="post-count">{count}</span>
+          <span data-test-id="post-count">{count}</span>
         )}
       </Link>
     </li>
