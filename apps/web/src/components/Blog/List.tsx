@@ -2,6 +2,15 @@ import type { Post } from "@repo/db/data";
 import { BlogListItem } from "./ListItem"; // Importing the item component
 
 export function BlogList({ posts }: { posts: Post[] }) {
+  
+  if (posts.length === 0) {
+    return (
+      <div className="py-6">
+        <p>No posts found matching your criteria.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-6">
       {posts.map((post) => (
