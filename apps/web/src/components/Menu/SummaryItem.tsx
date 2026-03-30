@@ -15,12 +15,11 @@ export function SummaryItem({
 }) {
 return (
     <li>
-      <Link href={link}>
-        <span>
-          {name}
-        </span>
-        
-        {count > 0 && <span> ({count}) </span>}
+      <Link href={link} title={title}> 
+        <span>{isSelected ? <strong>{name}</strong> : name}</span>
+        {count > 0 && (
+          <span data-testid="post-count">{count}</span>
+        )}
       </Link>
     </li>
   );

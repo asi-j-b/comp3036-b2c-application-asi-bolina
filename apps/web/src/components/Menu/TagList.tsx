@@ -34,7 +34,7 @@ export function TagList({
           count={tag.count}
           isSelected={toUrlPath(tag.name) === selectedTag?.toLowerCase()}
           link={`/tag/${toUrlPath(tag.name)}`}
-          title={tag.name}
+          title={`Tag / ${tag.name}`}
         />
       ))}
     </LinkList>

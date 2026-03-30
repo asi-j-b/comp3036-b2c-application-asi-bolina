@@ -59,7 +59,7 @@ export function HistoryList({
               item.month.toString() === selectedMonth
             }
             link={url}
-            title={label}
+            title={`History / ${label}`}
           />
         );
       })}
