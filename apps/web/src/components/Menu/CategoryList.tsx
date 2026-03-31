@@ -2,7 +2,6 @@
 
 import { categories } from "@/functions/categories";
 import type { Post } from "@repo/db/data";
-import { toUrlPath } from "@repo/utils/url";
 import { SummaryItem } from "./SummaryItem";
 import { useState, useEffect } from "react";
 import { LinkList } from "./LinkList";

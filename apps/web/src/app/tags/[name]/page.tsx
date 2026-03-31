@@ -9,7 +9,6 @@ export default async function Page({
     params: Promise<{ name: string }>;
 }) {
     const { name } = await params;
-    const tagName = name.toLowerCase();
 
     const filteredPosts = posts.filter((post) => {
     const tagName = name.toLowerCase();

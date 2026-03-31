@@ -1,7 +1,6 @@
 import { posts } from "@repo/db/data";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { toUrlPath } from "@repo/utils/url";
 
 export default async function Page({
   params,
