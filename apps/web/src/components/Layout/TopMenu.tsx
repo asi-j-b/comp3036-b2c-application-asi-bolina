@@ -21,22 +21,32 @@ export function TopMenu({ query }: { query?: string }) {
     },
   );
 
-  // TODO: create and hook the search input to the handleSearch function
-  //       make sure you are able to explain what the handleSearch is doing and what debounce does
-
   return (
-    <div>
-      <form action="#" method="GET" className="grid flex-1 grid-cols-1">
-        <input 
-          type="search"
-          name="search"
-          placeholder="Search"
-          defaultValue={query}
-          onChange={handleSearch}
-        />
-      </form>
-      <div className="flex items-center gap-x-6">
-        <ThemeSwitch />
+    <div className="border-b border-gray-200 px-4 py-3 sm:px-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <form action="#" method="GET" className="grid flex-1 grid-cols-1">
+          <label htmlFor="search" className="sr-only">
+            Search posts
+          </label>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-secondary">
+              ⌕
+            </span>
+            <input
+              id="search"
+              type="search"
+              name="search"
+              placeholder="Search"
+              defaultValue={query}
+              onChange={handleSearch}
+              className="w-full max-w-md rounded-lg border border-gray-200 bg-[var(--surface)] py-2 pl-9 pr-4 text-sm text-primary outline-none transition focus:border-gray-400"
+            />
+          </div>
+        </form>
+
+        <div className="flex items-center justify-end gap-x-3">
+          <ThemeSwitch />
+        </div>
       </div>
     </div>
   );

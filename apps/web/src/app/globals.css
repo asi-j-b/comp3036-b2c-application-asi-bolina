@@ -5,19 +5,25 @@
 @config "../../tailwind.config.ts";
 
 :root {
-  --background: white;
-  --foreground: #0a0a0a;
+  --background: #f3f4f6;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --surface-muted: #f9fafb;
+  --ring: #e5e7eb;
   --text: theme("colors.gray.900");
   --textHover: theme("colors.gray.700");
-  --text-secondary: theme("colors.gray.600");
+  --text-secondary: theme("colors.gray.500");
   --text-secondaryHover: theme("colors.gray.400");
   --wsu: #a31631;
   --wsu-light: #853846;
 }
 
 html[data-theme="dark"] {
-  --background: theme("colors.gray.900");
-  --foreground: #ededed;
+  --background: #0b1220;
+  --foreground: #edf1f7;
+  --surface: #111827;
+  --surface-muted: #1f2937;
+  --ring: #334155;
   --text: theme("colors.gray.50");
   --textHover: theme("colors.gray.300");
   --text-secondary: theme("colors.gray.400");
@@ -40,4 +46,39 @@ html {
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: var(--font-geist-sans), "Avenir Next", "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+* {
+  border-color: var(--ring);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.content-markdown h1,
+.content-markdown h2,
+.content-markdown h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.content-markdown p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.content-markdown pre {
+  background: var(--surface-muted);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+
+.content-markdown code {
+  font-family: var(--font-geist-mono), monospace;
 }

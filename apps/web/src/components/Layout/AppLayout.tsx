@@ -8,12 +8,12 @@ export async function AppLayout({
   query,
 }: PropsWithChildren<{ query?: string }>) {
   return (
-    <>
+    <div className="mx-auto flex min-h-screen w-full max-w-[1400px] flex-col lg:flex-row">
       <LeftMenu />
       <Content>
         <TopMenu query={query} />
         {children}
       </Content>
-    </>
+    </div>
   );
 }

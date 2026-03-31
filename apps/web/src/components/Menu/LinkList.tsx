@@ -2,9 +2,11 @@ import type { PropsWithChildren } from "react";
 
 export function LinkList({title, children}: PropsWithChildren <{title: string }>) {
   return (
-    <section>
-      <h3 className="text-xs font-bold uppercase tracking-wider text-secondary mt-8 mb-4 border-b border-gray-200 dark:border-gray-700 pb-1">{title}</h3>
-      <ul>
+    <section className="pt-5 first:pt-0">
+      <h3 className="mb-2 px-2 text-xs font-semibold text-secondary">
+        {title}
+      </h3>
+      <ul className="space-y-1">
         {children}
       </ul>
     </section>

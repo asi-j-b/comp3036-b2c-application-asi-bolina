@@ -14,36 +14,30 @@ export function SummaryItem({
   title?: string;
 }) {
   return (
-    <li className="inline-block"> {}
+    <li className="list-none"> {}
       <Link 
         href={link} 
         title={title}
         className={`
-          flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200
+          inline-flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-sm font-medium transition
           ${isSelected 
-            ? "bg-wsu text-white shadow-md scale-105" // High contrast for selected tag
-            : "bg-gray-100 text-primary hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+            ? "selected bg-white text-primary shadow-sm"
+            : "text-primary hover:bg-white/70"
           }
-          mr-2 mb-2 border border-transparent
         `}
       >
-        <span>
-           {/* Add a hashtag for that "tag" feel */}
-          <span className="opacity-50 mr-0.5">#</span>
-          {name}
-        </span>
-
         {count > 0 && (
           <span 
             data-test-id="post-count"
             className={`
-              flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 rounded-full text-[10px] 
-              ${isSelected ? "bg-white/20 text-white" : "bg-gray-200 dark:bg-gray-700 text-secondary"}
+              flex h-5 min-w-[1.25rem] items-center justify-center rounded-md border border-gray-200 bg-[var(--surface)] px-1.5 text-[10px] text-secondary
             `}
           >
             {count}
           </span>
         )}
+
+        <span className="truncate">{name}</span>
       </Link>
     </li>
   );
