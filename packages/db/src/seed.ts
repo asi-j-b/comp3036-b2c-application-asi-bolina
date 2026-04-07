@@ -5,6 +5,7 @@ export async function seed() {
   // TODO: Uncomment below once you set up Prisma and loaded data to your database
   console.log("🌱 Seeding data");
   await client.db.like.deleteMany();
+  // await client.db.tag.deleteMany(); Do I need another deleteMany for the tags filter? What is a Bn.handleRequestError
   await client.db.post.deleteMany();
   for (const post of posts) {
     await client.db.post.create({
