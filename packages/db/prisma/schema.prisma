@@ -13,16 +13,29 @@ datasource db {
 model Post {
   id     Int      @id @default(autoincrement())
   urlId  String   @unique
+<<<<<<< HEAD
   title       String
   description String
   content     String
   category    String
   imageUrl    String
+=======
+  title  String
+  description String
+  content String
+  category String
+  imageUrl String
+
+>>>>>>> ce37a9b0bcc482966f1af317a2986482e0ff3398
   date   DateTime @default(now())
   views  Int      @default(0)
   active Boolean  @default(true)
   Likes  Like[]
+<<<<<<< HEAD
   tags String
+=======
+  tags   String
+>>>>>>> ce37a9b0bcc482966f1af317a2986482e0ff3398
 }
 
 model Like {

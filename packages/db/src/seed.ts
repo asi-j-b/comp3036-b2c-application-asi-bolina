@@ -2,10 +2,10 @@ import { client } from "./client.js";
 import { posts } from "./data.js";
 
 export async function seed() {
+  // TODO: Uncomment below once you set up Prisma and loaded data to your database
   console.log("🌱 Seeding data");
-
   await client.db.like.deleteMany();
-  await client.db.post.deleteMany(); // Tags is already part of post, so no need to delete separately
+  await client.db.post.deleteMany();
 
   for (const post of posts) {
     await client.db.post.create({
@@ -33,5 +33,4 @@ export async function seed() {
       });
     }
   }
-  console.log("✅ Seeding complete");
 }
