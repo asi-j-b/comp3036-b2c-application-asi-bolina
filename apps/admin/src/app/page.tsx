@@ -16,15 +16,22 @@ export default async function Home() {
       </main>
     );
   }
+
+  // 2. Fetch real data from the database
+  const posts = await prisma.post.findMany();
   
   return (
-      <main className={styles.main}>
-        <ul>
-          {posts.map((p) => (
-            <li key={p.id}>{p.title}</li>
-          ))}
-        </ul>
-      </main>
-    );
-  }
+    <main className={styles.main}>
+      <h1>Admin of Full Stack Blog</h1>
+      <ul>
+        {posts.map((p) => (
+          // Use <article> tags because the test uses page.locator("article")
+          <article key={p.id}>
+            <li>{p.title}</li>
+          </article>
+        ))}
+      </ul>
+      <button>Logout</button>
+    </main>
+  );
 }
