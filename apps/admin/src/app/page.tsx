@@ -1,12 +1,13 @@
 import { prisma } from "@repo/db";
-import { posts } from "@repo/db/data";
 import { isLoggedIn } from "../utils/auth";
-import { LoginForm } from "../components/LoginForm";
+import { LoginForm } from "../app/components/LoginForm";
 import styles from "./page.module.css";
 
-export default async function Home() {
-  // use the is logged in function to check if user is authorised
-  // we will use the cookie based approach
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { query?: string; tag?: string; sort?: string };
+}) {
   const loggedIn = await isLoggedIn();
 
   if (!loggedIn) {
@@ -17,21 +18,23 @@ export default async function Home() {
     );
   }
 
-  // 2. Fetch real data from the database
-  const posts = await prisma.post.findMany();
-  
+  const posts = await prisma.post.findMany({
+    where: {
+      AND: [
+        searchParams.query ? {
+          OR: [
+            { title: { contains: searchParams.query } },
+            { content: { contains: searchParams.query } }
+          ]
+        } : {},
+        searchParams.tag ? { tags: { contains: searchParams.tag } } : {}
+      ]
+    }
+  });
+
   return (
     <main className={styles.main}>
       <h1>Admin of Full Stack Blog</h1>
-      <ul>
-        {posts.map((p) => (
-          // Use <article> tags because the test uses page.locator("article")
-          <article key={p.id}>
-            <li>{p.title}</li>
-          </article>
-        ))}
-      </ul>
-      <button>Logout</button>
     </main>
   );
 }
