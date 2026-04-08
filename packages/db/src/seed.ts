@@ -5,7 +5,7 @@ export async function seed() {
   console.log("🌱 Seeding data");
 
   await client.db.like.deleteMany();
-  await client.db.post.deleteMany();
+  await client.db.post.deleteMany(); // Tags is already part of post, so no need to delete separately
 
   for (const post of posts) {
     await client.db.post.create({
