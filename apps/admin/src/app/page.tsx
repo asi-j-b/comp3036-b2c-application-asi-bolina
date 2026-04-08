@@ -1,5 +1,7 @@
+import { prisma } from "@repo/db";
 import { posts } from "@repo/db/data";
 import { isLoggedIn } from "../utils/auth";
+import { LoginForm } from "../components/LoginForm";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -8,9 +10,14 @@ export default async function Home() {
   const loggedIn = await isLoggedIn();
 
   if (!loggedIn) {
-    return <main>Not logged in</main>;
-  } else {
     return (
+      <main className={styles.main}>
+        <LoginForm />
+      </main>
+    );
+  }
+  
+  return (
       <main className={styles.main}>
         <ul>
           {posts.map((p) => (
