@@ -2,12 +2,12 @@ import { PrismaClient } from "@prisma/client";
 import { env } from "@repo/env/web";
 
 declare global {
-  var prisma: PrismaClient | undefined;
+  var prismaGlobal: PrismaClient | undefined;
 }
 
 export const createClient = () => {
-  if (global.prisma) {
-    return global.prisma;
+  if (global.prismaGlobal) {
+    return global.prismaGlobal;
   }
 
   const URL = env.DATABASE_URL;
@@ -19,9 +19,11 @@ export const createClient = () => {
   console.log("Connected to database");
   console.log(URL);
 
-  global.prisma = prisma;
+  global.prismaGlobal = prisma;
   return prisma;
 };
+
+export const prisma = global.prismaGlobal || createClient();
 
 export const client = {
   get db() {
