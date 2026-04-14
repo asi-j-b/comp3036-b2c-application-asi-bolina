@@ -1,14 +1,11 @@
-import { prisma } from "@repo/db/client";
 import { isLoggedIn } from "../utils/auth";
 import { LoginForm } from "../components/LoginForm";
-// import { AdminList } from "../components/AdminList";
+import { AdminList } from "../components/AdminList";
+import { LogoutButton } from "../components/LogoutButton";
+import { getAllPosts } from "../utils/posts";
 import styles from "./page.module.css";
 
-export default async function Home(props: {
-  searchParams: Promise<{ query?: string; tag?: string; sort?: string }>;
-}) {
-  const filters = await props.searchParams;
-
+export default async function Home() {
   const loggedIn = await isLoggedIn();
 
   if (!loggedIn) {
@@ -19,23 +16,18 @@ export default async function Home(props: {
     );
   }
 
-  const posts = await prisma.post.findMany({
-    where: {
-      AND: [
-        filters.query ? {
-          OR: [
-            { title: { contains: filters.query } },
-            { content: { contains: filters.query } }
-          ]
-        } : {},
-        filters.tag ? { tags: { contains: filters.tag } } : {}
-      ]
-    }
-  });
+  const posts = getAllPosts().map((post) => ({
+    ...post,
+    date: post.date.toISOString(),
+  }));
 
   return (
     <main className={styles.main}>
-      <h1>Admin of Full Stack Blog</h1>
+      <header className="mb-6 flex w-full max-w-5xl items-center justify-between gap-4">
+        <h1>Admin of Full Stack Blog</h1>
+        <LogoutButton />
+      </header>
+      <AdminList posts={posts} />
     </main>
   );
 }
