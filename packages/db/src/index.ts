@@ -1,3 +1,3 @@
-export * from "./client";
-export * from "./data";
-export * from "./seed";
+export * from "./client.js";
+export * from "./data.js";
+export * from "./seed.js";

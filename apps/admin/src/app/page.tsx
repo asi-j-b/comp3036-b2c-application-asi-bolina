@@ -1,7 +1,7 @@
-import { prisma } from "@repo/db";
+import { prisma } from "@repo/db/client";
 import { isLoggedIn } from "../utils/auth";
 import { LoginForm } from "../components/LoginForm";
-import { AdminList } from "../components/AdminList";
+// import { AdminList } from "../components/AdminList";
 import styles from "./page.module.css";
 
 export default async function Home(props: {
