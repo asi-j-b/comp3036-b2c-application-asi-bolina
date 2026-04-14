@@ -1,13 +1,16 @@
 import { prisma } from "@repo/db";
 import { isLoggedIn } from "../utils/auth";
-import { LoginForm } from "../app/components/LoginForm";
+import { LoginForm } from "../components/LoginForm";
+import { AdminList } from "../components/AdminList";
 import styles from "./page.module.css";
 
 export default async function Home({
-  searchParams,
+  searchParams: filters,
 }: {
-  searchParams: { query?: string; tag?: string; sort?: string };
+  searchParams: Promise<{ query?: string; tag?: string; sort?: string }>;
 }) {
+  const filters = await filters
+
   const loggedIn = await isLoggedIn();
 
   if (!loggedIn) {
@@ -21,13 +24,13 @@ export default async function Home({
   const posts = await prisma.post.findMany({
     where: {
       AND: [
-        searchParams.query ? {
+        filters.query ? {
           OR: [
-            { title: { contains: searchParams.query } },
-            { content: { contains: searchParams.query } }
+            { title: { contains: filters.query } },
+            { content: { contains: filters.query } }
           ]
         } : {},
-        searchParams.tag ? { tags: { contains: searchParams.tag } } : {}
+        filters.tag ? { tags: { contains: filters.tag } } : {}
       ]
     }
   });
