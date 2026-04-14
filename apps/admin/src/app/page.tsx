@@ -4,12 +4,10 @@ import { LoginForm } from "../components/LoginForm";
 import { AdminList } from "../components/AdminList";
 import styles from "./page.module.css";
 
-export default async function Home({
-  searchParams: filters,
-}: {
+export default async function Home(props: {
   searchParams: Promise<{ query?: string; tag?: string; sort?: string }>;
 }) {
-  const filters = await filters
+  const filters = await props.searchParams;
 
   const loggedIn = await isLoggedIn();
 
