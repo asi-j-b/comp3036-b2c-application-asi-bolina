@@ -2,7 +2,7 @@ import { isLoggedIn } from "../utils/auth";
 import { LoginForm } from "../components/LoginForm";
 import { AdminList } from "../components/AdminList";
 import { LogoutButton } from "../components/LogoutButton";
-import { getAllPosts } from "../utils/posts";
+import { prisma } from "@repo/db";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -16,9 +16,13 @@ export default async function Home() {
     );
   }
 
-  const posts = getAllPosts().map((post) => ({
-    ...post,
-    date: post.date.toISOString(),
+  const postsFromDB = await prisma.post.findMany({
+    orderBy: { date: 'desc' }
+  });
+
+  const posts = postsFromDB.map((post) => ({
+  ...post,
+  date: post.date.toISOString(), // Converts Date object to "2026-04-25..." string
   }));
 
   return (

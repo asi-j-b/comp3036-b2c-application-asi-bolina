@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -14,6 +15,24 @@ type Post = {
 	tags: string;
 	active: boolean;
 };
+
+const router = useRouter();
+
+const handleToggleActive = async (id: number, currentStatus: boolean) => {
+	const response = await fetch(`api/posts/${id}`, {
+		method: "PATCH",
+		body: JSON.stringify({ active: !currentStatus }),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+	if (response.ok) {
+		router.refresh();
+	} else {
+		alert("Failed to update post status");
+	}
+}
 
 type SortBy = "date-desc" | "date-asc" | "title-asc" | "title-desc";
 type Visibility = "all" | "active" | "inactive";
@@ -211,12 +230,7 @@ export function AdminList({ posts }: { posts: Post[] }) {
 
 							<button
 								type="button"
-								onClick={() =>
-									setStatusMessage((current) => ({
-										...current,
-										[post.id]: "Status change is enabled in assignment 2.3",
-									}))
-								}
+								onClick={() => handleToggleActive(post.id, post.active)}
 								className={`rounded px-3 py-1 text-sm font-medium ${
 									post.active
 										? "bg-emerald-100 text-emerald-800"
