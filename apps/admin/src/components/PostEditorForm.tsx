@@ -1,6 +1,7 @@
 "use client";
 
 import { marked } from "marked";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type PostEditorValues = {
@@ -64,9 +65,12 @@ function validate(values: PostEditorValues): EditorErrors {
 
 export function PostEditorForm({
   initialValues,
+  postId,
 }: {
   initialValues?: Partial<PostEditorValues>;
+  postId?: number;
 }) {
+  const router = useRouter();
   const [values, setValues] = useState<PostEditorValues>({
     ...emptyValues,
     ...initialValues,
@@ -107,11 +111,31 @@ export function PostEditorForm({
     setErrors(nextErrors);
     setShowErrorUi(Object.keys(nextErrors).length > 0);
 
-    if (Object.keys(nextErrors).length === 0) {
-      setSuccessMessage("Post updated successfully");
-    } else {
+    if (Object.keys(nextErrors).length > 0) {
       setSuccessMessage("");
+      return;
     }
+
+    const requestUrl = postId ? `/api/posts/${postId}` : "/api/posts";
+    const requestMethod = postId ? "PUT" : "POST";
+
+    void (async () => {
+      const response = await fetch(requestUrl, {
+        method: requestMethod,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        setSuccessMessage("");
+        return;
+      }
+
+      setSuccessMessage("Post updated successfully");
+      router.refresh();
+    })();
   }
 
   function togglePreview() {

@@ -36,6 +36,7 @@ export default async function UpdatePage({
     <main className={styles.main}>
       <h1 className="mb-4 text-2xl font-bold">Update Post</h1>
       <PostEditorForm
+        postId={post.id}
         initialValues={{
           title: post.title,
           category: post.category,
