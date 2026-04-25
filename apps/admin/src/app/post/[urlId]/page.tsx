@@ -2,13 +2,13 @@ import { notFound } from "next/navigation";
 import { LoginForm } from "../../../components/LoginForm";
 import { PostEditorForm } from "../../../components/PostEditorForm";
 import { isLoggedIn } from "../../../utils/auth";
-import { getPostByUrlId } from "../../../utils/posts";
+import { prisma } from "@repo/db";
 import styles from "../../page.module.css";
 
 export default async function UpdatePage({
   params,
 }: {
-  params: Promise<{ urlId: string }>;
+  params: Promise<{ id: string }>;
 }) {
   const loggedIn = await isLoggedIn();
 
@@ -20,8 +20,13 @@ export default async function UpdatePage({
     );
   }
 
-  const { urlId } = await params;
-  const post = getPostByUrlId(urlId);
+  const { id } = await params;
+
+  const post = await prisma.post.findUnique({
+    where: { 
+      id: parseInt(id) 
+    }
+  });
 
   if (!post) {
     notFound();
@@ -39,6 +44,7 @@ export default async function UpdatePage({
           imageUrl: post.imageUrl,
           tags: post.tags,
         }}
+        // postId={post.id}
       />
     </main>
   );
