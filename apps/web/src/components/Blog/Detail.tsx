@@ -36,7 +36,7 @@ export async function BlogDetail({ post }: { post: Post }) {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-4 text-sm text-secondary">
-        <p>{post.views + 1} views</p>
+        <p>{post.views} views</p>
         <p>{post.likes} likes</p>
         <p>{formattedDate}</p>
       </div>

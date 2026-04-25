@@ -1,5 +1,5 @@
-import { posts } from "@repo/db/data";
-import { BlogDetail } from "@/components//Blog/Detail"; 
+import { prisma } from "@repo/db";
+import { BlogDetail } from "@/components//Blog/Detail";
 import { notFound } from "next/navigation";
 
 export default async function PostPage({
@@ -9,14 +9,39 @@ export default async function PostPage({
 }) {
   const { id } = await params;
 
-  // Find the post where the urlId matches the slug in the URL
-  const post = posts.find((p) => p.urlId === id);
+  const post = await prisma.post.findUnique({
+    where: {
+      urlId: id,
+    },
+    include: {
+      Likes: true,
+    },
+  });
 
   if (!post) return notFound();
 
+  const updatedPost = await prisma.post.update({
+    where: {
+      id: post.id,
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+    include: {
+      Likes: true,
+    },
+  });
+
+  const detailPost = {
+    ...updatedPost,
+    likes: updatedPost.Likes.length,
+  };
+
   return (
     <main className="container mx-auto py-10">
-      <BlogDetail post={post} />
+      <BlogDetail post={detailPost} />
     </main>
   );
 }
