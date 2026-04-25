@@ -1,6 +1,7 @@
 import type { Post } from "@repo/db/data";
 import { marked } from "marked";
 import Link from "next/link";
+import { LikeButton } from "./LikeButton";
 
 export async function BlogDetail({ post }: { post: Post }) {
   const content = await marked.parse(post.content);
@@ -37,7 +38,7 @@ export async function BlogDetail({ post }: { post: Post }) {
 
       <div className="mt-5 flex flex-wrap gap-4 text-sm text-secondary">
         <p>{post.views} views</p>
-        <p>{post.likes} likes</p>
+        <LikeButton postId={post.id} initialLikes={post.likes} />
         <p>{formattedDate}</p>
       </div>
       
@@ -47,12 +48,6 @@ export async function BlogDetail({ post }: { post: Post }) {
         dangerouslySetInnerHTML={{ __html: content }}
       />
       
-      <button
-        data-test-id="like-button"
-        className="mt-8 rounded-xl bg-wsu px-4 py-2 text-sm font-semibold text-white transition hover:bg-wsu-light"
-      >
-        Like
-      </button>
     </article>
   );
 }
