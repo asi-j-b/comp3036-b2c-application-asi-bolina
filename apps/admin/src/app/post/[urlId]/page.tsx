@@ -8,7 +8,7 @@ import styles from "../../page.module.css";
 export default async function UpdatePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ urlId: string }>;
 }) {
   const loggedIn = await isLoggedIn();
 
@@ -20,12 +20,12 @@ export default async function UpdatePage({
     );
   }
 
-  const { id } = await params;
+  const { urlId } = await params;
 
   const post = await prisma.post.findUnique({
-    where: { 
-      id: parseInt(id) 
-    }
+    where: {
+      urlId,
+    },
   });
 
   if (!post) {
@@ -36,6 +36,7 @@ export default async function UpdatePage({
     <main className={styles.main}>
       <h1 className="mb-4 text-2xl font-bold">Update Post</h1>
       <PostEditorForm
+        postId={post.id}
         initialValues={{
           title: post.title,
           category: post.category,
@@ -44,7 +45,6 @@ export default async function UpdatePage({
           imageUrl: post.imageUrl,
           tags: post.tags,
         }}
-        // postId={post.id}
       />
     </main>
   );
