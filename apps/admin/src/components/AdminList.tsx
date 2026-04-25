@@ -16,24 +16,6 @@ type Post = {
 	active: boolean;
 };
 
-const router = useRouter();
-
-const handleToggleActive = async (id: number, currentStatus: boolean) => {
-	const response = await fetch(`api/posts/${id}`, {
-		method: "PATCH",
-		body: JSON.stringify({ active: !currentStatus }),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
-
-	if (response.ok) {
-		router.refresh();
-	} else {
-		alert("Failed to update post status");
-	}
-}
-
 type SortBy = "date-desc" | "date-asc" | "title-asc" | "title-desc";
 type Visibility = "all" | "active" | "inactive";
 
@@ -85,6 +67,24 @@ export function AdminList({ posts }: { posts: Post[] }) {
 		useState<Visibility>("all");
 	const [sortBy, setSortBy] = useState<SortBy>("date-desc");
 	const [statusMessage, setStatusMessage] = useState<Record<number, string>>({});
+
+	const router = useRouter();
+
+	const handleToggleActive = async (id: number, currentStatus: boolean) => {
+		const response = await fetch(`api/posts/${id}`, {
+			method: "PATCH",
+			body: JSON.stringify({ active: !currentStatus }),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		if (response.ok) {
+			router.refresh();
+		} else {
+			alert("Failed to update post status");
+		}
+	}
 
 	const filteredPosts = useMemo(() => {
 		const parsedDate = parseDateFilter(dateFilter);

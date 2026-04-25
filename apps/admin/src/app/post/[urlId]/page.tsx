@@ -8,7 +8,7 @@ import styles from "../../page.module.css";
 export default async function UpdatePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ urlId: string }>;
 }) {
   const loggedIn = await isLoggedIn();
 
@@ -20,12 +20,12 @@ export default async function UpdatePage({
     );
   }
 
-  const { id } = await params;
+  const { urlId } = await params;
 
   const post = await prisma.post.findUnique({
-    where: { 
-      id: parseInt(id) 
-    }
+    where: {
+      urlId,
+    },
   });
 
   if (!post) {
