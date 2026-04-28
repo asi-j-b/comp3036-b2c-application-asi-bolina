@@ -1,0 +1,503 @@
+﻿node.exe : turbo 2.3.4
+At C:\Users\asibo\AppData\Roaming\npm\pnpm.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/pnpm/bin/pnpm.cjs" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (turbo 2.3.4:String) [], RemoteExc 
+   eption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ΓÇó Packages in scope: @repo/admin, @repo/db, @repo/env, @repo/eslint-config, @repo/playwright, @repo/storybook, @repo/tailwind-config, @repo/typescript-config, @repo/ui, @repo/utils, @repo/web
+ΓÇó Running test-2 in 11 packages
+ΓÇó Remote caching disabled
+@repo/playwright:test-2: cache miss, executing 546185090a65809f
+@repo/playwright:test-2: 
+@repo/playwright:test-2: > @repo/playwright@1.0.0 test-2 C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright
+@repo/playwright:test-2: > pnpm playwright test --grep "@a2"
+@repo/playwright:test-2: 
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: 
+@repo/playwright:test-2: Running 18 tests using 1 worker
+@repo/playwright:test-2: 
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  1 [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:9:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows login screen @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  2 [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:25:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Can login @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  3 [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:57:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows home screen to authorised user @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  4 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:13:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Show all posts @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  5 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:25:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by content @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  6 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:50:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by tag @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  7 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:71:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by date @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  8 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:94:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Combine Filters @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  9 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:114:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Sort items @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  10 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:194:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ List items @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  11 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:220:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to detail screen @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  12 [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:236:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to create post screen @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  13 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:9:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Authorisation @a2 (2.7s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  14 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:24:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Update post form @a2 (2.6s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  15 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:201:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Show preview @a2 (2.7s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  16 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:220:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Restore preview @a2 (2.7s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  17 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:255:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Image Preview @a2 (2.7s)
+@repo/playwright:test-2: Connected to database
+@repo/playwright:test-2: file:./dev.db
+@repo/playwright:test-2: ≡ƒî▒ Seeding data
+@repo/playwright:test-2:   Γ£ÿ  18 [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:274:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Save Button @a2 (2.7s)
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   1) [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:9:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows login screen @a2 ΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       13 |     },
+@repo/playwright:test-2:       14 |     async ({ page }) => {
+@repo/playwright:test-2:     > 15 |       await page.goto("/");
+@repo/playwright:test-2:          |                  ^
+@repo/playwright:test-2:       16 |       await expect(page.getByText("Sign In", { exact: true })).toBeVisible();
+@repo/playwright:test-2:       17 |
+@repo/playwright:test-2:       18 |       // HOME SCREEN > Shows Login screen if not logged
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\home-screen.spec.ts:15:18
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\home-screen-ADMIN-HOME-SCREEN-Shows-login-screen-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   2) [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:25:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Can login @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       29 |     },
+@repo/playwright:test-2:       30 |     async ({ page }) => {
+@repo/playwright:test-2:     > 31 |       await page.goto("/");
+@repo/playwright:test-2:          |                  ^
+@repo/playwright:test-2:       32 |
+@repo/playwright:test-2:       33 |       // HOME SCREEN > Authenticate the current client using a hard-coded password
+@repo/playwright:test-2:       34 |       await page.getByLabel("Password", { exact: true }).fill("123");
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\home-screen.spec.ts:31:18
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\home-screen-ADMIN-HOME-SCREEN-Can-login-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   3) [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:57:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows home screen to authorised user @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       61 |     },
+@repo/playwright:test-2:       62 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 63 |       await userPage.goto("/");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       64 |
+@repo/playwright:test-2:       65 |       // shows title
+@repo/playwright:test-2:       66 |       await expect(
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\home-screen.spec.ts:63:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\home-screen-ADMIN-HOME-SCR-39d17-e-screen-to-authorised-user-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   4) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:13:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Show all posts @a2 ΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       17 |     },
+@repo/playwright:test-2:       18 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 19 |       await userPage.goto("/");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       20 |
+@repo/playwright:test-2:       21 |       await expect(await userPage.locator("article").count()).toBe(4);
+@repo/playwright:test-2:       22 |     },
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:19:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Show-all-posts-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   5) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:25:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by content @a2 ΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       29 |     },
+@repo/playwright:test-2:       30 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 31 |       await userPage.goto("/");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       32 |
+@repo/playwright:test-2:       33 |       // LIST SCREEN > On the top is a filter screen that allows to filter posts by Title or content
+@repo/playwright:test-2:       34 |       await userPage.getByLabel("Filter by Content:").fill("Boost");
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:31:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Filter-by-content-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   6) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:50:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by tag @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       54 |     },
+@repo/playwright:test-2:       55 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 56 |       await userPage.goto("/");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       57 |
+@repo/playwright:test-2:       58 |       // LIST SCREEN > On the top is a filter screen that allows to filter posts by tags
+@repo/playwright:test-2:       59 |       await userPage.getByLabel("Filter by Tag:").fill("Front");
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:56:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Filter-by-tag-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   7) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:71:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by date @a2 ΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       75 |     },
+@repo/playwright:test-2:       76 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 77 |       await userPage.goto("/");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       78 |
+@repo/playwright:test-2:       79 |       // LIST SCREEN > On the top is a filter screen that allows to filter posts by date
+@repo/playwright:test-2:       80 |       await userPage
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:77:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Filter-by-date-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   8) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:94:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Combine Filters @a2 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:        98 |     },
+@repo/playwright:test-2:        99 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 100 |       await userPage.goto("/");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       101 |
+@repo/playwright:test-2:       102 |       // LIST SCREEN > On the top is a filter screen that allows to filter by visibility
+@repo/playwright:test-2:       103 |       await userPage.getByLabel("Filter by Tag:").fill("Front");
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:100:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Combine-Filters-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   9) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:114:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Sort items @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       118 |     },
+@repo/playwright:test-2:       119 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 120 |       await userPage.goto("/");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       121 |
+@repo/playwright:test-2:       122 |       // LIST SCREEN > Users can sort posts by name or creation date, both ascending and descending
+@repo/playwright:test-2:       123 |
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:120:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Sort-items-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   10) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:194:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ List items @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       198 |     },
+@repo/playwright:test-2:       199 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 200 |       await userPage.goto("/");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       201 |
+@repo/playwright:test-2:       202 |       // LIST SCREEN > The list post item displays the image, title of the post and metadata
+@repo/playwright:test-2:       203 |       const article = await userPage.locator("article").first();
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:200:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-List-items-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   11) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:220:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to detail screen @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       224 |     },
+@repo/playwright:test-2:       225 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 226 |       await userPage.goto("/");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       227 |
+@repo/playwright:test-2:       228 |       // LIST SCREEN > Clicking on the title takes the user to the MODIFY SCREEN, allowing the user to modify the current post
+@repo/playwright:test-2:       229 |       await userPage.getByText("No front end framework is the best").click();
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:226:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Move-to-detail-screen-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   12) [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:236:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to create post screen @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       240 |     },
+@repo/playwright:test-2:       241 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 242 |       await userPage.goto("/");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       243 |
+@repo/playwright:test-2:       244 |       // LIST SCREEN > There is a button to create new posts
+@repo/playwright:test-2:       245 |       await expect(userPage.getByText("Create Post")).toBeVisible();
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\list-screen.spec.ts:242:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\list-screen-ADMIN-LIST-SCREEN-Move-to-create-post-screen-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   13) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:9:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Authorisation @a2 ΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       13 |     },
+@repo/playwright:test-2:       14 |     async ({ page }) => {
+@repo/playwright:test-2:     > 15 |       await page.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:          |                  ^
+@repo/playwright:test-2:       16 |
+@repo/playwright:test-2:       17 |       // UPDATE SCREEN > Shows login screen if not logged
+@repo/playwright:test-2:       18 |       await expect(
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:15:18
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Authorisation-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   14) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:24:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Update post form @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       28 |     },
+@repo/playwright:test-2:       29 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 30 |       await userPage.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:          |                      ^
+@repo/playwright:test-2:       31 |
+@repo/playwright:test-2:       32 |       const saveButton = await userPage.getByText("Save");
+@repo/playwright:test-2:       33 |
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:30:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Update-post-form-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   15) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:201:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Show preview @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       205 |     },
+@repo/playwright:test-2:       206 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 207 |       await userPage.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       208 |
+@repo/playwright:test-2:       209 |       // UPDATE SCREEN > Under the Description is a "Preview" button that replaces the text area with a rendered markdown string and changes the title to "Close Preview".
+@repo/playwright:test-2:       210 |       await userPage.getByText("Preview").focus();
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:207:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Show-preview-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   16) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:220:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Restore preview @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       224 |     },
+@repo/playwright:test-2:       225 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 226 |       await userPage.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       227 |
+@repo/playwright:test-2:       228 |       // UPDATE SCREEN > When the preview is closed, the cursor must be in the same position as before opening the preview.
+@repo/playwright:test-2:       229 |
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:226:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Restore-preview-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   17) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:255:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Image Preview @a2 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       259 |     },
+@repo/playwright:test-2:       260 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 261 |       await userPage.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       262 |
+@repo/playwright:test-2:       263 |       // UPDATE SCREEN > Under the image input is an image preview;
+@repo/playwright:test-2:       264 |
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:261:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Image-Preview-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   18) [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:274:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Save Button @a2 ΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/post/no-front-end-framework-is-the-best
+@repo/playwright:test-2:     Call log:
+@repo/playwright:test-2:     [2m  - navigating to "http://localhost:3002/post/no-front-end-framework-is-the-best", waiting until "load"[22m
+@repo/playwright:test-2: 
+@repo/playwright:test-2: 
+@repo/playwright:test-2:       278 |     },
+@repo/playwright:test-2:       279 |     async ({ userPage }) => {
+@repo/playwright:test-2:     > 280 |       await userPage.goto("/post/no-front-end-framework-is-the-best");
+@repo/playwright:test-2:           |                      ^
+@repo/playwright:test-2:       281 |
+@repo/playwright:test-2:       282 |       // UPDATE SCREEN > User can click on the "Save" button that displays an error ui if one of the fields is not specified or valid.
+@repo/playwright:test-2:       283 |
+@repo/playwright:test-2:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\admin\update-screen.spec.ts:280:22
+@repo/playwright:test-2: 
+@repo/playwright:test-2:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     test-results\update-screen-ADMIN-UPDATE-SCREEN-Save-Button-chromium\test-failed-1.png
+@repo/playwright:test-2:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: 
+@repo/playwright:test-2:   18 failed
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:9:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows login screen @a2 ΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:25:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Can login @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\home-screen.spec.ts:57:7 ΓÇ║ ADMIN HOME SCREEN ΓÇ║ Shows home screen to authorised user @a2 
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:13:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Show all posts @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:25:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by content @a2 ΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:50:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by tag @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:71:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Filter by date @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:94:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Combine Filters @a2 ΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:114:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Sort items @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:194:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ List items @a2 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:220:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to detail screen @a2 
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\list-screen.spec.ts:236:7 ΓÇ║ ADMIN LIST SCREEN ΓÇ║ Move to create post screen @a2 
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:9:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Authorisation @a2 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:24:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Update post form @a2 
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:201:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Show preview @a2 ΓöÇΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:220:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Restore preview @a2 
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:255:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Image Preview @a2 ΓöÇ
+@repo/playwright:test-2:     [chromium] ΓÇ║ tests\admin\update-screen.spec.ts:274:7 ΓÇ║ ADMIN UPDATE SCREEN ΓÇ║ Save Button @a2 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-2: ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+@repo/playwright:test-2: ERROR: command finished with error: command 
+(C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 20
+26\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina
+\tests\playwright) 
+C:\Users\asibo\AppData\Local\pnpm\.tools\pnpm\10.2.0\bin\pnpm.CMD run test-2 
+exited (1)
+@repo/playwright#test-2: command (C:\Users\asibo\OneDrive\Desktop\Files\WSU 
+Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assig
+nment-2-blog-group-2-asi-john-bolina\tests\playwright) 
+C:\Users\asibo\AppData\Local\pnpm\.tools\pnpm\10.2.0\bin\pnpm.CMD run test-2 
+exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    1m12.618s 
+Failed:    @repo/playwright#test-2
+
+ ERROR  run failed: command  exited (1)

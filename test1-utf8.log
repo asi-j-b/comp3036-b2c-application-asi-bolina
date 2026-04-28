@@ -1,0 +1,470 @@
+﻿node.exe : turbo 2.3.4
+At C:\Users\asibo\AppData\Roaming\npm\pnpm.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/pnpm/bin/pnpm.cjs" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (turbo 2.3.4:String) [], RemoteExc 
+   eption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ΓÇó Packages in scope: @repo/admin, @repo/db, @repo/env, @repo/eslint-config, @repo/playwright, @repo/storybook, @repo/tailwind-config, @repo/typescript-config, @repo/ui, @repo/utils, @repo/web
+ΓÇó Running test-1 in 11 packages
+ΓÇó Remote caching disabled
+@repo/playwright:test-1: cache miss, executing acc5d9073448f126
+@repo/playwright:test-1: 
+@repo/playwright:test-1: > @repo/playwright@1.0.0 test-1 C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright
+@repo/playwright:test-1: > pnpm playwright test --grep "@a1"
+@repo/playwright:test-1: 
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: 
+@repo/playwright:test-1: Running 18 tests using 1 worker
+@repo/playwright:test-1: 
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  1 [chromium] ΓÇ║ tests\web\category-screen.spec.ts:9:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Existing Category @a1 (2.5s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  2 [chromium] ΓÇ║ tests\web\category-screen.spec.ts:34:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Invalid Category @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  3 [chromium] ΓÇ║ tests\web\detail-screen.spec.ts:9:7 ΓÇ║ DETAIL SCREEN ΓÇ║ Detail view @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  4 [chromium] ΓÇ║ tests\web\history-screen.spec.ts:4:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Existing history @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  5 [chromium] ΓÇ║ tests\web\history-screen.spec.ts:24:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Invalid History @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  6 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:26:7 ΓÇ║ HOME SCREEN ΓÇ║ Show Active Posts @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  7 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:38:7 ΓÇ║ HOME SCREEN ΓÇ║ Category Links @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  8 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:55:7 ΓÇ║ HOME SCREEN ΓÇ║ History Links @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  9 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:75:7 ΓÇ║ HOME SCREEN ΓÇ║ Tag Links @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  10 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:96:7 ΓÇ║ HOME SCREEN ΓÇ║ Post Item @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  11 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:129:7 ΓÇ║ HOME SCREEN ΓÇ║ Dark Mode Switch @a1 (2.6s)
+@repo/playwright:test-1: Connected to database
+@repo/playwright:test-1: file:./dev.db
+@repo/playwright:test-1: ≡ƒî▒ Seeding data
+@repo/playwright:test-1:   Γ£ÿ  12 [chromium] ΓÇ║ tests\web\home-screen.spec.ts:156:7 ΓÇ║ HOME SCREEN ΓÇ║ Search Box @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  13 [chromium] ΓÇ║ tests\web\search-screen.spec.ts:4:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Existing search result @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  14 [chromium] ΓÇ║ tests\web\search-screen.spec.ts:26:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Search finds multiple posts @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  15 [chromium] ΓÇ║ tests\web\search-screen.spec.ts:51:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Invalid Search @a1 (2.5s)
+@repo/playwright:test-1:   Γ£ÿ  16 [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:4:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with one post @a1 (2.6s)
+@repo/playwright:test-1:   Γ£ÿ  17 [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:24:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with multiple posts @a1 (2.5s)
+@repo/playwright:test-1:   Γ£ÿ  18 [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:47:7 ΓÇ║ TAG SCREEN ΓÇ║ Invalid Tag @a1 (2.6s)
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   1) [chromium] ΓÇ║ tests\web\category-screen.spec.ts:9:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Existing Category @a1 ΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/category/react
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/category/react", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       13 |     },
+@repo/playwright:test-1:       14 |     async ({ page }) => {
+@repo/playwright:test-1:     > 15 |       await page.goto("/category/react");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       16 |
+@repo/playwright:test-1:       17 |       // CATEGORY SCREEN > Displays results based on category from url (e.g. /category/react)
+@repo/playwright:test-1:       18 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\category-screen.spec.ts:15:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\category-screen-CATEGORY-SCREEN-Existing-Category-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   2) [chromium] ΓÇ║ tests\web\category-screen.spec.ts:34:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Invalid Category @a1 ΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/category/abc
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/category/abc", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       38 |     },
+@repo/playwright:test-1:       39 |     async ({ page }) => {
+@repo/playwright:test-1:     > 40 |       await page.goto("/category/abc");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       41 |
+@repo/playwright:test-1:       42 |       // CATEGORY SCREEN > Displays "0 Posts" when search does not find anything
+@repo/playwright:test-1:       43 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\category-screen.spec.ts:40:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\category-screen-CATEGORY-SCREEN-Invalid-Category-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   3) [chromium] ΓÇ║ tests\web\detail-screen.spec.ts:9:7 ΓÇ║ DETAIL SCREEN ΓÇ║ Detail view @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/post/boost-your-conversion-rate
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/post/boost-your-conversion-rate", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       13 |     },
+@repo/playwright:test-1:       14 |     async ({ page }) => {
+@repo/playwright:test-1:     > 15 |       await page.goto("/post/boost-your-conversion-rate");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       16 |
+@repo/playwright:test-1:       17 |       // DETAIL SCREEN > Detail page shows the same items as list item, but the short description is replaced by formatted long description
+@repo/playwright:test-1:       18 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\detail-screen.spec.ts:15:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\detail-screen-DETAIL-SCREEN-Detail-view-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   4) [chromium] ΓÇ║ tests\web\history-screen.spec.ts:4:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Existing history @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/history/2024/12
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/history/2024/12", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:        8 |     },
+@repo/playwright:test-1:        9 |     async ({ page }) => {
+@repo/playwright:test-1:     > 10 |       await page.goto("/history/2024/12");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       11 |
+@repo/playwright:test-1:       12 |       // HISTORY SCREEN > Displays posts from year and month specified in the url (e.g. /history/2024/12)
+@repo/playwright:test-1:       13 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\history-screen.spec.ts:10:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\history-screen-HISTORY-SCREEN-Existing-history-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   5) [chromium] ΓÇ║ tests\web\history-screen.spec.ts:24:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Invalid History @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/history/2024/1
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/history/2024/1", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       28 |     },
+@repo/playwright:test-1:       29 |     async ({ page }) => {
+@repo/playwright:test-1:     > 30 |       await page.goto("/history/2024/1");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       31 |
+@repo/playwright:test-1:       32 |       // HISTORY SCREEN > Displays "0 Posts" when search does not find anything
+@repo/playwright:test-1:       33 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\history-screen.spec.ts:30:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\history-screen-HISTORY-SCREEN-Invalid-History-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   6) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:26:7 ΓÇ║ HOME SCREEN ΓÇ║ Show Active Posts @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       30 |     },
+@repo/playwright:test-1:       31 |     async ({ page }) => {
+@repo/playwright:test-1:     > 32 |       await page.goto("/");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       33 |
+@repo/playwright:test-1:       34 |       await expect(await page.locator("article").count()).toBe(3);
+@repo/playwright:test-1:       35 |     },
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:32:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Show-Active-Posts-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   7) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:38:7 ΓÇ║ HOME SCREEN ΓÇ║ Category Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       42 |     },
+@repo/playwright:test-1:       43 |     async ({ page }) => {
+@repo/playwright:test-1:     > 44 |       await page.goto("/");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       45 |
+@repo/playwright:test-1:       46 |       // HOME SCREEN > User must see the list of blog post categories, where each category points to UI showing only posts of that category
+@repo/playwright:test-1:       47 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:44:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Category-Links-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   8) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:55:7 ΓÇ║ HOME SCREEN ΓÇ║ History Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       59 |     },
+@repo/playwright:test-1:       60 |     async ({ page }) => {
+@repo/playwright:test-1:     > 61 |       await page.goto("/");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       62 |
+@repo/playwright:test-1:       63 |       // HOME SCREEN > User must see the history of blog posts, showing month and year, where each moth, year tuple points to UI showing only posts of that category
+@repo/playwright:test-1:       64 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:61:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-History-Links-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   9) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:75:7 ΓÇ║ HOME SCREEN ΓÇ║ Tag Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       79 |     },
+@repo/playwright:test-1:       80 |     async ({ page }) => {
+@repo/playwright:test-1:     > 81 |       await page.goto("/");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       82 |
+@repo/playwright:test-1:       83 |       // HOME SCREEN > User must see the list of blog post tags, where each tag points to UI showing only posts of that category
+@repo/playwright:test-1:       84 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:81:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Tag-Links-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   10) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:96:7 ΓÇ║ HOME SCREEN ΓÇ║ Post Item @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       100 |     },
+@repo/playwright:test-1:       101 |     async ({ page }) => {
+@repo/playwright:test-1:     > 102 |       await page.goto("/");
+@repo/playwright:test-1:           |                  ^
+@repo/playwright:test-1:       103 |
+@repo/playwright:test-1:       104 |       const item = await page.getByTestId("blog-post-1");
+@repo/playwright:test-1:       105 |       await expect(item).toBeVisible();
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:102:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Post-Item-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   11) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:129:7 ΓÇ║ HOME SCREEN ΓÇ║ Dark Mode Switch @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       133 |     },
+@repo/playwright:test-1:       134 |     async ({ page }) => {
+@repo/playwright:test-1:     > 135 |       await page.goto("/");
+@repo/playwright:test-1:           |                  ^
+@repo/playwright:test-1:       136 |
+@repo/playwright:test-1:       137 |       // HOME SCREEN > User must be able to switch between dark and light theme with a button
+@repo/playwright:test-1:       138 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:135:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Dark-Mode-Switch-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   12) [chromium] ΓÇ║ tests\web\home-screen.spec.ts:156:7 ΓÇ║ HOME SCREEN ΓÇ║ Search Box @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       160 |     },
+@repo/playwright:test-1:       161 |     async ({ page }) => {
+@repo/playwright:test-1:     > 162 |       await page.goto("/");
+@repo/playwright:test-1:           |                  ^
+@repo/playwright:test-1:       163 |
+@repo/playwright:test-1:       164 |       // HOME SCREEN > There is a search functionality that filters blogs based on string found in title or description
+@repo/playwright:test-1:       165 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\home-screen.spec.ts:162:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\home-screen-HOME-SCREEN-Search-Box-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   13) [chromium] ΓÇ║ tests\web\search-screen.spec.ts:4:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Existing search result @a1 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/search?q=Fat
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/search?q=Fat", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:        8 |     },
+@repo/playwright:test-1:        9 |     async ({ page }) => {
+@repo/playwright:test-1:     > 10 |       await page.goto("/search?q=Fat");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       11 |
+@repo/playwright:test-1:       12 |       // SEARCH SCREEN > Displays results based on search string stored in the query string (e.g. /search?q=Fat)
+@repo/playwright:test-1:       13 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\search-screen.spec.ts:10:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\search-screen-SEARCH-SCREEN-Existing-search-result-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   14) [chromium] ΓÇ║ tests\web\search-screen.spec.ts:26:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Search finds multiple posts @a1 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/search?q=front
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/search?q=front", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       30 |     },
+@repo/playwright:test-1:       31 |     async ({ page }) => {
+@repo/playwright:test-1:     > 32 |       await page.goto("/search?q=front");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       33 |
+@repo/playwright:test-1:       34 |       // SEARCH SCREEN > Displays results based on search string stored in the query string (e.g. /search?q=Fat)
+@repo/playwright:test-1:       35 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\search-screen.spec.ts:32:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\search-screen-SEARCH-SCREEN-Search-finds-multiple-posts-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   15) [chromium] ΓÇ║ tests\web\search-screen.spec.ts:51:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Invalid Search @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/search?q=abc
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/search?q=abc", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       55 |     },
+@repo/playwright:test-1:       56 |     async ({ page }) => {
+@repo/playwright:test-1:     > 57 |       await page.goto("/search?q=abc");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       58 |
+@repo/playwright:test-1:       59 |       // SEARCH SCREEN > Displays "0 Posts" when search does not find anything
+@repo/playwright:test-1:       60 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\search-screen.spec.ts:57:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\search-screen-SEARCH-SCREEN-Invalid-Search-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   16) [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:4:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with one post @a1 ΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/tags/dev-tools
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/tags/dev-tools", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:        8 |     },
+@repo/playwright:test-1:        9 |     async ({ page }) => {
+@repo/playwright:test-1:     > 10 |       await page.goto("/tags/dev-tools");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       11 |
+@repo/playwright:test-1:       12 |       // TAG SCREEN > Displays posts with the tag url (e.g. /tags/dev-tools)
+@repo/playwright:test-1:       13 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\tags-screen.spec.ts:10:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\tags-screen-TAG-SCREEN-Existing-Tag-with-one-post-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   17) [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:24:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with multiple posts @a1 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/tags/front-end
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/tags/front-end", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       28 |     },
+@repo/playwright:test-1:       29 |     async ({ page }) => {
+@repo/playwright:test-1:     > 30 |       await page.goto("/tags/front-end");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       31 |
+@repo/playwright:test-1:       32 |       const articles = await page.locator('[data-test-id^="blog-post-"]');
+@repo/playwright:test-1:       33 |       await expect(articles).toHaveCount(2);
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\tags-screen.spec.ts:30:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\tags-screen-TAG-SCREEN-Existing-Tag-with-multiple-posts-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   18) [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:47:7 ΓÇ║ TAG SCREEN ΓÇ║ Invalid Tag @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3001/category/abc
+@repo/playwright:test-1:     Call log:
+@repo/playwright:test-1:     [2m  - navigating to "http://localhost:3001/category/abc", waiting until "load"[22m
+@repo/playwright:test-1: 
+@repo/playwright:test-1: 
+@repo/playwright:test-1:       51 |     },
+@repo/playwright:test-1:       52 |     async ({ page }) => {
+@repo/playwright:test-1:     > 53 |       await page.goto("/category/abc");
+@repo/playwright:test-1:          |                  ^
+@repo/playwright:test-1:       54 |
+@repo/playwright:test-1:       55 |       // TAG SCREEN > Displays "0 Posts" when search does no posts have that tag
+@repo/playwright:test-1:       56 |
+@repo/playwright:test-1:         at C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina\tests\playwright\tests\web\tags-screen.spec.ts:53:18
+@repo/playwright:test-1: 
+@repo/playwright:test-1:     attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     test-results\tags-screen-TAG-SCREEN-Invalid-Tag-chromium1\test-failed-1.png
+@repo/playwright:test-1:     ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: 
+@repo/playwright:test-1:   18 failed
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\category-screen.spec.ts:9:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Existing Category @a1 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\category-screen.spec.ts:34:7 ΓÇ║ CATEGORY SCREEN ΓÇ║ Invalid Category @a1 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\detail-screen.spec.ts:9:7 ΓÇ║ DETAIL SCREEN ΓÇ║ Detail view @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\history-screen.spec.ts:4:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Existing history @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\history-screen.spec.ts:24:7 ΓÇ║ HISTORY SCREEN ΓÇ║ Invalid History @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:26:7 ΓÇ║ HOME SCREEN ΓÇ║ Show Active Posts @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:38:7 ΓÇ║ HOME SCREEN ΓÇ║ Category Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:55:7 ΓÇ║ HOME SCREEN ΓÇ║ History Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:75:7 ΓÇ║ HOME SCREEN ΓÇ║ Tag Links @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:96:7 ΓÇ║ HOME SCREEN ΓÇ║ Post Item @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:129:7 ΓÇ║ HOME SCREEN ΓÇ║ Dark Mode Switch @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\home-screen.spec.ts:156:7 ΓÇ║ HOME SCREEN ΓÇ║ Search Box @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\search-screen.spec.ts:4:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Existing search result @a1 ΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\search-screen.spec.ts:26:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Search finds multiple posts @a1 
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\search-screen.spec.ts:51:7 ΓÇ║ SEARCH SCREEN ΓÇ║ Invalid Search @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:4:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with one post @a1 ΓöÇΓöÇΓöÇ
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:24:7 ΓÇ║ TAG SCREEN ΓÇ║ Existing Tag with multiple posts @a1 
+@repo/playwright:test-1:     [chromium] ΓÇ║ tests\web\tags-screen.spec.ts:47:7 ΓÇ║ TAG SCREEN ΓÇ║ Invalid Tag @a1 ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+@repo/playwright:test-1: ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
+@repo/playwright:test-1: ERROR: command finished with error: command 
+(C:\Users\asibo\OneDrive\Desktop\Files\WSU Files\Autumn Session 2026 UG1\FSD 20
+26\FSD-assessments-2026\comp3036-2026-assignment-2-blog-group-2-asi-john-bolina
+\tests\playwright) 
+C:\Users\asibo\AppData\Local\pnpm\.tools\pnpm\10.2.0\bin\pnpm.CMD run test-1 
+exited (1)
+@repo/playwright#test-1: command (C:\Users\asibo\OneDrive\Desktop\Files\WSU 
+Files\Autumn Session 2026 UG1\FSD 2026\FSD-assessments-2026\comp3036-2026-assig
+nment-2-blog-group-2-asi-john-bolina\tests\playwright) 
+C:\Users\asibo\AppData\Local\pnpm\.tools\pnpm\10.2.0\bin\pnpm.CMD run test-1 
+exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    1m4.184s 
+Failed:    @repo/playwright#test-1
+
+ ERROR  run failed: command  exited (1)
