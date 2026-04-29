@@ -71,7 +71,7 @@ export function AdminList({ posts }: { posts: Post[] }) {
 	const router = useRouter();
 
 	const handleToggleActive = async (id: number, currentStatus: boolean) => {
-		const response = await fetch(`api/posts/${id}`, {
+		const response = await fetch(`/api/posts/${id}`, {
 			method: "PATCH",
 			body: JSON.stringify({ active: !currentStatus }),
 			headers: {
