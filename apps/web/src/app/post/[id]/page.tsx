@@ -1,5 +1,5 @@
 import { prisma } from "@repo/db";
-import { BlogDetail } from "@/components//Blog/Detail";
+import { BlogDetail } from "@/components/Blog/Detail";
 import { notFound } from "next/navigation";
 
 export default async function PostPage({
