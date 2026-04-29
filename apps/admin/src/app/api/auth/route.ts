@@ -8,11 +8,11 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    if (body.password === "123") {
+    if (body.password === env.PASSWORD) {
       // Create the JWT (Requirement: JWT Issue & Validation)
       const jwtToken = jwt.sign(
         { role: "admin" },
-        env.JWT_SECRET || "fallback_secret",
+        env.JWT_SECRET,
         { expiresIn: "24h" }
       );
 
