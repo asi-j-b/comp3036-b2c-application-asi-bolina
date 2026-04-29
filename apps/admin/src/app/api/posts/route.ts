@@ -9,9 +9,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await request.json();
-
   try {
+    const body = await request.json();
+
+    if (!body || typeof body.title !== "string" || body.title.trim() === "") {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+    }
     // Generate a urlId from the title (Slugify)
     const urlId = body.title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
 
