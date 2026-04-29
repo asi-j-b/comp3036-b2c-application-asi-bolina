@@ -12,10 +12,11 @@ export async function PATCH(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id } = await params;
-  const body = await request.json(); // Expecting { active: boolean }
 
   try {
+    const { id } = await params;
+    const body = await request.json(); // Expecting { active: boolean }
+
     const updatedPost = await prisma.post.update({
       where: { id: parseInt(id) },
       data: { active: body.active },

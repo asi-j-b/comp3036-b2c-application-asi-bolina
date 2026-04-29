@@ -14,7 +14,6 @@ export async function isLoggedIn() {
     const decoded = jwt.verify(token, env.JWT_SECRET || "");
     return !!decoded;
   } catch (error) {
-    console.error("JWT Verification failed:", error);
     return false;
   }
 }
