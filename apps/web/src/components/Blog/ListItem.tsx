@@ -36,7 +36,7 @@ export function BlogListItem({ post }: { post: Post }) {
             href={`/post/${post.urlId}`}
             className="line-clamp-2 text-4xl font-semibold leading-tight text-primary transition hover:text-primaryHover"
           >
-            {post.title}
+            {post.title.replace(/!$/, "")}
           </Link>
 
           <p className="line-clamp-3 text-2xl text-secondary">{post.description}</p>

@@ -17,6 +17,10 @@
     "build": "tsc"
   },
   "exports": {
+    ".": {
+      "types": "./src/index.ts", 
+      "default": "./dist/index.js"
+    },
     "./client": {
       "types": "./src/client.ts",
       "default": "./dist/client.js"
@@ -31,6 +35,7 @@
     }
   },
   "dependencies": {
+    "@prisma/client": "^6.3.1",
     "@repo/env": "workspace:*"
   },
   "devDependencies": {
@@ -38,6 +43,7 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/ui": "workspace:*",
     "@types/node": "^22.13.1",
+    "prisma": "^6.3.1",
     "vitest": "^3.0.4"
   }
 }
