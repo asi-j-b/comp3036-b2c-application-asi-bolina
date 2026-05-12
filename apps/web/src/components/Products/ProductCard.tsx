@@ -8,7 +8,13 @@ function formatCurrency(value: number) {
   }).format(value);
 }
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  onAddToCart,
+}: {
+  product: Product;
+  onAddToCart: (productId: number) => void;
+}) {
   return (
     <article className="group overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] dark:shadow-none">
       <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-muted)]">
@@ -50,9 +56,13 @@ export function ProductCard({ product }: { product: Product }) {
             <p className="text-sm text-secondary">{product.stock} in stock</p>
           </div>
 
-          <span className="rounded-full border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary">
-            View product
-          </span>
+          <button
+            type="button"
+            onClick={() => onAddToCart(product.id)}
+            className="rounded-full bg-wsu px-4 py-2 text-sm font-semibold text-white transition hover:bg-wsu-light focus:outline-none focus:ring-2 focus:ring-wsu focus:ring-offset-2"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </article>
