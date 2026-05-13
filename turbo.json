@@ -43,8 +43,14 @@
     "dev:test-3": {
       "dependsOn": ["dev:test"]
     },
+    "test-b2c": {
+      "dependsOn": ["check-types"]
+    },
+    "dev:test-b2c": {
+      "dependsOn": ["dev:test"]
+    },
     "all:test": {
-      "dependsOn": ["test", "test-1", "test-2", "test-3"]
+      "dependsOn": ["test", "test-1", "test-2", "test-3", "test-b2c"]
     },
     "db:generate": {
       "dependsOn": ["^db:generate"]

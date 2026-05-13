@@ -1,10 +1,10 @@
-import type { Product } from "@/data/mockProducts";
+import type { Product } from "../../data/mockProducts";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-AU", {
     style: "currency",
     currency: "AUD",
-    maximumFractionDigits: 0,
+    maximumFractionDigits: 0, // since all our prices are whole numbers, we can omit the decimal places
   }).format(value);
 }
 
@@ -16,7 +16,8 @@ export function ProductCard({
   onAddToCart: (productId: number) => void;
 }) {
   return (
-    <article className="group overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] dark:shadow-none">
+    <article className="group overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] 
+    shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] dark:shadow-none">
       <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-muted)]">
         <img
           src={product.imageUrl}

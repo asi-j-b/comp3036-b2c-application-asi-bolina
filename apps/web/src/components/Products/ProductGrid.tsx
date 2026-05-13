@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { filterByCategory, getCategories, searchProducts, type Product } from "@/data/mockProducts";
+import { filterByCategory, getCategories, searchProducts, type Product } from "../../data/mockProducts";
 import { ProductCard } from "./ProductCard";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "../../hooks/useCart";
 
 export function ProductGrid({ products }: { products: Product[] }) {
   const [searchTerm, setSearchTerm] = useState("");
