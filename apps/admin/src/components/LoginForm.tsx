@@ -10,18 +10,19 @@ export function LoginForm() {
     async function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        const email = formData.get('email');
         const password = formData.get('password');
         
         const response = await fetch('/api/auth', {
             method: 'POST',
-            body: JSON.stringify({ password }),
+            body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
             router.refresh();
         } else {
-            setError('Invalid password. Try again!');
+            setError('Invalid email or password');
         }
     };
 
@@ -34,6 +35,17 @@ export function LoginForm() {
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex flex-col gap-2">
+
+                        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                            Email
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            required
+                            className="rounded-md border border-gray-300 p-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                        />
                         <label htmlFor="password" className="text-sm font-medium text-gray-700">
                             Password
                         </label>
@@ -42,7 +54,6 @@ export function LoginForm() {
                             type="password"
                             name="password"
                             required
-                            placeholder="Enter admin password"
                             className="rounded-md border border-gray-300 p-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
