@@ -1,5 +1,5 @@
 import { isLoggedIn } from "../utils/auth";
-import { LoginForm } from "../components/LoginForm";
+import { AdminLoginForm } from "../../../../packages/ui/src/auth/AdminLoginForm";
 import { AdminList } from "../components/AdminList";
 import { LogoutButton } from "../components/LogoutButton";
 import { prisma } from "@repo/db";
@@ -11,7 +11,7 @@ export default async function Home() {
   if (!loggedIn) {
     return (
       <main className={styles.main}>
-        <LoginForm />
+        <AdminLoginForm />
       </main>
     );
   }

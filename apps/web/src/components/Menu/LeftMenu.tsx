@@ -3,9 +3,9 @@ import { CategoryList } from "./CategoryList";
 import { HistoryList } from "./HistoryList";
 import { TagList } from "./TagList";
 
-export function LeftMenu() {
+export function LeftMenu({ isOpen }: { isOpen?: boolean }) {
   return (
-    <aside className="w-full border-b border-gray-200 bg-[var(--surface-muted)] lg:h-screen lg:w-[290px] lg:overflow-y-auto lg:border-b-0 lg:border-r">
+    <aside className={`w-full border-b border-gray-200 bg-[var(--surface-muted)] lg:h-screen lg:w-[290px] lg:overflow-y-auto lg:border-b-0 lg:border-r ${isOpen ? "block" : "hidden lg:block"}`}>
       <div className="flex items-center gap-3 px-5 py-5">
         <div className="grid h-7 w-7 place-items-center rounded-md bg-wsu text-sm font-bold text-white">
           W

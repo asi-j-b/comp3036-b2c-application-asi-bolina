@@ -1,19 +1,13 @@
 import type { PropsWithChildren } from "react";
-import { Content } from "../Content";
-import { LeftMenu } from "../Menu/LeftMenu";
-import { TopMenu } from "./TopMenu";
+import { AppLayoutClient } from "./AppLayoutClient";
 
 export async function AppLayout({
   children,
   query,
 }: PropsWithChildren<{ query?: string }>) {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[1400px] flex-col lg:flex-row">
-      <LeftMenu />
-      <Content>
-        <TopMenu query={query} />
-        {children}
-      </Content>
-    </div>
+    <AppLayoutClient>
+      {children}
+    </AppLayoutClient>
   );
 }
