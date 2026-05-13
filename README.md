@@ -225,6 +225,132 @@ It also launches the unit and integration test framework Vitest's UI, similar to
 
 ![Vitest UI](https://skillpies.s3.ap-southeast-2.amazonaws.com/courses/full-stack-development/sections/assignment-2-1-blog-client-in-advanced-react/Screenshot%202025-02-05%20at%2014.46.31.png)
 
+## 🛍️ Iteration 1: B2C Frontend with Mock Data
+
+This iteration pivots the blog application into a B2C e-commerce store with a focus on frontend-first development using static mock data. The following features have been implemented:
+
+### What's New (Steps 1-4)
+
+#### Step 1: Mock Product Data Layer
+- **File**: `apps/web/src/data/mockProducts.ts`
+- **Features**:
+  - Product type definition with id, name, price, category, stock, imageUrl, rating, and reviews
+  - 8 realistic mock products across 6 categories (Electronics, Clothing, Home, Kitchen, Footwear, Accessories)
+  - Helper functions: `getCategories()`, `filterByCategory()`, `searchProducts()`, `sortProducts()`
+- **Purpose**: Decouples UI from database until backend integration in Iteration 2
+
+#### Step 2: Product Discovery UI
+- **Files**: `apps/web/src/components/Products/ProductCard.tsx`, `apps/web/src/components/Products/ProductGrid.tsx`
+- **Features**:
+  - Responsive grid layout (1 col on mobile → 2 cols on tablet → 3 cols on desktop)
+  - Product cards with image, name, category, description, price (AUD format), stock level, and star rating
+  - Hero section with category introduction message
+  - "Add to Cart" button on each product card
+  - "Featured" badge for featured products
+- **Purpose**: Provides polished storefront UI for product browsing
+
+#### Step 3: Category & Search Filtering
+- **Integrated into**: `apps/web/src/components/Products/ProductGrid.tsx`
+- **Features**:
+  - Category filter pills (shows all categories + "All" option)
+  - Real-time search input (filters by product name and description, case-insensitive)
+  - Active filter display showing current selections
+  - Empty state message when no products match filters
+  - Live product count updates
+- **Purpose**: Enables customers to discover products efficiently
+
+#### Step 4: Local Shopping Cart
+- **File**: `apps/web/src/hooks/useCart.ts`
+- **Features**:
+  - React hook managing cart state with `useState`
+  - Methods: `addToCart(productId)`, `removeFromCart(productId)`, `clearCart()`
+  - Cart summary: `getCartTotal()`, `getCartCount()`, `getCartItems()`
+  - Integrated with ProductCard (Add to Cart button triggers cart updates)
+- **Purpose**: Provides session-level cart management (persistence to localStorage planned for Iteration 2)
+
+### How to Test Steps 1-4
+
+#### Running B2C Unit Tests
+
+To run only the B2C storefront tests:
+
+```
+turbo test-b2c
+```
+
+This runs the following test suites:
+
+- **mockProducts.test.ts** (4 tests):
+  - ✅ getCategories() returns unique categories
+  - ✅ filterByCategory() filters products correctly
+  - ✅ searchProducts() matches by name and description
+  - ✅ sortProducts() sorts by name, price, and rating
+
+- **ProductCard.test.tsx** (1 browser test):
+  - ✅ Renders product card with all details and triggers add-to-cart callback
+
+- **ProductGrid.test.tsx** (2 browser tests):
+  - ✅ Renders all products and category filters
+  - ✅ Filters products by category when pill is clicked
+
+- **useCart.test.tsx** (1 browser test):
+  - ✅ Adds/removes items, calculates total and count correctly
+
+#### Running B2C Tests with UI
+
+To see the tests in the Vitest UI:
+
+```
+turbo dev:test-b2c
+```
+
+This launches the Vitest and Playwright test interfaces where you can run individual tests with play buttons.
+
+#### Manual Testing in Browser
+
+1. Start the development server:
+   ```
+   turbo dev
+   ```
+
+2. Visit [http://localhost:3001](http://localhost:3001) to see the B2C storefront
+
+3. Test the following scenarios:
+   - Browse products in the grid
+   - Click category filter pills to filter by category
+   - Type in the search box to filter by product name/description
+   - Click "Add to Cart" on products (cart count will update)
+   - Remove items from cart using the remove button
+   - Verify "Featured" badge appears on featured products
+   - Check responsive layout on mobile, tablet, and desktop
+
+### New Project Files
+
+```
+apps/web/src/
+├── data/
+│   └── mockProducts.ts                 # Mock product data + helpers
+├── components/
+│   └── Products/
+│       ├── ProductCard.tsx             # Reusable product card component
+│       ├── ProductGrid.tsx             # Main discovery UI with filters
+│       ├── ProductCard.test.tsx        # Browser tests for ProductCard
+│       └── ProductGrid.test.tsx        # Browser tests for ProductGrid
+└── hooks/
+    ├── useCart.ts                      # Cart state management hook
+    └── useCart.test.tsx                # Browser tests for useCart
+```
+
+Additionally, `mockProducts.test.ts` provides unit tests for the data layer.
+
+### Next Steps (Iteration 2+)
+
+- Add E2E tests for complete user workflows (browse → filter → add to cart → checkout)
+- Persist cart to localStorage for session recovery
+- Integrate with backend API for real product data
+- Implement checkout flow and payment integration
+- Clean up blog components (deferred, doesn't block Iteration 1)
+
 ## Project structure
 
 The project is monorepo with the following packages split into three categories:
