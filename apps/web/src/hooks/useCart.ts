@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Product } from "@/data/mockProducts";
 
 export type CartItem = {
@@ -8,8 +8,25 @@ export type CartItem = {
   quantity: number;
 };
 
+const CART_STORAGE_KEY = "b2c_cart_items";
+
 export function useCart(products: Product[]) {
-  const [cart, setCart] = useState<Record<number, number>>({});
+  const [cart, setCart] = useState<Record<number, number>>(() => {
+    if (typeof window === "undefined") {
+      return {};
+    }
+
+    try {
+      const stored = window.localStorage.getItem(CART_STORAGE_KEY);
+      return stored ? (JSON.parse(stored) as Record<number, number>) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
 
   function addToCart(productId: number) {
     setCart((current) => ({

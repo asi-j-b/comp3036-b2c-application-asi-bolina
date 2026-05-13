@@ -3,8 +3,7 @@ import { AppLayoutClient } from "./AppLayoutClient";
 
 export async function AppLayout({
   children,
-  query,
-}: PropsWithChildren<{ query?: string }>) {
+}: PropsWithChildren) {
   return (
     <AppLayoutClient>
       {children}

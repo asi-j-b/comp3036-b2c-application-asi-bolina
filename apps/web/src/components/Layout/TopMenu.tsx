@@ -1,22 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
-import ThemeSwitch from "../Themes/ThemeSwitcher";
+import { useState, type FormEvent } from "react";
 import { useSidebarContext } from "@/context/SidebarContext";
-import { filterByCategory, getCategories, searchProducts, type Product } from "@/data/mockProducts";
-
-function debounce<T extends (...args: Any[]) => Any>(fn: T, delay = 300) {
-  let timeoutId: Any;
-  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
+import { type Product } from "@/data/mockProducts";
 
 export function TopMenu({
-  query,
   products,
   searchTerm: initialSearchTerm,
   selectedCategory: initialSelectedCategory,
@@ -24,7 +13,6 @@ export function TopMenu({
   onCategoryChange,
   cartCount,
 }: {
-  query?: string;
   products: Product[];
   searchTerm: string;
   selectedCategory: string;
@@ -32,12 +20,10 @@ export function TopMenu({
   onCategoryChange: (category: string) => void;
   cartCount: number;
 }) {
-  const router = useRouter();
   const { toggle } = useSidebarContext();
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [selectedCategory, setSelectedCategory] = useState(initialSelectedCategory);
-
-  const categories = useMemo(() => getCategories(products), [products]);
+  const categories = ["All", ...new Set(products.map((product) => product.category))];
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
@@ -49,108 +35,79 @@ export function TopMenu({
     onCategoryChange(category);
   };
 
-  const handleSearch = debounce(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const search = event.target.value;
-      router.push(`/search?q=${search}`);
-    },
-  );
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSearchChange(searchTerm);
+  };
 
   return (
-    <div className="space-y-0">
-      {/* Top bar with menu, search, theme, login, cart */}
-      <div className="border-b border-gray-200 px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <button
-            onClick={toggle}
-            className="rounded-lg p-2 hover:bg-[var(--surface)] lg:hidden"
-            aria-label="Toggle sidebar"
-          >
-            ☰
-          </button>
+    <header className="w-full border-b border-[var(--ring)] bg-[var(--surface)] px-4 py-3 sm:px-6">
+      <div className="flex w-full flex-wrap items-center gap-3">
+        <button
+          onClick={toggle}
+          className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu"
+          aria-label="Toggle sidebar"
+        >
+          Menu
+        </button>
 
-          <form action="#" method="GET" className="hidden flex-1 sm:block sm:max-w-xs">
-            <div className="relative">
-              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-secondary">
-                ⌕
-              </span>
-              <input
-                type="search"
-                placeholder="Search"
-                defaultValue={query}
-                onChange={handleSearch}
-                className="w-full rounded-lg border border-gray-200 bg-[var(--surface)] py-2 pl-9 pr-4 text-sm text-primary outline-none transition focus:border-gray-400"
-              />
-            </div>
-          </form>
+        <Link href="/" className="text-lg font-semibold tracking-tight text-primary">
+          Full Stack Store
+        </Link>
 
-          <div className="flex items-center justify-end gap-x-3">
-            <Link
-              href="/checkout"
-              className="relative rounded-lg p-2 hover:bg-[var(--surface)]"
-              aria-label="Cart"
+        <select
+          aria-label="Filter by category"
+          value={selectedCategory}
+          onChange={(event) => handleCategoryChange(event.target.value)}
+          className="rounded-md border border-[var(--ring)] bg-[var(--surface)] px-3 py-2 text-sm text-primary outline-none focus:border-wsu"
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+
+        <form onSubmit={handleSearchSubmit} className="flex min-w-[240px] flex-1 items-center">
+          <label className="sr-only" htmlFor="product-search">
+            Search products
+          </label>
+          <div className="flex w-full overflow-hidden rounded-md border border-[var(--ring)]">
+            <input
+              id="product-search"
+              type="search"
+              value={searchTerm}
+              onChange={(event) => handleSearchChange(event.target.value)}
+              placeholder="Search products"
+              className="w-full bg-[var(--surface)] px-3 py-2 text-sm text-primary outline-none"
+            />
+            <button
+              type="submit"
+              className="border-l border-[var(--ring)] bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
             >
-              🛒
-              {cartCount > 0 && (
-                <span className="absolute right-0 top-0 rounded-full bg-wsu px-2 py-0.5 text-xs font-semibold text-white">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-
-            <Link
-              href="/login"
-              className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-white transition hover:bg-primary/90"
-            >
-              Login
-            </Link>
-            <ThemeSwitch />
+              Search
+            </button>
           </div>
+        </form>
+
+        <div className="ml-auto flex items-center gap-3">
+          <Link
+            href="/login"
+            className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
+          >
+            Login
+          </Link>
+
+          <Link
+            href="/cart"
+            className="inline-flex items-center gap-2 rounded-md bg-wsu px-3 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
+            aria-label="Cart"
+          >
+            Cart
+            <span className="rounded-full bg-white/20 px-2 py-0.5 text-xs">{cartCount}</span>
+          </Link>
         </div>
       </div>
-
-      {/* Refine results banner */}
-      <div className="space-y-3 bg-slate-900 px-4 py-4 text-white sm:px-6">
-        <div>
-          <h2 className="text-base font-semibold">Refine results</h2>
-          <p className="mt-1 text-xs text-slate-300">
-            Use a category filter or type in the search box to narrow the catalog.
-          </p>
-        </div>
-
-        <label className="hidden sm:block">
-          <span className="sr-only">Search products</span>
-          <input
-            type="search"
-            value={searchTerm}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            placeholder="Search products"
-            className="w-full max-w-md rounded-lg border border-slate-600 bg-slate-800 px-4 py-2 text-sm text-white placeholder-slate-400 outline-none transition focus:border-wsu"
-          />
-        </label>
-
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => {
-            const isSelected = selectedCategory === category;
-
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => handleCategoryChange(category)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  isSelected
-                    ? "bg-wsu text-white"
-                    : "border border-slate-600 text-white hover:border-wsu hover:bg-slate-800"
-                }`}
-                aria-pressed={isSelected}
-              >
-                {category}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    </header>
   );
 }

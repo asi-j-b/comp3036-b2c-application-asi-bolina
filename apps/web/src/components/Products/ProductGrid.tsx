@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { filterByCategory, getCategories, searchProducts, type Product } from "../../data/mockProducts";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { filterByCategory, searchProducts, type Product } from "../../data/mockProducts";
 import { ProductCard } from "./ProductCard";
 import { useCart } from "../../hooks/useCart";
 import { TopMenu } from "../Layout/TopMenu";
@@ -9,9 +9,21 @@ import { TopMenu } from "../Layout/TopMenu";
 export function ProductGrid({ products }: { products: Product[] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const { addToCart, cartCount, cartItems, cartTotal, removeFromCart, clearCart } = useCart(products);
+  const [isFiltering, setIsFiltering] = useState(false);
+  const isFirstRender = useRef(true);
+  const { addToCart, cartCount } = useCart(products);
 
-  const categories = useMemo(() => getCategories(products), [products]);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    setIsFiltering(true);
+    const timer = window.setTimeout(() => setIsFiltering(false), 320);
+
+    return () => window.clearTimeout(timer);
+  }, [searchTerm, selectedCategory]);
 
   const filteredProducts = useMemo(() => {
     const searchedProducts = searchProducts(products, searchTerm);
@@ -30,20 +42,21 @@ export function ProductGrid({ products }: { products: Product[] }) {
       />
 
       <div className="space-y-8 px-4 py-8 sm:px-6 lg:px-8">
-        <header className="space-y-2">
-          <div className="inline-flex w-fit rounded-full border border-[var(--ring)] bg-[var(--surface)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-secondary">
-            Iteration 1 storefront
-          </div>
-          <h1 className="text-5xl font-semibold tracking-tight text-primary sm:text-6xl">
-            Browse products, filter by category, and search by name.
-          </h1>
-          <p className="max-w-2xl text-lg leading-8 text-secondary">
-            Static mock data is powering the first storefront pass so the UI can move ahead before the backend is swapped in.
-          </p>
+        <header className="space-y-1">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Iteration 1 storefront</p>
+          <p className="text-base font-semibold text-primary">Browse products, filter by category, and search by name.</p>
+          <p className="text-sm text-secondary">Static mock data is powering the first storefront pass so the UI can move ahead before the backend is swapped in.</p>
         </header>
 
+        {isFiltering ? (
+          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--ring)] bg-[var(--surface)] px-3 py-2 text-sm text-secondary">
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--ring)] border-t-wsu" aria-hidden="true" />
+            Updating results...
+          </div>
+        ) : null}
+
         {filteredProducts.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}

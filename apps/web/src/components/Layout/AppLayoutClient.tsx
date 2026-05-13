@@ -12,7 +12,7 @@ export function AppLayoutClient({
 
   return (
     <SidebarContext.Provider value={{ isOpen: sidebarOpen, toggle: () => setSidebarOpen(!sidebarOpen) }}>
-      <div className="mx-auto flex min-h-screen w-full max-w-[1400px] flex-col lg:flex-row">
+      <div className="flex min-h-screen w-full flex-col">
         <LeftMenu isOpen={sidebarOpen} />
         <Content>
           {children}
