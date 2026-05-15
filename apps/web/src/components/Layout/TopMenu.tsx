@@ -92,6 +92,13 @@ export function TopMenu({
 
         <div className="ml-auto flex items-center gap-3">
           <Link
+            href="/purchases"
+            className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
+          >
+            Purchases
+          </Link>
+
+          <Link
             href="/login"
             className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
           >
