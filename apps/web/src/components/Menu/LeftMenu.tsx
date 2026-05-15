@@ -34,7 +34,7 @@ export function LeftMenu({ isOpen }: { isOpen?: boolean }) {
             className="rounded-md border border-[var(--ring)] px-2 py-1 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu"
             aria-label="Close menu"
           >
-            Close
+            X
           </button>
         </div>
 
