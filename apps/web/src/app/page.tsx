@@ -1,6 +1,6 @@
 import { AppLayout } from "../components/Layout/AppLayout";
 import { ProductGrid } from "../components/Products/ProductGrid";
-import { mockProducts } from "../data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 
 export default function Home() {
   return (

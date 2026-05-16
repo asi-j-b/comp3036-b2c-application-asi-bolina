@@ -10,25 +10,25 @@ function getRequestIp(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as { postId?: number };
-    const postId = Number(body.postId);
+    const body = (await request.json()) as { productId?: number };
+    const productId = Number(body.productId);
 
-    if (!Number.isInteger(postId)) {
-      return NextResponse.json({ error: "Invalid post id" }, { status: 400 });
+    if (!Number.isInteger(productId)) {
+      return NextResponse.json({ error: "Invalid product id" }, { status: 400 });
     }
 
-    const post = await prisma.post.findUnique({
-      where: { id: postId },
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
     });
 
-    if (!post) {
-      return NextResponse.json({ error: "Post not found" }, { status: 404 });
+    if (!product) {
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
     const userIP = getRequestIp(request);
     const existingLike = await prisma.like.findFirst({
       where: {
-        postId,
+        productId,
         userIP,
       },
     });
@@ -36,21 +36,21 @@ export async function POST(request: Request) {
     if (existingLike) {
       await prisma.like.deleteMany({
         where: {
-          postId,
+          productId,
           userIP,
         },
       });
     } else {
       await prisma.like.create({
         data: {
-          postId,
+          productId,
           userIP,
         },
       });
     }
 
     const likes = await prisma.like.count({
-      where: { postId },
+      where: { productId },
     });
 
     return NextResponse.json({

@@ -4,6 +4,7 @@ import { useState, type PropsWithChildren } from "react";
 import { LeftMenu } from "../Menu/LeftMenu";
 import { Content } from "../Content";
 import { SidebarContext } from "@/context/SidebarContext";
+import { mockProducts } from "@repo/db/data";
 
 export function AppLayoutClient({
   children,
@@ -13,7 +14,7 @@ export function AppLayoutClient({
   return (
     <SidebarContext.Provider value={{ isOpen: sidebarOpen, toggle: () => setSidebarOpen(!sidebarOpen) }}>
       <div className="flex min-h-screen w-full flex-col">
-        <LeftMenu isOpen={sidebarOpen} />
+        <LeftMenu isOpen={sidebarOpen} products={mockProducts} />
         <Content>
           {children}
         </Content>

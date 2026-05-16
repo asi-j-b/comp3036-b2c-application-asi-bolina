@@ -1,22 +1,22 @@
-import type { Post } from "@repo/db/data";
-import BlogList from "./Blog/List";
+import type { Product } from "@repo/db/data";
+import { ProductGrid } from "./Products/ProductGrid";
 
 export function Main({
-  posts,
+  products,
   className,
 }: {
-  posts: Post[];
+  products: Product[];
   className?: string;
 }) {
   return (
     <main className={`px-4 py-7 sm:px-8 ${className ?? ""}`}>
       <header className="mb-8">
-        <h2 className="text-5xl font-semibold tracking-tight text-primary">From the blog</h2>
+        <h2 className="text-5xl font-semibold tracking-tight text-primary">From the products</h2>
         <p className="mt-2 text-lg text-secondary">
-          Learn how to grow your business with our expert advice.
+          Feel free to browse (or purchase) our selected products.
         </p>
       </header>
-      <BlogList posts={posts} />
+      <ProductGrid products={products} />
     </main>
   );
 }

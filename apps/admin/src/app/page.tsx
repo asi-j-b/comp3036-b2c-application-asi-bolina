@@ -1,8 +1,6 @@
 import { isLoggedIn } from "../utils/auth";
-import { AdminLoginForm } from "../../../../packages/ui/src/auth/AdminLoginForm";
-import { AdminList } from "../components/AdminList";
-import { LogoutButton } from "../components/LogoutButton";
-import { prisma } from "@repo/db";
+import { AdminLoginForm } from "../components/auth/AdminLoginForm";
+import { LogoutButton } from "../components/auth/LogoutButton";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -16,22 +14,12 @@ export default async function Home() {
     );
   }
 
-  const postsFromDB = await prisma.post.findMany({
-    orderBy: { date: 'desc' }
-  });
-
-  const posts = postsFromDB.map((post) => ({
-  ...post,
-  date: post.date.toISOString(), // Converts Date object to "2026-04-25..." string
-  }));
-
   return (
     <main className={styles.main}>
       <header className="mb-6 flex w-full max-w-5xl items-center justify-between gap-4">
-        <h1>Admin of Full Stack Blog</h1>
+        <h1>Admin Dashboard</h1>
         <LogoutButton />
       </header>
-      <AdminList posts={posts} />
     </main>
   );
 }

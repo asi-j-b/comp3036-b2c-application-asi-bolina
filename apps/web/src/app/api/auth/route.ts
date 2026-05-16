@@ -1,40 +1,56 @@
-import { NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
-import { hashPassword } from '@/utils/hash';
+// import { hashPassword } from '@/utils/hash';
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+import { env } from "@repo/env/web";
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  const { email, password } = body;
-  const hashedPassword = hashPassword(password);
+  try {
+    const body = await request.json();
+    const { email, password } = body;
 
-  // Simulated Database Check using Environment Variables
-  const isAdmin = password === process.env.ADMIN_PASSWORD;
-  const isUser1 = email === process.env.USER1_EMAIL && password === process.env.USER1_PASSWORD;
-  const isUser2 = email === process.env.USER2_EMAIL && password === process.env.USER2_PASSWORD;
+    if (body.email === env.USER_EMAIL && body.password === env.USER_PASSWORD) {
+      const token = jwt.sign(
+        { email, role: "user" }, 
+        process.env.JWT_SECRET!, 
+        { expiresIn: '24h' }
+      );
 
-  if (isAdmin || isUser1 || isUser2) {
-    const role = isAdmin ? 'admin' : 'user';
-    const userEmail = isAdmin ? 'admin@store.com' : email;
+      const cookieStore = await cookies();
+      cookieStore.set('auth_token', token, {
+        path: '/',
+        httpOnly: true, // Prevents XSS
+        sameSite: 'strict', // Prevents CSRF
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 60 * 15, // 15 minutes
+      });
+      return NextResponse.json({ success: true });
+    }
+    return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
+  } catch (error) {
+    return NextResponse.json({ message: "Invalid Request" }, { status: 400 });
+  }
+}
 
-    // Issue JWT with role-based payload
-    const token = jwt.sign(
-      { email: userEmail, role }, 
-      process.env.JWT_SECRET!, 
-      { expiresIn: '24h' }
-    );
+export async function GET() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("auth_token")?.value;
 
-    const cookieStore = await cookies();
-    cookieStore.set('auth_token', token, {
-      httpOnly: true, // Prevents XSS
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict', // Prevents CSRF
-      maxAge: 60 * 15, // 15 minutes
-      path: '/',
-    });
-
-    return NextResponse.json({ success: true });
+  if (!token) {
+    return NextResponse.json({ email: null, role: null });
   }
 
-  return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { email: string; role: string };
+    return NextResponse.json({ email: decoded.email, role: decoded.role });
+  } catch (error) {
+    cookieStore.delete("auth_token");
+    return NextResponse.json({ email: null, role: null });
+  }
+}
+
+export async function DELETE() {
+  const cookieStore = await cookies();
+  cookieStore.delete("auth_token");
+  return NextResponse.json({ success: true });
 }

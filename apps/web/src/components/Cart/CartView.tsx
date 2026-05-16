@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { mockProducts } from "@/data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 import { useCart } from "@/hooks/useCart";
 
 function formatCurrency(value: number) {

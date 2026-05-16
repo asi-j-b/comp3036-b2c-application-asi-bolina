@@ -1,4 +1,4 @@
-import { posts } from "@repo/db/data";
+import { mockProducts } from "@repo/db/data";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
 
@@ -9,16 +9,16 @@ export default async function Page({
 }) {
   const { name } = await params;
 
-  const filteredPosts = posts.filter((post) => {
+  const filteredProducts = mockProducts.filter((product) => {
     return (
-      post.active && post.category.toLowerCase() === name.toLowerCase()
+      product.active && product.category.toLowerCase() === name.toLowerCase()
     );
     
   });
 
   return (
     <AppLayout>
-      <Main posts={filteredPosts} />
+      <Main products={filteredProducts} />
     </AppLayout>
   );
 }

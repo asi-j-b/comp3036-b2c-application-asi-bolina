@@ -7,6 +7,7 @@ export function LogoutButton() {
 
   async function handleLogout() {
     await fetch("/api/auth", { method: "DELETE" });
+    router.push("/");
     router.refresh();
   }
 
@@ -14,7 +15,7 @@ export function LogoutButton() {
     <button
       type="button"
       onClick={handleLogout}
-      className="rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+      className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
     >
       Logout
     </button>

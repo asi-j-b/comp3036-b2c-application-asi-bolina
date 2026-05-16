@@ -1,7 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { posts } from "@repo/db/data";
-import { toUrlPath } from "@repo/utils/url";
+import { mockProducts } from "@repo/db/data";
 
 export default async function Page({
     params,
@@ -10,17 +9,15 @@ export default async function Page({
 }) {
     const { name } = await params;
 
-    const filteredPosts = posts.filter((post) => {
+    const filteredProducts = mockProducts.filter((product) => {
     const tagName = name.toLowerCase();
-    // We split the tags string and check each one
-    const postTags = post.tags.split(",").map(t => toUrlPath(t.trim()));
     
-    return post.active && postTags.includes(tagName);
+    return product.active;
     });
 
     return (
         <AppLayout>
-            <Main posts={filteredPosts} />
+            <Main products={filteredProducts} />
         </AppLayout>
     );
 }

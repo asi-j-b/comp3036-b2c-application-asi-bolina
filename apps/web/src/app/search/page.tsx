@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { posts } from "@repo/db/data";
+import { mockProducts } from "@repo/db/data";
 
 export default async function Page({
   searchParams,
@@ -10,16 +10,16 @@ export default async function Page({
   const { q } = await searchParams;
   const searchTerm = q?.toLowerCase() || "";
 
-  const filteredPosts = posts.filter((post) =>
-    post.active && (
-      post.title.toLowerCase().includes(searchTerm) || 
-      post.description.toLowerCase().includes(searchTerm) // Test specifically checks description!
+  const filteredProducts = mockProducts.filter((product) =>
+    product.active && (
+      product.name.toLowerCase().includes(searchTerm) || 
+      product.description.toLowerCase().includes(searchTerm) // Test specifically checks description!
     )
   );
 
   return (
-    <AppLayout query={q}>
-      <Main posts={filteredPosts} />
+    <AppLayout>
+      <Main products={filteredProducts} />
     </AppLayout>
   );
 }

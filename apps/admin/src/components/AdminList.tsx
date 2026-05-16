@@ -4,12 +4,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-type Post = {
+type Product = {
 	id: number;
 	urlId: string;
 	title: string;
 	content: string;
 	imageUrl: string;
+	price: number;
 	date: string;
 	category: string;
 	tags: string;
@@ -59,7 +60,7 @@ function formatTags(tags: string) {
 		.join(", ");
 }
 
-export function AdminList({ posts }: { posts: Post[] }) {
+export function AdminList({ products }: { products: Product[] }) {
 	const [contentFilter, setContentFilter] = useState("");
 	const [tagFilter, setTagFilter] = useState("");
 	const [dateFilter, setDateFilter] = useState("");
@@ -82,7 +83,7 @@ export function AdminList({ posts }: { posts: Post[] }) {
 		if (response.ok) {
 			router.refresh();
 		} else {
-			alert("Failed to update post status");
+			alert("Failed to update product status");
 		}
 	}
 
@@ -91,17 +92,17 @@ export function AdminList({ posts }: { posts: Post[] }) {
 		const query = contentFilter.trim().toLowerCase();
 		const tag = tagFilter.trim().toLowerCase();
 
-		const filtered = posts.filter((post) => {
-			const postDate = new Date(post.date);
+		const filtered = products.filter((product) => {
+			const productDate = new Date(product.date);
 			const contentMatch =
 				query.length === 0 ||
-				post.title.toLowerCase().includes(query) ||
-				post.content.toLowerCase().includes(query);
-			const tagMatch = tag.length === 0 || post.tags.toLowerCase().includes(tag);
-			const dateMatch = !parsedDate || postDate >= parsedDate;
+				product.title.toLowerCase().includes(query) ||
+				product.content.toLowerCase().includes(query);
+			const tagMatch = tag.length === 0 || product.tags.toLowerCase().includes(tag);
+			const dateMatch = !parsedDate || productDate >= parsedDate;
 			const visibilityMatch =
 				visibilityFilter === "all" ||
-				(visibilityFilter === "active" ? post.active : !post.active);
+				(visibilityFilter === "active" ? product.active : !product.active);
 
 			return contentMatch && tagMatch && dateMatch && visibilityMatch;
 		});
@@ -120,7 +121,7 @@ export function AdminList({ posts }: { posts: Post[] }) {
 		});
 
 		return filtered;
-	}, [posts, contentFilter, tagFilter, dateFilter, visibilityFilter, sortBy]);
+	}, [products, contentFilter, tagFilter, dateFilter, visibilityFilter, sortBy]);
 
 	return (
 		<section className="w-full max-w-5xl space-y-5">
@@ -200,48 +201,48 @@ export function AdminList({ posts }: { posts: Post[] }) {
 
 				<div className="flex items-end">
 					<Link
-						href="/posts/create"
+						href="/products/create"
 						className="inline-flex w-full items-center justify-center rounded bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
 					>
-						Create Post
+						Create Product
 					</Link>
 				</div>
 			</div>
 
 			<div className="space-y-4">
-				{filteredPosts.map((post) => (
+				{filteredProducts.map((product) => (
 					<article
-						key={post.id}
+						key={product.id}
 						className="grid gap-4 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-[140px_1fr]"
 					>
 						<img
-							src={post.imageUrl}
-							alt={post.title}
+							src={product.imageUrl}
+							alt={product.title}
 							className="h-24 w-full rounded object-cover"
 						/>
 
 						<div className="space-y-2">
 							<h2 className="text-lg font-semibold text-slate-900">
-								<Link href={`/post/${post.urlId}`}>{post.title}</Link>
+								<Link href={`/product/${product.urlId}`}>{product.title}</Link>
 							</h2>
-							<p className="text-sm text-slate-600">{formatTags(post.tags)}</p>
-							<p className="text-sm text-slate-600">Posted on {formatDate(post.date)}</p>
-							<p className="text-sm text-slate-600">{post.category}</p>
+							<p className="text-sm text-slate-600">{formatTags(product.tags)}</p>
+							<p className="text-sm text-slate-600">Posted on {formatDate(product.date)}</p>
+							<p className="text-sm text-slate-600">{product.category}</p>
 
 							<button
 								type="button"
-								onClick={() => handleToggleActive(post.id, post.active)}
+								onClick={() => handleToggleActive(product.id, product.active)}
 								className={`rounded px-3 py-1 text-sm font-medium ${
-									post.active
+									product.active
 										? "bg-emerald-100 text-emerald-800"
 										: "bg-slate-200 text-slate-700"
 								}`}
 							>
-								{post.active ? "Active" : "Inactive"}
+								{product.active ? "Active" : "Inactive"}
 							</button>
 
-							{statusMessage[post.id] ? (
-								<p className="text-xs text-slate-500">{statusMessage[post.id]}</p>
+							{statusMessage[product.id] ? (
+								<p className="text-xs text-slate-500">{statusMessage[product.id]}</p>
 							) : null}
 						</div>
 					</article>

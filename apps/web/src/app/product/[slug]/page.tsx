@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppLayout } from "@/components/Layout/AppLayout";
-import { mockProducts } from "@/data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-AU", {

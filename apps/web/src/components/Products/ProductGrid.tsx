@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { filterByCategory, searchProducts, type Product } from "../../data/mockProducts";
+import { filterByCategory, searchProducts } from "../../functions/products";
+import type { Product } from "@repo/db/data";
 import { ProductCard } from "./ProductCard";
 import { useCart } from "../../hooks/useCart";
 import { TopMenu } from "../Layout/TopMenu";
@@ -42,11 +43,6 @@ export function ProductGrid({ products }: { products: Product[] }) {
       />
 
       <div className="space-y-8 px-4 py-8 sm:px-6 lg:px-8">
-        <header className="space-y-1">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Iteration 1 storefront</p>
-          <p className="text-base font-semibold text-primary">Browse products, filter by category, and search by name.</p>
-          <p className="text-sm text-secondary">Static mock data is powering the first storefront pass so the UI can move ahead before the backend is swapped in.</p>
-        </header>
 
         {isFiltering ? (
           <div className="inline-flex items-center gap-2 rounded-md border border-[var(--ring)] bg-[var(--surface)] px-3 py-2 text-sm text-secondary">

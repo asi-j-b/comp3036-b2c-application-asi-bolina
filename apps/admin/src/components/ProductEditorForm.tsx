@@ -4,23 +4,25 @@ import { marked } from "marked";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-type PostEditorValues = {
+type ProductEditorValues = {
   title: string;
   category: string;
   description: string;
   content: string;
   imageUrl: string;
+  price: number;
   tags: string;
 };
 
-type EditorErrors = Partial<Record<keyof PostEditorValues, string>>;
+type EditorErrors = Partial<Record<keyof ProductEditorValues, string>>;
 
-const emptyValues: PostEditorValues = {
+const emptyValues: ProductEditorValues = {
   title: "",
   category: "",
   description: "",
   content: "",
   imageUrl: "",
+  price: 0,
   tags: "",
 };
 
@@ -33,7 +35,7 @@ function isValidUrl(value: string) {
   }
 }
 
-function validate(values: PostEditorValues): EditorErrors {
+function validate(values: ProductEditorValues): EditorErrors {
   const errors: EditorErrors = {};
 
   if (!values.title.trim()) {
@@ -60,18 +62,22 @@ function validate(values: PostEditorValues): EditorErrors {
     errors.tags = "At least one tag is required";
   }
 
+  if (values.price <= 0) {
+    errors.price = "Price must be a positive number";
+  }
+
   return errors;
 }
 
-export function PostEditorForm({
+export function ProductEditorForm({
   initialValues,
   postId,
 }: {
-  initialValues?: Partial<PostEditorValues>;
+  initialValues?: Partial<ProductEditorValues>;
   postId?: number;
 }) {
   const router = useRouter();
-  const [values, setValues] = useState<PostEditorValues>({
+  const [values, setValues] = useState<ProductEditorValues>({
     ...emptyValues,
     ...initialValues,
   });
@@ -94,9 +100,9 @@ export function PostEditorForm({
     }
   }, [showPreview]);
 
-  function updateValue<K extends keyof PostEditorValues>(
+  function updateValue<K extends keyof ProductEditorValues>(
     key: K,
-    nextValue: PostEditorValues[K],
+    nextValue: ProductEditorValues[K],
   ) {
     setValues((current) => ({
       ...current,
@@ -133,7 +139,7 @@ export function PostEditorForm({
         return;
       }
 
-      setSuccessMessage("Post updated successfully");
+      setSuccessMessage("Product updated successfully");
       router.refresh();
     })();
   }

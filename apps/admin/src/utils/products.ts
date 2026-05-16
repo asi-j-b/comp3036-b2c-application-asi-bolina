@@ -1,13 +1,12 @@
-export type AdminPost = {
+export type AdminProducts = {
   id: number;
   urlId: string;
   title: string;
   description: string;
   content: string;
   imageUrl: string;
-  date: Date;
+  price: number;
   category: string;
-  views: number;
   tags: string;
   active: boolean;
 };
@@ -33,7 +32,7 @@ Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde.
 Sed exercitationem placeat consectetur nulla deserunt vel
 iusto corrupti dicta laboris incididunt.`;
 
-const posts: AdminPost[] = [
+const products: AdminProducts[] = [
   {
     id: 1,
     title: "Boost your conversion rate",
@@ -42,10 +41,9 @@ const posts: AdminPost[] = [
     content: content + " ... post1",
     imageUrl:
       "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&auto=format&fit=crop&w=3603&q=80",
-    date: new Date("Apr 18, 2022"),
     category: "Node",
     tags: "Back-End,Databases",
-    views: 320,
+    price: 29.99,
     active: true,
   },
   {
@@ -56,10 +54,9 @@ const posts: AdminPost[] = [
     content: content + " ... post2",
     imageUrl:
       "https://plus.unsplash.com/premium_photo-1661342428515-5ca8cee4385a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
-    date: new Date("Mar 16, 2020"),
     category: "React",
     tags: "Front-End,Optimisation",
-    views: 10,
+    price: 39.99,
     active: true,
   },
   {
@@ -70,10 +67,9 @@ const posts: AdminPost[] = [
     content: content + " ... post3",
     imageUrl:
       "https://plus.unsplash.com/premium_photo-1661517706036-a48d5fc8f2f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    date: new Date("Dec 16, 2024"),
     category: "React",
     tags: "Front-End,Dev Tools",
-    views: 22,
+    price: 29.99,
     active: true,
   },
   {
@@ -83,28 +79,26 @@ const posts: AdminPost[] = [
     description,
     content: content + " ... post4",
     imageUrl: "https://m.media-amazon.com/images/I/51NqEfmmBTL.jpg",
-    date: new Date("Dec 16, 2012"),
     category: "React",
     tags: "Programming,Mainframes",
-    views: 22,
+    price: 29.99,
     active: false,
   },
 ];
 
-function clonePost(post: AdminPost): AdminPost {
+function cloneProduct(product: AdminProducts): AdminProducts {
   return {
-    ...post,
-    date: new Date(post.date),
+    ...product,
   };
 }
 
-export function getAllPosts(): AdminPost[] {
-  return posts
-    .map(clonePost)
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+export function getAllProducts(): AdminProducts[] {
+  return products
+    .map(cloneProduct)
+    .sort((a, b) => b.price - a.price);
 }
 
-export function getPostByUrlId(urlId: string): AdminPost | undefined {
-  const found = posts.find((post) => post.urlId === urlId);
-  return found ? clonePost(found) : undefined;
+export function getProductByUrlId(urlId: string): AdminProducts | undefined {
+  const found = products.find((product) => product.urlId === urlId);
+  return found ? cloneProduct(found) : undefined;
 }

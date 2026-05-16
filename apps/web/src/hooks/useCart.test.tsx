@@ -1,7 +1,7 @@
 import { test, expect } from "vitest";
 import { render } from "vitest-browser-react";
 import { useCart } from "./useCart";
-import { mockProducts } from "../data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 
 function TestComponent({ products }: { products: typeof mockProducts }) {
   const { addToCart, removeFromCart, cartCount, cartTotal, clearCart } = useCart(products);
