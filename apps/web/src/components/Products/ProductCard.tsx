@@ -17,8 +17,13 @@ export function ProductCard({
   onAddToCart: (productId: number) => void;
 }) {
   return (
-    <article className="group overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] 
+    <article className="group relative overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] 
     shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] dark:shadow-none">
+      <Link
+        href={`/product/${product.slug}`}
+        className="absolute inset-0 z-10"
+        aria-label={`View ${product.name}`}
+      />
       <div className="relative aspect-[4/3] overflow-hidden bg-[var(--surface-muted)]">
         <img
           src={product.imageUrl}
@@ -56,13 +61,7 @@ export function ProductCard({
             <p className="text-sm text-secondary">{product.stock} in stock</p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Link
-              href={`/product/${product.slug}`}
-              className="rounded-full border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary transition hover:border-wsu hover:text-wsu"
-            >
-              View
-            </Link>
+          <div className="relative z-20 flex items-center gap-2">
             <button
               type="button"
               onClick={() => onAddToCart(product.id)}

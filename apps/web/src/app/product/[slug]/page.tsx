@@ -14,9 +14,9 @@ function formatCurrency(value: number) {
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const product = mockProducts.find((item) => item.slug === slug);
 
   if (!product) {

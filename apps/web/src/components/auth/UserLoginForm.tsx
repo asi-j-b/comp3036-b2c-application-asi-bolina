@@ -29,8 +29,7 @@ export function UserLoginForm() {
   return (
     <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] p-10 shadow-lg">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-primary">Welcome Back</h1>
-        <p className="mt-2 text-sm text-secondary">Please enter your details to shop.</p>
+        <h1 className="text-3xl font-bold text-primary">Full Stack Store</h1>
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">

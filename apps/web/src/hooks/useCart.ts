@@ -11,22 +11,27 @@ export type CartItem = {
 const CART_STORAGE_KEY = "b2c_cart_items";
 
 export function useCart(products: Product[]) {
-  const [cart, setCart] = useState<Record<number, number>>(() => {
-    if (typeof window === "undefined") {
-      return {};
-    }
-
-    try {
-      const stored = window.localStorage.getItem(CART_STORAGE_KEY);
-      return stored ? (JSON.parse(stored) as Record<number, number>) : {};
-    } catch {
-      return {};
-    }
-  });
+  const [cart, setCart] = useState<Record<number, number>>({});
+  const [hasLoadedCart, setHasLoadedCart] = useState(false);
 
   useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(CART_STORAGE_KEY);
+      setCart(stored ? (JSON.parse(stored) as Record<number, number>) : {});
+    } catch {
+      setCart({});
+    } finally {
+      setHasLoadedCart(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasLoadedCart) {
+      return;
+    }
+
     window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, hasLoadedCart]);
 
   function addToCart(productId: number) {
     setCart((current) => ({
