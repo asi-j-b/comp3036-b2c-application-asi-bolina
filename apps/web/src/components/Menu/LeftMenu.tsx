@@ -1,12 +1,10 @@
 "use client";
 
-import { products } from "@repo/db/data";
+import type { Product } from "@repo/db/data";
 import { CategoryList } from "./CategoryList";
-import { HistoryList } from "./HistoryList";
-import { TagList } from "./TagList";
 import { useSidebarContext } from "@/context/SidebarContext";
 
-export function LeftMenu({ isOpen }: { isOpen?: boolean }) {
+export function LeftMenu({ isOpen, products }: { isOpen?: boolean; products: Product[] }) {
   const { toggle } = useSidebarContext();
 
   return (
@@ -41,8 +39,6 @@ export function LeftMenu({ isOpen }: { isOpen?: boolean }) {
         <nav className="px-4 pb-6">
           <ul role="list" className="space-y-1">
             <CategoryList products={products} />
-            <HistoryList products={products} />
-            <TagList products={products} />
           </ul>
         </nav>
       </aside>

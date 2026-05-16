@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { useSidebarContext } from "@/context/SidebarContext";
-import { type Product } from "@/data/mockProducts";
+import type { Product } from "@repo/db/data";
 
 export function TopMenu({
   products,

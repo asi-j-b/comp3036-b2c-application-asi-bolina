@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { Product } from "@/data/mockProducts";
+import type { Product } from "@repo/db/data";
 
 export type CartItem = {
   product: Product;

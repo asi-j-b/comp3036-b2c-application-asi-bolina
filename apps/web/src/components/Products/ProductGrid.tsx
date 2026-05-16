@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { filterByCategory, searchProducts, type Product } from "../../data/mockProducts";
+import { filterByCategory, searchProducts } from "../../functions/products";
+import type { Product } from "@repo/db/data";
 import { ProductCard } from "./ProductCard";
 import { useCart } from "../../hooks/useCart";
 import { TopMenu } from "../Layout/TopMenu";

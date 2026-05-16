@@ -6,7 +6,7 @@ import { SummaryItem } from "./SummaryItem";
 import { useState, useEffect } from "react";
 import { LinkList } from "./LinkList";
 
-const BASE_CATEGORIES = ["React", "Node", "Mongo", "DevOps"];
+const BASE_CATEGORIES = ["Electronics", "Clothing", "Footwear", "Home", "Kitchen", "Accessories"];
 
 export function CategoryList({ products }: { products: Product[] }) {
 

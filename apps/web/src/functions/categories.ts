@@ -2,7 +2,7 @@ import type { Product } from "@repo/db/data";
 
 export async function categories(products: Product[]) {
   return products
-    .filter((p) => p.active)
+    .filter((p) => p.active !== false)
     .sort((a, b) => a.category.localeCompare(b.category))
     .reduce(
       (acc, product) => {

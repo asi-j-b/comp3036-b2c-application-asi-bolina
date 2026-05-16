@@ -22,7 +22,7 @@ export async function POST(request: Request) {
         httpOnly: true,      // Security: Prevents XSS
         sameSite: "strict",  // Security: Prevents CSRF
         secure: process.env.NODE_ENV === "production",
-        maxAge: 60 * 15; // 15 minutes
+        maxAge: 60 * 15, // 15 minutes
       });
 
       return NextResponse.json({ message: "Logged in" });

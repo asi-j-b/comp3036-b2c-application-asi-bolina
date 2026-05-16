@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Product } from "../../data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-AU", {
