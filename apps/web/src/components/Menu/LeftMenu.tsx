@@ -1,6 +1,6 @@
 "use client";
 
-import { posts } from "@repo/db/data";
+import { products } from "@repo/db/data";
 import { CategoryList } from "./CategoryList";
 import { HistoryList } from "./HistoryList";
 import { TagList } from "./TagList";
@@ -40,9 +40,9 @@ export function LeftMenu({ isOpen }: { isOpen?: boolean }) {
 
         <nav className="px-4 pb-6">
           <ul role="list" className="space-y-1">
-            <CategoryList posts={posts} />
-            <HistoryList posts={posts} />
-            <TagList posts={posts} />
+            <CategoryList products={products} />
+            <HistoryList products={products} />
+            <TagList products={products} />
           </ul>
         </nav>
       </aside>

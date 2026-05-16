@@ -1,29 +1,29 @@
 "use client";
 
-import { type Post } from "@repo/db/data";
+import { type Product } from "@repo/db/data";
 import { tags } from "../../functions/tags";
 import { LinkList } from "./LinkList";
 import { SummaryItem } from "./SummaryItem";
 import { toUrlPath } from "@repo/utils/url";
 import { useState, useEffect } from "react";
-
+  
 export function TagList({
   selectedTag,
-  posts,
+  products,
 }: {
   selectedTag?: string;
-  posts: Post[];
+  products: Product[];
 }) {
   const [data, setData] = useState<{ name: string; count: number }[]>([]);
 
   useEffect(() => {
     const loadTags = async () => {
-      const result = await tags(posts);
+      const result = await tags(products);
       setData(result);
     };
     
     loadTags();
-  }, [posts]);
+  }, [products]);
 
   return (
     <LinkList title="Tags">
