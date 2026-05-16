@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { env } from "@repo/env/admin";
 
-// POST handles the Login (Requirement: Check password on server)
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -23,7 +22,7 @@ export async function POST(request: Request) {
         httpOnly: true,      // Security: Prevents XSS
         sameSite: "strict",  // Security: Prevents CSRF
         secure: process.env.NODE_ENV === "production",
-        maxAge: 60 * 60 * 24, // 1 day
+        maxAge: 60 * 15; // 15 minutes
       });
 
       return NextResponse.json({ message: "Logged in" });
@@ -35,7 +34,6 @@ export async function POST(request: Request) {
   }
 }
 
-// DELETE handles the Logout (Requirement: DELETE method is used for logout)
 export async function DELETE() {
   const cookieStore = await cookies();
   cookieStore.delete("auth_token");

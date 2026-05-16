@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { posts } from "@repo/db/data";
+import { products } from "@repo/db/data";
 
 export default async function Page({
   params,
@@ -9,21 +9,21 @@ export default async function Page({
 }) {
   const { year, month } = await params;
 
-  const filteredPosts = posts.filter((post) => {
-    const d = new Date(post.date);
-    const postYear = d.getFullYear().toString();
-    const postMonth = (d.getMonth() + 1).toString();
+  const filteredProducts = products.filter((product) => {
+    const d = new Date(product.date);
+    const productYear = d.getFullYear().toString();
+    const productMonth = (d.getMonth() + 1).toString();
 
     return (
-      post.active && 
-      postYear === year && 
-      postMonth === month
+      product.active && 
+      productYear === year && 
+      productMonth === month
     );
   });
 
   return (
     <AppLayout>
-      <Main posts={filteredPosts} />
+      <Main products={filteredProducts} />
     </AppLayout>
   );
 }

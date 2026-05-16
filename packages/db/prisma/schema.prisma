@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Product {
   id     Int      @id @default(autoincrement())
   urlId  String   @unique
   title       String
@@ -18,17 +18,7 @@ model Post {
   content     String
   category    String
   imageUrl    String
-  date   DateTime @default(now())
-  views  Int      @default(0)
+  price       Int
   active Boolean  @default(true)
-  Likes  Like[]
   tags String
-}
-
-model Like {
-  postId Int
-  userIP String
-  Post   Post   @relation(fields: [postId], references: [id])
-
-  @@id([postId, userIP])
 }
