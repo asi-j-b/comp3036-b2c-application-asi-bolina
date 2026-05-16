@@ -4,7 +4,7 @@ import { marked } from "marked";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-type PostEditorValues = {
+type ProductEditorValues = {
   title: string;
   category: string;
   description: string;
@@ -14,9 +14,9 @@ type PostEditorValues = {
   tags: string;
 };
 
-type EditorErrors = Partial<Record<keyof PostEditorValues, string>>;
+type EditorErrors = Partial<Record<keyof ProductEditorValues, string>>;
 
-const emptyValues: PostEditorValues = {
+const emptyValues: ProductEditorValues = {
   title: "",
   category: "",
   description: "",
@@ -35,7 +35,7 @@ function isValidUrl(value: string) {
   }
 }
 
-function validate(values: PostEditorValues): EditorErrors {
+function validate(values: ProductEditorValues): EditorErrors {
   const errors: EditorErrors = {};
 
   if (!values.title.trim()) {
@@ -73,11 +73,11 @@ export function ProductEditorForm({
   initialValues,
   postId,
 }: {
-  initialValues?: Partial<PostEditorValues>;
+  initialValues?: Partial<ProductEditorValues>;
   postId?: number;
 }) {
   const router = useRouter();
-  const [values, setValues] = useState<PostEditorValues>({
+  const [values, setValues] = useState<ProductEditorValues>({
     ...emptyValues,
     ...initialValues,
   });
@@ -100,9 +100,9 @@ export function ProductEditorForm({
     }
   }, [showPreview]);
 
-  function updateValue<K extends keyof PostEditorValues>(
+  function updateValue<K extends keyof ProductEditorValues>(
     key: K,
-    nextValue: PostEditorValues[K],
+    nextValue: ProductEditorValues[K],
   ) {
     setValues((current) => ({
       ...current,

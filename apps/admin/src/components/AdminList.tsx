@@ -83,7 +83,7 @@ export function AdminList({ products }: { products: Product[] }) {
 		if (response.ok) {
 			router.refresh();
 		} else {
-			alert("Failed to update post status");
+			alert("Failed to update product status");
 		}
 	}
 
@@ -121,7 +121,7 @@ export function AdminList({ products }: { products: Product[] }) {
 		});
 
 		return filtered;
-	}, [posts, contentFilter, tagFilter, dateFilter, visibilityFilter, sortBy]);
+	}, [products, contentFilter, tagFilter, dateFilter, visibilityFilter, sortBy]);
 
 	return (
 		<section className="w-full max-w-5xl space-y-5">
@@ -201,48 +201,48 @@ export function AdminList({ products }: { products: Product[] }) {
 
 				<div className="flex items-end">
 					<Link
-						href="/posts/create"
+						href="/products/create"
 						className="inline-flex w-full items-center justify-center rounded bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
 					>
-						Create Post
+						Create Product
 					</Link>
 				</div>
 			</div>
 
 			<div className="space-y-4">
-				{filteredPosts.map((post) => (
+				{filteredProducts.map((product) => (
 					<article
-						key={post.id}
+						key={product.id}
 						className="grid gap-4 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-[140px_1fr]"
 					>
 						<img
-							src={post.imageUrl}
-							alt={post.title}
+							src={product.imageUrl}
+							alt={product.title}
 							className="h-24 w-full rounded object-cover"
 						/>
 
 						<div className="space-y-2">
 							<h2 className="text-lg font-semibold text-slate-900">
-								<Link href={`/post/${post.urlId}`}>{post.title}</Link>
+								<Link href={`/product/${product.urlId}`}>{product.title}</Link>
 							</h2>
-							<p className="text-sm text-slate-600">{formatTags(post.tags)}</p>
-							<p className="text-sm text-slate-600">Posted on {formatDate(post.date)}</p>
-							<p className="text-sm text-slate-600">{post.category}</p>
+							<p className="text-sm text-slate-600">{formatTags(product.tags)}</p>
+							<p className="text-sm text-slate-600">Posted on {formatDate(product.date)}</p>
+							<p className="text-sm text-slate-600">{product.category}</p>
 
 							<button
 								type="button"
-								onClick={() => handleToggleActive(post.id, post.active)}
+								onClick={() => handleToggleActive(product.id, product.active)}
 								className={`rounded px-3 py-1 text-sm font-medium ${
-									post.active
+									product.active
 										? "bg-emerald-100 text-emerald-800"
 										: "bg-slate-200 text-slate-700"
 								}`}
 							>
-								{post.active ? "Active" : "Inactive"}
+								{product.active ? "Active" : "Inactive"}
 							</button>
 
-							{statusMessage[post.id] ? (
-								<p className="text-xs text-slate-500">{statusMessage[post.id]}</p>
+							{statusMessage[product.id] ? (
+								<p className="text-xs text-slate-500">{statusMessage[product.id]}</p>
 							) : null}
 						</div>
 					</article>
