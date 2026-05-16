@@ -1,6 +1,6 @@
 import { isLoggedIn } from "../utils/auth";
-import { LoginForm } from "@repo/ui/auth/LoginForm";
-import { LogoutButton } from "@repo/ui/auth/LogoutButton";
+import { AdminLoginForm } from "../components/auth/AdminLoginForm";
+import { LogoutButton } from "../components/auth/LogoutButton";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -9,7 +9,7 @@ export default async function Home() {
   if (!loggedIn) {
     return (
       <main className={styles.main}>
-        <LoginForm actionUrl="/api/auth" isAdmin={true} />
+        <AdminLoginForm />
       </main>
     );
   }
