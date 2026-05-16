@@ -25,25 +25,45 @@ export function AdminLoginForm() {
     setError("Unauthorized access denied.");
   }
 
-    return (
-        <div className="mx-auto w-full max-w-sm rounded-lg border border-slate-700 bg-slate-900 p-8 text-white shadow-2xl">
-            <div className="mb-8 border-b border-slate-700 pb-4">
-                <h2 className="text-xl font-mono tracking-widest uppercase">Staff Portal</h2>
-                <p className="mt-1 text-xs text-slate-400">Authorized personnel only.</p>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase text-slate-400">Email</label>
-                  <input name="email" type="email" required className="w-full border-b border-slate-600 bg-transparent py-2 text-sm outline-none focus:border-white"/>
-                  <label className="text-xs font-semibold uppercase text-slate-400">Password</label>
-                  <input name="password" type="password" required className="w-full border-b border-slate-600 bg-transparent py-2 text-sm outline-none focus:border-white"/>
-                </div>
-                <button type="submit" className="w-full bg-white py-2 text-sm font-bold text-slate-900 transition hover:bg-slate-200">
-                  Authenticate
-                </button>
-            </form>
-            {error && <p className="mt-4 text-center text-xs font-mono text-red-400">{error}</p>}
+  return (
+    <div className="mx-auto w-full max-w-sm rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
+      <div className="mb-8 border-b border-slate-200 pb-5">
+        <h1 className="mt-2 font-mono text-xl font-bold uppercase tracking-widest text-slate-950">
+          Staff Portal
+        </h1>
+        <p className="mt-2 text-sm text-slate-500">
+          Authorized personnel only.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-2">
+          <label className="text-xs font-semibold uppercase text-slate-400">Email</label>
+          <input 
+            id="admin-email"
+            name="email"
+            type="email"
+            required
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+          />
+          <label className="text-xs font-semibold uppercase text-slate-400">Password</label>
+          <input
+            id="admin-password"
+            name="password"
+            type="password"
+            required
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+          />
         </div>
-    );
+
+        <button
+          type="submit"
+          className="w-full rounded-md bg-slate-900 py-2.5 text-sm font-bold text-white transition hover:bg-slate-700"
+        >
+          Login
+        </button>
+      </form>
+      {error && <p className="mt-4 text-center text-xs font-mono text-red-400">{error}</p>}
+    </div>
+  );
 }

@@ -114,7 +114,7 @@ export function TopMenu({
               <span className="text-sm text-primary">
                 Welcome, {userEmail}
               </span>
-              <LogoutButton />
+              <LogoutButton onLogout={() => setUserEmail(null)} />
             </>
           ) : (
             <Link

@@ -2,12 +2,17 @@
 
 import { useRouter } from "next/navigation";
 
-export function LogoutButton() {
+export function LogoutButton({ onLogout }: { onLogout?: () => void }) {
   const router = useRouter();
 
   async function handleLogout() {
-    await fetch("/api/auth", { method: "DELETE" });
-    router.refresh();
+    const response = await fetch("/api/auth", { method: "DELETE" });
+
+    if (response.ok) {
+      onLogout?.();
+      router.push("/");
+      router.refresh();
+    }
   }
 
   return (

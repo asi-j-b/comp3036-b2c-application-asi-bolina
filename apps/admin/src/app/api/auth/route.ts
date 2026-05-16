@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    if (body.password === env.ADMIN_PASSWORD) {
+    if (body.email === env.ADMIN_EMAIL && body.password === env.ADMIN_PASSWORD) {
       // Create the JWT (Requirement: JWT Issue & Validation)
       const jwtToken = jwt.sign(
         { role: "admin" },
@@ -24,13 +24,28 @@ export async function POST(request: Request) {
         secure: process.env.NODE_ENV === "production",
         maxAge: 60 * 15, // 15 minutes
       });
-
       return NextResponse.json({ message: "Logged in" });
     }
-
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   } catch (error) {
     return NextResponse.json({ message: "Invalid Request" }, { status: 400 });
+  }
+}
+
+export async function GET() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("auth_token")?.value;
+
+  if (!token) {
+    return NextResponse.json({ email: null, role: null });
+  }
+
+  try {
+    const decoded = jwt.verify(token, env.JWT_SECRET) as { email: string; role: string };
+    return NextResponse.json({ email: decoded.email, role: decoded.role });
+  } catch (error) {
+    cookieStore.delete("auth_token");
+    return NextResponse.json({ email: null, role: null });
   }
 }
 

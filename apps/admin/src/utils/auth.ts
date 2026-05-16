@@ -11,8 +11,8 @@ export async function isLoggedIn() {
   }
 
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET || "");
-    return !!decoded;
+    const decoded = jwt.verify(token, env.JWT_SECRET || "") as { role?: string };
+    return decoded.role === "admin";
   } catch (error) {
     return false;
   }

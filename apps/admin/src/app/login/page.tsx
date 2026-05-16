@@ -1,5 +1,5 @@
-import { AdminLoginForm } from "../../components/auth/AdminLoginForm";
+import { AdminLoginScreen } from "../../components/Layout/AdminLoginScreen";
 
 export default function AdminLoginPage() {
-  return <AdminLoginForm />;
+  return <AdminLoginScreen />;
 }
