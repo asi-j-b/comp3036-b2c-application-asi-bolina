@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    if (body.password === env.PASSWORD) {
+    if (body.password === env.ADMIN_PASSWORD) {
       // Create the JWT (Requirement: JWT Issue & Validation)
       const jwtToken = jwt.sign(
         { role: "admin" },

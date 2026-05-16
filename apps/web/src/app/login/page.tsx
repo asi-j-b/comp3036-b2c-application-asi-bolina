@@ -1,12 +1,9 @@
-import { AppLayout } from "@/components/Layout/AppLayout";
-import { UserLoginForm } from "../../../../../packages/ui/src/auth/UserLoginForm";
+import { LoginForm } from "@repo/ui/auth/LoginForm";
 
-export default function LoginPage() {
+export default function UserLoginPage() {
   return (
-    <AppLayout>
-      <div className="flex flex-1 items-center justify-center py-12">
-        <UserLoginForm />
-      </div>
-    </AppLayout>
+    <div className="flex flex-1 items-center justify-center py-12">
+      <LoginForm actionUrl="/api/auth" isAdmin={false} />
+    </div>
   );
 }

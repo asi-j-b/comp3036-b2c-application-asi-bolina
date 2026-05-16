@@ -4,12 +4,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-type Post = {
+type Product = {
 	id: number;
 	urlId: string;
 	title: string;
 	content: string;
 	imageUrl: string;
+	price: number;
 	date: string;
 	category: string;
 	tags: string;
@@ -59,7 +60,7 @@ function formatTags(tags: string) {
 		.join(", ");
 }
 
-export function AdminList({ posts }: { posts: Post[] }) {
+export function AdminList({ products }: { products: Product[] }) {
 	const [contentFilter, setContentFilter] = useState("");
 	const [tagFilter, setTagFilter] = useState("");
 	const [dateFilter, setDateFilter] = useState("");
@@ -91,17 +92,17 @@ export function AdminList({ posts }: { posts: Post[] }) {
 		const query = contentFilter.trim().toLowerCase();
 		const tag = tagFilter.trim().toLowerCase();
 
-		const filtered = posts.filter((post) => {
-			const postDate = new Date(post.date);
+		const filtered = products.filter((product) => {
+			const productDate = new Date(product.date);
 			const contentMatch =
 				query.length === 0 ||
-				post.title.toLowerCase().includes(query) ||
-				post.content.toLowerCase().includes(query);
-			const tagMatch = tag.length === 0 || post.tags.toLowerCase().includes(tag);
-			const dateMatch = !parsedDate || postDate >= parsedDate;
+				product.title.toLowerCase().includes(query) ||
+				product.content.toLowerCase().includes(query);
+			const tagMatch = tag.length === 0 || product.tags.toLowerCase().includes(tag);
+			const dateMatch = !parsedDate || productDate >= parsedDate;
 			const visibilityMatch =
 				visibilityFilter === "all" ||
-				(visibilityFilter === "active" ? post.active : !post.active);
+				(visibilityFilter === "active" ? product.active : !product.active);
 
 			return contentMatch && tagMatch && dateMatch && visibilityMatch;
 		});

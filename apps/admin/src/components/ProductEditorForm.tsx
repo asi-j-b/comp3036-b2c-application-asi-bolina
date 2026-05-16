@@ -10,6 +10,7 @@ type PostEditorValues = {
   description: string;
   content: string;
   imageUrl: string;
+  price: number;
   tags: string;
 };
 
@@ -21,6 +22,7 @@ const emptyValues: PostEditorValues = {
   description: "",
   content: "",
   imageUrl: "",
+  price: 0,
   tags: "",
 };
 
@@ -60,10 +62,14 @@ function validate(values: PostEditorValues): EditorErrors {
     errors.tags = "At least one tag is required";
   }
 
+  if (values.price <= 0) {
+    errors.price = "Price must be a positive number";
+  }
+
   return errors;
 }
 
-export function PostEditorForm({
+export function ProductEditorForm({
   initialValues,
   postId,
 }: {
@@ -133,7 +139,7 @@ export function PostEditorForm({
         return;
       }
 
-      setSuccessMessage("Post updated successfully");
+      setSuccessMessage("Product updated successfully");
       router.refresh();
     })();
   }

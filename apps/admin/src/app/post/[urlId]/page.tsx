@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { LoginForm } from "../../../components/LoginForm";
-import { PostEditorForm } from "../../../components/PostEditorForm";
+import { PostEditorForm } from "../../../components/ProductEditorForm";
 import { isLoggedIn } from "../../../utils/auth";
 import { prisma } from "@repo/db";
 import styles from "../../page.module.css";
