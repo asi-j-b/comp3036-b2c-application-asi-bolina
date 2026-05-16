@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     if (body.email === env.USER_EMAIL && body.password === env.USER_PASSWORD) {
       const token = jwt.sign(
         { email, role: "user" }, 
-        process.env.JWT_SECRET!, 
+        env.JWT_SECRET, 
         { expiresIn: '24h' }
       );
 
@@ -41,7 +41,7 @@ export async function GET() {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { email: string; role: string };
+    const decoded = jwt.verify(token, env.JWT_SECRET) as { email: string; role: string };
     return NextResponse.json({ email: decoded.email, role: decoded.role });
   } catch (error) {
     cookieStore.delete("auth_token");

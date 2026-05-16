@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { useSidebarContext } from "@/context/SidebarContext";
 import type { Product } from "@repo/db/data";
-import { LogoutButton } from "../auth/LogoutButton";
 
 export function TopMenu({
   products,
@@ -110,12 +109,14 @@ export function TopMenu({
 
         <div className="ml-auto flex items-center gap-3">
           {userEmail ? (
-            <>
+            <Link
+              href="/account"
+              className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
+            >
               <span className="text-sm text-primary">
-                Welcome, {userEmail}
+                {userEmail}
               </span>
-              <LogoutButton onLogout={() => setUserEmail(null)} />
-            </>
+            </Link>
           ) : (
             <Link
               href="/login"
