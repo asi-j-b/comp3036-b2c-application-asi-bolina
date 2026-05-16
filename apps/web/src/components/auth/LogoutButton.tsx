@@ -7,6 +7,7 @@ export function LogoutButton() {
 
   async function handleLogout() {
     await fetch("/api/auth", { method: "DELETE" });
+    router.push("/");
     router.refresh();
   }
 

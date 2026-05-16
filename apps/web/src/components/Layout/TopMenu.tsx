@@ -25,6 +25,23 @@ export function TopMenu({
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [selectedCategory, setSelectedCategory] = useState(initialSelectedCategory);
   const categories = ["All", ...new Set(products.map((product) => product.category))];
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadUser() {
+      const response = await fetch("/api/auth");
+
+      if (!response.ok) {
+        setUserEmail(null);
+        return;
+      }
+
+      const data = await response.json();
+      setUserEmail(data.email ?? null);
+    }
+
+    void loadUser();
+  }, []);
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
@@ -92,13 +109,21 @@ export function TopMenu({
         </form>
 
         <div className="ml-auto flex items-center gap-3">
-          <Link
-            href="/login"
-            className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
-          >
-            Login
+          {userEmail ? (
+            <>
+              <span className="text-sm text-primary">
+                Welcome, {userEmail}
+              </span>
+              <LogoutButton />
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-md border border-[var(--ring)] px-3 py-2 text-sm font-medium text-primary hover:border-wsu hover:text-wsu"
+            >
+              Login
           </Link>
-
+          )}
           <Link
             href="/cart"
             className="inline-flex items-center gap-2 rounded-md bg-wsu px-3 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
