@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useSidebarContext } from "@/context/SidebarContext";
 import type { Product } from "@repo/db/data";
+import { LogoutButton } from "../auth/LogoutButton";
 
 export function TopMenu({
   products,
