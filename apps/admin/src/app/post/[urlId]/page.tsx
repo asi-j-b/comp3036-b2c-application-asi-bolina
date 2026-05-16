@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import { LoginForm } from "../../../components/LoginForm";
-import { PostEditorForm } from "../../../components/ProductEditorForm";
+import { AdminLoginForm } from "../../../components/auth/AdminLoginForm";
+import { ProductEditorForm } from "../../../components/ProductEditorForm";
 import { isLoggedIn } from "../../../utils/auth";
-import { prisma } from "@repo/db";
+import { mockProducts } from "@repo/db/data";
 import styles from "../../page.module.css";
 
 export default async function UpdatePage({
@@ -15,35 +15,30 @@ export default async function UpdatePage({
   if (!loggedIn) {
     return (
       <main className={styles.main}>
-        <LoginForm />
+        <AdminLoginForm />
       </main>
     );
   }
 
   const { urlId } = await params;
+  const products = mockProducts.filter((p) => p.urlId === urlId);
 
-  const post = await prisma.post.findUnique({
-    where: {
-      urlId,
-    },
-  });
-
-  if (!post) {
+  if (!products.length) {
     notFound();
   }
 
   return (
     <main className={styles.main}>
       <h1 className="mb-4 text-2xl font-bold">Update Post</h1>
-      <PostEditorForm
-        postId={post.id}
+      <ProductEditorForm
+        productId={products[0].id}
         initialValues={{
-          title: post.title,
-          category: post.category,
-          description: post.description,
-          content: post.content,
-          imageUrl: post.imageUrl,
-          tags: post.tags,
+          title: products[0].title,
+          category: products[0].category,
+          description: products[0].description,
+          content: products[0].content,
+          imageUrl: products[0].imageUrl,
+          tags: products[0].tags,
         }}
       />
     </main>
