@@ -18,7 +18,7 @@ export default async function Page({
   );
 
   return (
-    <AppLayout query={q}>
+    <AppLayout>
       <Main products={filteredProducts} />
     </AppLayout>
   );

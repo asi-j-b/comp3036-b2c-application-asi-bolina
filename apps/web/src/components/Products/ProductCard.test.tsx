@@ -1,7 +1,7 @@
 import { vi, test, expect } from "vitest";
 import { render } from "vitest-browser-react";
 import { ProductCard } from "./ProductCard";
-import { mockProducts } from "../../data/mockProducts";
+import { mockProducts } from "@repo/db/data";
 
 const product = mockProducts[0];
 

@@ -72,7 +72,7 @@ This iteration pivots the blog application into a B2C e-commerce store with a fo
 ### What's New (Steps 1-4)
 
 #### Step 1: Mock Product Data Layer
-- **File**: `apps/web/src/data/mockProducts.ts`
+- **File**: `packages/db/src/data.ts`
 - **Features**:
   - Product type definition with id, name, price, category, stock, imageUrl, rating, and reviews
   - 8 realistic mock products across 6 categories (Electronics, Clothing, Home, Kitchen, Footwear, Accessories)
