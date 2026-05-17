@@ -11,7 +11,8 @@
     "ui": "pnpm playwright test --ui",
     "dev:test-1": "pnpm playwright test --ui --grep \"@a1\"",
     "dev:test-2": "pnpm playwright test --ui --grep \"@a1|@a2\"",
-    "dev:test-3": "pnpm playwright test --ui --grep \"@a1|@a2|@a3\""
+    "dev:test-3": "pnpm playwright test --ui --grep \"@a1|@a2|@a3\"",
+    "test-b2c": "pnpm playwright test --project=b2c-chromium"
   },
   "keywords": [],
   "author": "",

@@ -22,7 +22,6 @@ export function TopMenu({
 }) {
   const { toggle } = useSidebarContext();
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  const [selectedCategory, setSelectedCategory] = useState(initialSelectedCategory);
   const categories = ["All", ...new Set(products.map((product) => product.category))];
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
@@ -48,7 +47,6 @@ export function TopMenu({
   };
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
     onCategoryChange(category);
   };
 
@@ -74,7 +72,7 @@ export function TopMenu({
 
         <select
           aria-label="Filter by category"
-          value={selectedCategory}
+          value={initialSelectedCategory}
           onChange={(event) => handleCategoryChange(event.target.value)}
           className="rounded-md border border-[var(--ring)] bg-[var(--surface)] px-3 py-2 text-sm text-primary outline-none focus:border-wsu"
         >

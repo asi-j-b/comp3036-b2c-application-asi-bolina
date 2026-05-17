@@ -33,12 +33,12 @@ export function UserLoginForm() {
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Email Address</label>
-          <input name="email" type="email" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" placeholder="alice@example.com" />
+          <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+          <input id="email" name="email" type="email" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" placeholder="alice@example.com" />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-medium">Password</label>
-          <input name="password" type="password" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+          <label htmlFor="password" className="text-sm font-medium">Password</label>
+          <input id="password" name="password" type="password" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
         </div>
         <button type="submit" className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110">
           Sign In

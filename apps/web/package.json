@@ -12,7 +12,7 @@
     "check-types": "tsc --noEmit",
     "test": "vitest --browser.headless",
     "dev:test": "vitest",
-    "test-b2c": "vitest --browser.headless",
+    "test-b2c": "vitest --browser.headless --run",
     "dev:test-b2c": "vitest"
   },
   "dependencies": {

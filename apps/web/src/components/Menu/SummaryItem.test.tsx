@@ -3,7 +3,7 @@ import { render } from "vitest-browser-react";
 import { SummaryItem } from "./SummaryItem";
 
 test("renders non-selected summary item with count", async () => {
-  const { getByText } = render(
+  const { baseElement, getByText } = render(
     <SummaryItem
       count={10}
       isSelected={false}
@@ -12,7 +12,9 @@ test("renders non-selected summary item with count", async () => {
       title="Content Title"
     />,
   );
-  await expect.element(getByText("10")).toBeInTheDocument();
+  expect(
+    baseElement.querySelector('[data-test-id="post-count"]')?.textContent,
+  ).toBe("10");
   await expect.element(getByText("Link to Content")).toBeInTheDocument();
   await expect
     .element(getByText("Link to Content").element().parentElement!)

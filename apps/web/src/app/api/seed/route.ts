@@ -1,11 +1,10 @@
-import { seed } from "@repo/db/seed";
 import { NextResponse } from "next/server";
+import { mockProducts } from "@repo/db/data";
 
 export async function GET() {
-  if (!process.env.E2E) {
-    return new Response("Not Available", { status: 501 });
-  }
-
-  await seed();
-  return NextResponse.json({ message: "Seeded" }, { status: 200 });
+  return NextResponse.json({
+    ok: true,
+    message: "Static mock product data is already available for Iteration 1.",
+    productCount: mockProducts.length,
+  });
 }

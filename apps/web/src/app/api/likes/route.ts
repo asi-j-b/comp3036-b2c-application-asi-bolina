@@ -1,12 +1,7 @@
-import { prisma } from "@repo/db";
 import { NextResponse } from "next/server";
+import { mockProducts } from "@repo/db/data";
 
-function getRequestIp(request: Request) {
-  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  const realIp = request.headers.get("x-real-ip")?.trim();
-
-  return forwardedFor || realIp || "127.0.0.1";
-}
+const likedProducts = new Set<number>();
 
 export async function POST(request: Request) {
   try {
@@ -17,45 +12,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid product id" }, { status: 400 });
     }
 
-    const product = await prisma.product.findUnique({
-      where: { id: productId },
-    });
+    const product = mockProducts.find((item) => item.id === productId);
 
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    const userIP = getRequestIp(request);
-    const existingLike = await prisma.like.findFirst({
-      where: {
-        productId,
-        userIP,
-      },
-    });
-
-    if (existingLike) {
-      await prisma.like.deleteMany({
-        where: {
-          productId,
-          userIP,
-        },
-      });
+    if (likedProducts.has(productId)) {
+      likedProducts.delete(productId);
     } else {
-      await prisma.like.create({
-        data: {
-          productId,
-          userIP,
-        },
-      });
+      likedProducts.add(productId);
     }
 
-    const likes = await prisma.like.count({
-      where: { productId },
-    });
-
     return NextResponse.json({
-      likes,
-      liked: !existingLike,
+      liked: likedProducts.has(productId),
+      likeCount: likedProducts.has(productId) ? 1 : 0,
     });
   } catch {
     return NextResponse.json({ error: "Unable to update like" }, { status: 400 });

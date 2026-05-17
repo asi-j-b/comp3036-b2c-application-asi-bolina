@@ -75,6 +75,14 @@ export default defineConfig({
       },
       dependencies: process.env.CI ? ["setup"] : [],
     },
+    {
+      name: "b2c-chromium",
+      testDir: "./tests/b2c",
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:3001",
+      },
+    },
 
     // {
     //   name: "firefox",
