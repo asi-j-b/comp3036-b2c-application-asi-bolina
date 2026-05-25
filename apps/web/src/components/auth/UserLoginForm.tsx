@@ -40,6 +40,9 @@ export function UserLoginForm() {
           <label htmlFor="password" className="text-sm font-medium">Password</label>
           <input id="password" name="password" type="password" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
         </div>
+        <div className="text-center text-sm text-primary">
+          Don't have an account? <a href="/register" className="font-medium text-wsu hover:underline">Register</a>
+        </div>
         <button type="submit" className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110">
           Sign In
         </button>
