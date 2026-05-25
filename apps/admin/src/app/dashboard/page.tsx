@@ -5,17 +5,17 @@ import { isLoggedIn } from "../../utils/auth";
 
 const dashboardLinks = [
   {
-    href: "/dashboard/inventory",
+    href: "/admin-dashboard/inventory",
     label: "View Inventory",
     description: "Review product stock levels and availability.",
   },
   {
-    href: "/dashboard/manage-products",
+    href: "/admin-dashboard/manage-products",
     label: "Manage Products",
     description: "Add, update, and remove storefront products.",
   },
   {
-    href: "/dashboard/purchase-records",
+    href: "/admin-dashboard/purchase-records",
     label: "View Purchase Records",
     description: "Check customer purchase activity and totals.",
   },

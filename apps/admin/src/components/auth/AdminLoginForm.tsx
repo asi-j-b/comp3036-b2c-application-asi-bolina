@@ -18,7 +18,7 @@ export function AdminLoginForm() {
     });
 
     if (response.ok) {
-      router.push("/dashboard");
+      router.push("/admin-dashboard");
       router.refresh();
       return;
     }
