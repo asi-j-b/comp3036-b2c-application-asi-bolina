@@ -21,13 +21,12 @@ test("renders all products initially", async () => {
 test("category filter hides non-matching items", async () => {
   const component = renderProductGrid();
   const base = component.baseElement as HTMLElement;
-  const categorySelect = base.querySelector(
-    'select[aria-label="Filter by category"]',
-  ) as HTMLSelectElement;
-  expect(categorySelect).toBeTruthy();
+  const categoryButton = Array.from(base.querySelectorAll("button")).find(
+    (button) => button.textContent?.trim() === "Electronics",
+  ) as HTMLButtonElement | undefined;
+  expect(categoryButton).toBeTruthy();
 
-  categorySelect.value = "Electronics";
-  categorySelect.dispatchEvent(new Event("change", { bubbles: true }));
+  categoryButton?.click();
   await new Promise((r) => setTimeout(r, 0));
 
   const filtered = mockProducts.filter((p) => p.category === "Electronics");

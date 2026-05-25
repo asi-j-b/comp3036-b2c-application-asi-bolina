@@ -4,26 +4,18 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSidebarContext } from "@/context/SidebarContext";
 import { LogoutButton } from "@/components/auth/LogoutButton";
-import type { Product } from "@repo/db/data";
 
 export function TopMenu({
-  products,
   searchTerm: initialSearchTerm,
-  selectedCategory: initialSelectedCategory,
   onSearchChange,
-  onCategoryChange,
   cartCount,
 }: {
-  products: Product[];
   searchTerm: string;
-  selectedCategory: string;
   onSearchChange: (term: string) => void;
-  onCategoryChange: (category: string) => void;
   cartCount: number;
 }) {
   const { toggle } = useSidebarContext();
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  const categories = ["All", ...new Set(products.map((product) => product.category))];
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
@@ -61,10 +53,6 @@ export function TopMenu({
     onSearchChange(value);
   };
 
-  const handleCategoryChange = (category: string) => {
-    onCategoryChange(category);
-  };
-
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSearchChange(searchTerm);
@@ -87,19 +75,6 @@ export function TopMenu({
         <Link href="/" className="text-lg font-semibold tracking-tight text-primary">
           Full Stack Store
         </Link>
-
-        <select
-          aria-label="Filter by category"
-          value={initialSelectedCategory}
-          onChange={(event) => handleCategoryChange(event.target.value)}
-          className="rounded-md border border-[var(--ring)] bg-[var(--surface)] px-3 py-2 text-sm text-primary outline-none focus:border-wsu"
-        >
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
 
         <form onSubmit={handleSearchSubmit} className="flex min-w-[240px] flex-1 items-center">
           <label className="sr-only" htmlFor="product-search">

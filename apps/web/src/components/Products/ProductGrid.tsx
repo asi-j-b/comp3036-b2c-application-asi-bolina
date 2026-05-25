@@ -11,6 +11,7 @@ export function ProductGrid({ products }: { products: Product[] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { addToCart, cartCount } = useCart(products);
+  const categories = ["All", ...new Set(products.map((product) => product.category))];
 
   const filteredProducts = useMemo(() => {
     const searchedProducts = searchProducts(products, searchTerm);
@@ -20,15 +21,35 @@ export function ProductGrid({ products }: { products: Product[] }) {
   return (
     <section className="w-full">
       <TopMenu
-        products={products}
         searchTerm={searchTerm}
-        selectedCategory={selectedCategory}
         onSearchChange={setSearchTerm}
-        onCategoryChange={setSelectedCategory}
         cartCount={cartCount}
       />
 
       <div className="space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <div className="flex min-w-max items-center gap-2 rounded-full border border-[var(--ring)] bg-[var(--surface-muted)] p-2">
+            {categories.map((category) => {
+              const isActive = selectedCategory === category;
+
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setSelectedCategory(category)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-white text-primary shadow-sm"
+                      : "text-secondary hover:bg-white/70 hover:text-primary"
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         {filteredProducts.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
