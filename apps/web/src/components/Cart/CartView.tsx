@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { mockProducts } from "@repo/db/data";
 import { useCart } from "@/hooks/useCart";
@@ -14,6 +15,53 @@ function formatCurrency(value: number) {
 
 export function CartView() {
   const { cartItems, cartTotal, addToCart, removeFromCart, clearCart } = useCart(mockProducts);
+  const [isRedirectingToStripe, setIsRedirectingToStripe] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  async function handleStripeCheckout() {
+    if (cartItems.length === 0) {
+      return;
+    }
+
+    setIsRedirectingToStripe(true);
+    setCheckoutError(null);
+
+    try {
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cartItems.map(({ product, quantity }) => ({
+            productId: product.id,
+            quantity,
+          })),
+        }),
+      });
+
+      const rawBody = await response.text();
+      let data: { url?: string; error?: string } = {};
+
+      if (rawBody) {
+        try {
+          data = JSON.parse(rawBody) as { url?: string; error?: string };
+        } catch {
+          data = { error: rawBody };
+        }
+      }
+
+      if (!response.ok || !data.url) {
+        throw new Error(data.error ?? "Unable to create a Stripe checkout session.");
+      }
+
+      window.location.assign(data.url);
+    } catch (error) {
+      setCheckoutError(error instanceof Error ? error.message : "Unable to start checkout.");
+    } finally {
+      setIsRedirectingToStripe(false);
+    }
+  }
 
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-8">
@@ -75,12 +123,14 @@ export function CartView() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link
-              href="/checkout"
-              className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
+            <button
+              type="button"
+              onClick={handleStripeCheckout}
+              disabled={isRedirectingToStripe}
+              className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Proceed to checkout
-            </Link>
+              {isRedirectingToStripe ? "Redirecting to Stripe..." : "Checkout"}
+            </button>
             <Link
               href="/"
               className="rounded-md border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu"
@@ -88,6 +138,8 @@ export function CartView() {
               Continue shopping
             </Link>
           </div>
+
+          {checkoutError ? <p className="text-sm text-red-500">{checkoutError}</p> : null}
         </div>
       )}
     </section>

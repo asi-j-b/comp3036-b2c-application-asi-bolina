@@ -20,7 +20,12 @@ async function getUserEmail() {
   }
 }
 
-export default async function CheckoutPage() {
+export default async function CheckoutPage({
+	searchParams,
+}: {
+	searchParams: Promise<{ status?: string }>;
+}) {
+	const { status } = await searchParams;
   const userEmail = await getUserEmail();
 
 	return (
@@ -28,7 +33,21 @@ export default async function CheckoutPage() {
 			<section className="w-full px-4 py-8 sm:px-6 lg:px-8">
 				<div className="rounded-xl border border-[var(--ring)] bg-[var(--surface)] p-6">
 					<h1 className="text-2xl font-semibold text-primary">Checkout</h1>
-					{userEmail ? (
+					{status === "success" ? (
+						<>
+							<p className="mt-2 text-secondary">
+								Your Stripe payment was completed successfully.
+							</p>
+							<div className="mt-4 flex flex-wrap gap-3">
+								<Link href="/cart" className="rounded-md border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu">
+									Back to cart
+								</Link>
+								<Link href="/" className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light">
+									Continue shopping
+								</Link>
+							</div>
+						</>
+					) : userEmail ? (
 						<>
 							<p className="mt-2 text-secondary">
 								You are signed in as {userEmail}. This is the mock checkout step for Iteration 1.
