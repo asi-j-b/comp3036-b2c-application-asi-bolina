@@ -6,6 +6,7 @@ import { useState } from "react";
 export function UserLoginForm() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,7 +39,23 @@ export function UserLoginForm() {
         </div>
         <div className="space-y-2">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
-          <input id="password" name="password" type="password" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+          <div className="relative">
+            <input
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              required
+              className="w-full rounded-xl border border-[var(--ring)] p-3 pr-16 text-sm outline-none focus:ring-2 focus:ring-wsu"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((current) => !current)}
+              className="absolute inset-y-0 right-2 my-auto h-8 rounded-md px-2 text-xs font-medium text-secondary hover:bg-[var(--surface-muted)] hover:text-primary"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
         </div>
         <div className="text-center text-sm text-primary">
           Don't have an account? <a href="/register" className="font-medium text-wsu hover:underline">Register</a>

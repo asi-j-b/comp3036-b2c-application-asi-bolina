@@ -14,8 +14,8 @@ async function getUserEmail() {
   }
 
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as { email?: string; role?: string };
-    return decoded.role === "user" ? (decoded.email ?? null) : null;
+    const decoded = jwt.verify(token, env.JWT_SECRET) as { email?: string };
+    return decoded.email ?? null;
   } catch {
     return null;
   }
