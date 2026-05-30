@@ -96,7 +96,9 @@ export async function POST(request: Request) {
     await setAuthCookie(token);
 
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ message: "Unable to register user" }, { status: 500 });
+  } catch (error) {
+    const status = error instanceof SyntaxError ? 400 : 500;
+    const message = status === 400 ? "Invalid request body" : "Unable to register user";
+    return NextResponse.json({ message }, { status });
   }
 }
