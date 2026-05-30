@@ -3,9 +3,11 @@ import { Role } from "@prisma/client";
 import { env } from "@repo/env/admin";
 import { cookies } from "next/headers";
 
+const ADMIN_AUTH_COOKIE = "admin_auth_token";
+
 export async function isLoggedIn() {
   const userCookies = await cookies();
-  const token = userCookies.get("auth_token")?.value;
+  const token = userCookies.get(ADMIN_AUTH_COOKIE)?.value;
 
   if(!token) {
     return false;
