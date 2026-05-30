@@ -1,28 +1,9 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import jwt from "jsonwebtoken";
-import { Role } from "@prisma/client";
 import { UserLoginForm } from "@/components/auth/UserLoginForm";
-import { env } from "@repo/env/web";
-
-async function isAuthenticatedUser() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("auth_token")?.value;
-
-  if (!token) {
-    return false;
-  }
-
-  try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as { role?: string };
-    return decoded.role === Role.CUSTOMER;
-  } catch {
-    return false;
-  }
-}
+import { isCustomerAuthenticated } from "@/utils/auth";
 
 export default async function UserLoginPage() {
-  if (await isAuthenticatedUser()) {
+  if (await isCustomerAuthenticated()) {
     redirect("/account");
   }
 

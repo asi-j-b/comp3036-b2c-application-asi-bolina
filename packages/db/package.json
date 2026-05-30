@@ -8,6 +8,7 @@
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
     "db:push": "prisma db push",
+    "db:seed": "pnpm build && node --input-type=module -e \"import('./dist/seed.js').then(({ seedAndDisconnect }) => seedAndDisconnect())\"",
     "lint": "eslint . --max-warnings 0",
     "prebuild": "pnpm db:generate",
     "predev": "pnpm db:generate",
@@ -36,7 +37,6 @@
   },
   "dependencies": {
     "@prisma/client": "^6.3.1",
-    "@repo/env": "workspace:*",
     "argon2": "^0.41.1"
   },
   "devDependencies": {
