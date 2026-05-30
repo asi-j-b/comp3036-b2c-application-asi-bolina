@@ -2,16 +2,28 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { Role } from "@prisma/client";
+import { prisma } from "@repo/db";
 import { env } from "@repo/env/admin";
+import { verifyPassword } from "../../../utils/hash";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const email = String(body.email ?? "").trim().toLowerCase();
+    const password = String(body.password ?? "");
 
-    if (body.email === env.ADMIN_EMAIL && body.password === env.ADMIN_PASSWORD) {
-      // Create the JWT (Requirement: JWT Issue & Validation)
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (
+      user &&
+      user.active &&
+      user.role === Role.ADMIN &&
+      await verifyPassword(user.password, password)
+    ) {
       const jwtToken = jwt.sign(
-        { email: body.email, role: Role.ADMIN },
+        { sub: user.id, email: user.email, role: user.role },
         env.JWT_SECRET,
         { expiresIn: "24h" }
       );
