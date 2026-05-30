@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { Role } from "@prisma/client";
 import { env } from "@repo/env/admin";
 
 export async function POST(request: Request) {
@@ -10,7 +11,7 @@ export async function POST(request: Request) {
     if (body.email === env.ADMIN_EMAIL && body.password === env.ADMIN_PASSWORD) {
       // Create the JWT (Requirement: JWT Issue & Validation)
       const jwtToken = jwt.sign(
-        { role: "admin" },
+        { email: body.email, role: Role.ADMIN },
         env.JWT_SECRET,
         { expiresIn: "24h" }
       );

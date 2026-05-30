@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import jwt from "jsonwebtoken";
+import { Role } from "@prisma/client";
 import { UserLoginForm } from "@/components/auth/UserLoginForm";
 import { env } from "@repo/env/web";
 
@@ -14,7 +15,7 @@ async function isAuthenticatedUser() {
 
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET) as { role?: string };
-    return decoded.role === "user";
+    return decoded.role === Role.CUSTOMER;
   } catch {
     return false;
   }

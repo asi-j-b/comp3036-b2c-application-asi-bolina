@@ -2,6 +2,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { Role } from "@prisma/client";
 import { env } from "@repo/env/web";
 
 export async function POST(request: Request) {
@@ -11,7 +12,7 @@ export async function POST(request: Request) {
 
     if (body.email === env.USER_EMAIL && body.password === env.USER_PASSWORD) {
       const token = jwt.sign(
-        { email, role: "user" }, 
+        { email, role: Role.CUSTOMER },
         env.JWT_SECRET, 
         { expiresIn: '24h' }
       );
