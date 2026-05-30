@@ -1,28 +1,9 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
-import { Role } from "@prisma/client";
 import { AppLayout } from "@/components/Layout/AppLayout";
-import { env } from "@repo/env/web";
-
-async function getUserEmail() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("auth_token")?.value;
-
-  if (!token) {
-    return null;
-  }
-
-  try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as { email?: string; role?: string };
-    return decoded.role === Role.CUSTOMER ? (decoded.email ?? null) : null;
-  } catch {
-    return null;
-  }
-}
+import { getCustomerEmail } from "@/utils/auth";
 
 export default async function CheckoutPage() {
-  const userEmail = await getUserEmail();
+  const userEmail = await getCustomerEmail();
 
 	return (
 		<AppLayout>
