@@ -60,22 +60,26 @@ export function UserRegisterForm() {
 
     setIsSubmitting(true);
 
-    const response = await fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" },
-    });
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    if (response.ok) {
-      router.push("/");
-      router.refresh();
-      return;
+      if (response.ok) {
+        router.push("/");
+        router.refresh();
+        return;
+      }
+
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+      setError(data?.message ?? "Unable to register. Please try again.");
+    } catch {
+      setError("Unable to register. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    const data = (await response.json().catch(() => null)) as { message?: string } | null;
-    setError(data?.message ?? "Unable to register. Please try again.");
-    setIsSubmitting(false);
-  }
 
   return (
     <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] p-10 shadow-lg">
