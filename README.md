@@ -43,7 +43,7 @@ DATABASE_URL="file:../../packages/db/prisma/dev.db"
 For the db package Prisma CLI, use the package-local equivalent path in `packages/db/.env`:
 
 ```
-DATABASE_URL="file:./prisma/dev.db"
+DATABASE_URL="file:./dev.db"
 ```
 
 ## Running the project
