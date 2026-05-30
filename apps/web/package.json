@@ -24,6 +24,7 @@
     "@repo/db": "workspace:*",
     "@repo/utils": "workspace:*",
     "@tailwindcss/postcss": "^4.0.0",
+    "argon2": "^0.41.1",
     "marked": "^15.0.6",
     "next": "^15.1.6",
     "postcss": "^8.5.1",

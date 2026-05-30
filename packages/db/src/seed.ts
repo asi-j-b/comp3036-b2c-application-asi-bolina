@@ -1,29 +1,29 @@
-/*
-
-import { client } from "./client.js";
-import { products } from "./data.js";
+import argon2 from "argon2";
+import { Role } from "@prisma/client";
+import { prisma } from "./client.js";
 
 export async function seed() {
-  // TODO: Uncomment below once you set up Prisma and loaded data to your database
-  console.log("🌱 Seeding data");
-  // await client.db.like.deleteMany();
-  await client.db.product.deleteMany();
-
-  for (const product of products) {
-    await client.db.product.create({
-      data: {
-        id: product.id,
-        urlId: product.urlId,
-        title: product.title,
-        content: product.content,
-        category: product.category,
-        description: product.description,
-        imageUrl: product.imageUrl,
-        active: product.active,
-        tags: product.tags,
-      },
-    });
-  }
+  await prisma.user.upsert({
+    where: { email: "alice@example.com" },
+    update: {
+      password: await argon2.hash("password123", { type: argon2.argon2id }),
+      role: Role.CUSTOMER,
+      active: true,
+    },
+    create: {
+      email: "alice@example.com",
+      password: await argon2.hash("password123", { type: argon2.argon2id }),
+      name: "Alice Customer",
+      role: Role.CUSTOMER,
+      active: true,
+    },
+  });
 }
 
-*/
+export async function seedAndDisconnect() {
+  try {
+    await seed();
+  } finally {
+    await prisma.$disconnect();
+  }
+}
