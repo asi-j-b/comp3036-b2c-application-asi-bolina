@@ -206,9 +206,6 @@ importers:
       '@prisma/client':
         specifier: ^6.3.1
         version: 6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)
-      '@repo/env':
-        specifier: workspace:*
-        version: link:../env
       argon2:
         specifier: ^0.41.1
         version: 0.41.1
