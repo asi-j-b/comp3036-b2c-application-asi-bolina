@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "@prisma/client": "^6.3.1",
-    "@repo/env": "workspace:*"
+    "@repo/env": "workspace:*",
+    "argon2": "^0.41.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
