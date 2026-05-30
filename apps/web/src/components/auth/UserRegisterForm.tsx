@@ -52,8 +52,12 @@ export function UserRegisterForm() {
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium">Name</label>
-          <input id="name" name="name" type="text" maxLength={80} className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+          <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
+          <input id="firstName" name="firstName" type="text" required maxLength={40} className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
+          <input id="lastName" name="lastName" type="text" required maxLength={40} className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
         </div>
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">Email Address</label>

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Prisma, Role } from "@prisma/client";
 import { prisma } from "@repo/db";
 import { hashPassword } from "@/utils/hash";
-import { registerSchema, sanitizeName } from "@/utils/registration";
+import { getDisplayName, registerSchema } from "@/utils/registration";
 
 function isSameOrigin(request: Request) {
   const origin = request.headers.get("origin");
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     await prisma.user.create({
       data: {
         email: result.data.email,
-        name: sanitizeName(result.data.name),
+        name: getDisplayName(result.data.firstName, result.data.lastName),
         password: await hashPassword(result.data.password),
         role: Role.CUSTOMER,
         active: true,

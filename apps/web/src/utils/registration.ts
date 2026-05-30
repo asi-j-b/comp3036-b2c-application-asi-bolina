@@ -2,7 +2,16 @@ import { z } from "zod";
 
 export const registerSchema = z
   .object({
-    name: z.string().max(80, "Name must be 80 characters or fewer").optional(),
+    firstName: z
+      .string()
+      .trim()
+      .min(1, "First name is required")
+      .max(40, "First name must be 40 characters or fewer"),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, "Last name is required")
+      .max(40, "Last name must be 40 characters or fewer"),
     email: z
       .string()
       .trim()
@@ -26,7 +35,11 @@ export const registerSchema = z
 
 export type RegisterInput = z.infer<typeof registerSchema>;
 
-export function sanitizeName(name: string | undefined) {
+function sanitizeNamePart(name: string) {
   const sanitized = (name ?? "").replace(/[<>]/g, "").replace(/\s+/g, " ").trim();
-  return sanitized || null;
+  return sanitized;
+}
+
+export function getDisplayName(firstName: string, lastName: string) {
+  return `${sanitizeNamePart(firstName)} ${sanitizeNamePart(lastName)}`.trim();
 }
