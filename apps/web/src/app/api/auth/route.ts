@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { Role } from "@prisma/client";
 import { env } from "@repo/env/web";
+import { verifyCustomerToken } from "@/utils/auth";
 
 export async function POST(request: Request) {
   try {
@@ -41,13 +42,14 @@ export async function GET() {
     return NextResponse.json({ email: null, role: null });
   }
 
-  try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as { email: string; role: string };
-    return NextResponse.json({ email: decoded.email, role: decoded.role });
-  } catch (error) {
+  const session = verifyCustomerToken(token);
+
+  if (!session) {
     cookieStore.delete("auth_token");
     return NextResponse.json({ email: null, role: null });
   }
+
+  return NextResponse.json(session);
 }
 
 export async function DELETE() {
