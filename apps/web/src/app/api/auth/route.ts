@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         httpOnly: true, // Prevents XSS
         sameSite: 'strict', // Prevents CSRF
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 15, // 15 minutes
+        maxAge: 60 * 60 * 24, // 24 hours
       });
       return NextResponse.json({ success: true });
     }
