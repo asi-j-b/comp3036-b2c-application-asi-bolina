@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 import { Role } from "@prisma/client";
 import { env } from "@repo/env/web";
 
+const WEB_AUTH_COOKIE = "web_auth_token";
+
 type CustomerSession = {
   id?: string;
   email: string;
@@ -35,7 +37,7 @@ export function verifyCustomerToken(token: string): CustomerSession | null {
 
 export async function getCustomerSession() {
   const cookieStore = await cookies();
-  const token = cookieStore.get("auth_token")?.value;
+  const token = cookieStore.get(WEB_AUTH_COOKIE)?.value;
 
   return token ? verifyCustomerToken(token) : null;
 }

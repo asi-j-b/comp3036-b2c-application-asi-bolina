@@ -1,11 +1,13 @@
 "use client";
 
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function UserLoginForm() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,7 +40,17 @@ export function UserLoginForm() {
         </div>
         <div className="space-y-2">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
-          <input id="password" name="password" type="password" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+          <div className="relative">
+            <input id="password" name="password" type={showPassword ? "text" : "password"} required className="w-full rounded-xl border border-[var(--ring)] p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+            <button
+              type="button"
+              onClick={() => setShowPassword((value) => !value)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              className="absolute inset-y-0 right-0 flex items-center px-3 text-primary transition hover:text-wsu"
+            >
+              {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
         <div className="text-center text-sm text-primary">
           Don't have an account? <a href="/register" className="font-medium text-wsu hover:underline">Register</a>

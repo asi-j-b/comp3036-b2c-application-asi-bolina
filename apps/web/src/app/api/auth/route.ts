@@ -7,6 +7,8 @@ import { env } from "@repo/env/web";
 import { verifyCustomerToken } from "@/utils/auth";
 import { verifyPassword } from "@/utils/hash";
 
+const WEB_AUTH_COOKIE = "web_auth_token";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -30,7 +32,7 @@ export async function POST(request: Request) {
       );
 
       const cookieStore = await cookies();
-      cookieStore.set('auth_token', token, {
+      cookieStore.set(WEB_AUTH_COOKIE, token, {
         path: '/',
         httpOnly: true, // Prevents XSS
         sameSite: 'strict', // Prevents CSRF
@@ -47,7 +49,7 @@ export async function POST(request: Request) {
 
 export async function GET() {
   const cookieStore = await cookies();
-  const token = cookieStore.get("auth_token")?.value;
+  const token = cookieStore.get(WEB_AUTH_COOKIE)?.value;
 
   if (!token) {
     return NextResponse.json({ email: null, role: null });
@@ -56,7 +58,7 @@ export async function GET() {
   const session = verifyCustomerToken(token);
 
   if (!session) {
-    cookieStore.delete("auth_token");
+    cookieStore.delete(WEB_AUTH_COOKIE);
     return NextResponse.json({ email: null, role: null });
   }
 
@@ -65,6 +67,6 @@ export async function GET() {
 
 export async function DELETE() {
   const cookieStore = await cookies();
-  cookieStore.delete("auth_token");
+  cookieStore.delete(WEB_AUTH_COOKIE);
   return NextResponse.json({ success: true });
 }
