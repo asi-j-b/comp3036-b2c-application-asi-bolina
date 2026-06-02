@@ -77,3 +77,24 @@ export async function PUT(
     return NextResponse.json({ error: "Update failed" }, { status: 400 });
   }
 }
+
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  if (!(await isLoggedIn())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { id } = await params;
+
+    await prisma.product.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+  }
+}
