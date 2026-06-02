@@ -38,6 +38,20 @@ export async function PUT(
   const price = Number(body.price);
   const stock = Number(body.stock);
 
+  if (
+    !body ||
+    typeof body.name !== "string" ||
+    body.name.trim() === "" ||
+    typeof body.slug !== "string" ||
+    body.slug.trim() === "" ||
+    !Number.isInteger(price) ||
+    price <= 0 ||
+    !Number.isInteger(stock) ||
+    stock < 0
+  ) {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
   try {
     const updatedProduct = await prisma.product.update({
       where: { id },
