@@ -29,19 +29,26 @@ export function CheckoutView({
     setIsSubmitting(true);
     setError("");
 
-    const response = await fetch("/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: cartItems.map((item) => ({
-          productId: item.product.id,
-          quantity: item.quantity,
-        })),
-      }),
-    });
+    let response: Response;
 
+    try {
+      response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cartItems.map((item) => ({
+            productId: item.product.id,
+            quantity: item.quantity,
+          })),
+        }),
+      });
+    } catch {
+      setError("Could not create order");
+      setIsSubmitting(false);
+      return;
+    }
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
