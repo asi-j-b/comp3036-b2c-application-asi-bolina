@@ -8,6 +8,20 @@ export async function AppLayout({
   const sidebarProducts = await prisma.product.findMany({
     where: { active: true },
     orderBy: { category: "asc" },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      description: true,
+      price: true,
+      category: true,
+      stock: true,
+      imageUrl: true,
+      rating: true,
+      reviews: true,
+      featured: true,
+      active: true,
+    },
   });
 
   return (
