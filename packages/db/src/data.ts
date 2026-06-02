@@ -1,5 +1,5 @@
 export type Product = {
-  id: number;
+  id: string;
   slug: string;
   name: string;
   description: string;
@@ -15,7 +15,7 @@ export type Product = {
 
 export const mockProducts: Product[] = [
   {
-    id: 1,
+    id: "1",
     slug: "aeropulse-smart-watch",
     name: "AeroPulse Smart Watch",
     description:
@@ -31,7 +31,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 2,
+    id: "2",
     slug: "studio-noise-cancel-headphones",
     name: "Studio Noise-Cancel Headphones",
     description:
@@ -47,7 +47,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 3,
+    id: "3",
     slug: "metroline-hoodie",
     name: "MetroLine Hoodie",
     description:
@@ -62,7 +62,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 4,
+    id: "4",
     slug: "everyday-running-shoes",
     name: "Everyday Running Shoes",
     description:
@@ -77,7 +77,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 5,
+    id: "5",
     slug: "minimal-desk-lamp",
     name: "Minimal Desk Lamp",
     description:
@@ -92,7 +92,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 6,
+    id: "6",
     slug: "kitchen-prep-set",
     name: "Kitchen Prep Set",
     description:
@@ -107,7 +107,7 @@ export const mockProducts: Product[] = [
     active: true,
   },
   {
-    id: 7,
+    id: "7",
     slug: "everyday-canvas-tote",
     name: "Everyday Canvas Tote",
     description:
@@ -122,7 +122,7 @@ export const mockProducts: Product[] = [
     active: false,
   },
   {
-    id: 8,
+    id: "8",
     slug: "compact-bluetooth-speaker",
     name: "Compact Bluetooth Speaker",
     description:

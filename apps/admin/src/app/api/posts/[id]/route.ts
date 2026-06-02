@@ -2,12 +2,10 @@ import { prisma } from "@repo/db";
 import { NextResponse } from "next/server";
 import { isLoggedIn } from "../../../../utils/auth";
 
-// Requirement: Logged in user can activate / deactivate a post (PATCH)
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  // 1. Security Check
   if (!(await isLoggedIn())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -15,15 +13,15 @@ export async function PATCH(
 
   try {
     const { id } = await params;
-    const body = await request.json(); // Expecting { active: boolean }
+    const body = await request.json();
 
-    const updatedPost = await prisma.post.update({
-      where: { id: parseInt(id) },
+    const updatedProduct = await prisma.product.update({
+      where: { id },
       data: { active: body.active },
     });
-    return NextResponse.json(updatedPost);
+    return NextResponse.json(updatedProduct);
   } catch (error) {
-    return NextResponse.json({ error: "Post not found" }, { status: 404 });
+    return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
 }
 
@@ -37,20 +35,30 @@ export async function PUT(
 
   const { id } = await params;
   const body = await request.json();
+  const price = Number(body.price);
+  const stock = Number(body.stock);
 
   try {
-    const updatedPost = await prisma.post.update({
-      where: { id: parseInt(id) },
+    const updatedProduct = await prisma.product.update({
+      where: { id },
       data: {
-        title: body.title,
-        description: body.description,
-        content: body.content,
-        imageUrl: body.imageUrl,
-        category: body.category,
-        tags: body.tags,
+        name: String(body.name ?? "").trim(),
+        slug: String(body.slug ?? "")
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+          .replace(/[^\w-]+/g, "")
+          .replace(/-+/g, "-"),
+        description: String(body.description ?? "").trim(),
+        imageUrl: String(body.imageUrl ?? "").trim(),
+        category: String(body.category ?? "").trim(),
+        price,
+        stock,
+        featured: Boolean(body.featured),
+        active: Boolean(body.active),
       },
     });
-    return NextResponse.json(updatedPost);
+    return NextResponse.json(updatedProduct);
   } catch (error) {
     return NextResponse.json({ error: "Update failed" }, { status: 400 });
   }

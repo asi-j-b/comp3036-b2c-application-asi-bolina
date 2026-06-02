@@ -1,4 +1,4 @@
-import { LoginForm } from "@repo/ui/auth/LoginForm";
+import { AdminLoginForm } from "../../../components/auth/AdminLoginForm";
 import { ProductEditorForm } from "../../../components/ProductEditorForm";
 import { isLoggedIn } from "../../../utils/auth";
 import styles from "../../page.module.css";
@@ -9,7 +9,7 @@ export default async function CreatePage() {
   if (!loggedIn) {
     return (
       <main className={styles.main}>
-        <LoginForm />
+        <AdminLoginForm />
       </main>
     );
   }

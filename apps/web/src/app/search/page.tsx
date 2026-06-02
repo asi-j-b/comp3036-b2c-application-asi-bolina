@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { mockProducts } from "@repo/db/data";
+import { prisma } from "@repo/db";
 
 export default async function Page({
   searchParams,
@@ -8,14 +8,20 @@ export default async function Page({
   searchParams: Promise<{ q: string }>;
 }) {
   const { q } = await searchParams;
-  const searchTerm = q?.toLowerCase() || "";
+  const searchTerm = q?.trim() || "";
 
-  const filteredProducts = mockProducts.filter((product) =>
-    product.active && (
-      product.name.toLowerCase().includes(searchTerm) || 
-      product.description.toLowerCase().includes(searchTerm) // Test specifically checks description!
-    )
-  );
+  const filteredProducts = await prisma.product.findMany({
+    where: {
+      active: true,
+      OR: searchTerm
+        ? [
+            { name: { contains: searchTerm } },
+            { description: { contains: searchTerm } },
+          ]
+        : undefined,
+    },
+    orderBy: { name: "asc" },
+  });
 
   return (
     <AppLayout>

@@ -1,11 +1,16 @@
 import { AppLayout } from "../components/Layout/AppLayout";
 import { ProductGrid } from "../components/Products/ProductGrid";
-import { mockProducts } from "@repo/db/data";
+import { prisma } from "@repo/db";
 
-export default function Home() {
+export default async function Home() {
+  const products = await prisma.product.findMany({
+    where: { active: true },
+    orderBy: [{ featured: "desc" }, { name: "asc" }],
+  });
+
   return (
     <AppLayout>
-      <ProductGrid products={mockProducts} />
+      <ProductGrid products={products} />
     </AppLayout>
   );
 }

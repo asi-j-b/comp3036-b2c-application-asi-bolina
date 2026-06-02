@@ -1,6 +1,7 @@
 import argon2 from "argon2";
 import { Role } from "@prisma/client";
 import { prisma } from "./client.js";
+import { mockProducts } from "./data.js";
 
 const seedUsers = [
   {
@@ -59,6 +60,37 @@ export async function seed() {
         name: user.name,
         role: user.role,
         active: true,
+      },
+    });
+  }
+
+  for (const product of mockProducts) {
+    await prisma.product.upsert({
+      where: { slug: product.slug },
+      update: {
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category,
+        stock: product.stock,
+        imageUrl: product.imageUrl,
+        rating: product.rating,
+        reviews: product.reviews,
+        featured: product.featured ?? false,
+        active: product.active,
+      },
+      create: {
+        slug: product.slug,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category,
+        stock: product.stock,
+        imageUrl: product.imageUrl,
+        rating: product.rating,
+        reviews: product.reviews,
+        featured: product.featured ?? false,
+        active: product.active,
       },
     });
   }

@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
-import { mockProducts } from "@repo/db/data";
+import { prisma } from "@repo/db";
 
 export async function GET() {
+  const productCount = await prisma.product.count();
+
   return NextResponse.json({
     ok: true,
-    message: "Static mock product data is already available for Iteration 1.",
-    productCount: mockProducts.length,
+    message: "Database product data is available.",
+    productCount,
   });
 }

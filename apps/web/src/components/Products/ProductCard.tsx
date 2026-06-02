@@ -14,7 +14,7 @@ export function ProductCard({
   onAddToCart,
 }: {
   product: Product;
-  onAddToCart: (productId: number) => void;
+  onAddToCart: (productId: string) => void;
 }) {
   return (
     <article className="group relative overflow-hidden rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] 
