@@ -1,9 +1,7 @@
-// Create post requirement, new record in the SQL database
 import { prisma } from "@repo/db";
 import { NextResponse } from "next/server";
 import { isLoggedIn } from "../../../utils/auth";
 
-// Requirement: Logged in user can create a new post to the database (POST)
 export async function POST(request: Request) {
   if (!(await isLoggedIn())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -11,28 +9,36 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
+    const name = String(body.name ?? "").trim();
+    const slug = String(body.slug ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]+/g, "")
+      .replace(/-+/g, "-");
+    const price = Number(body.price);
+    const stock = Number(body.stock);
 
-    if (!body || typeof body.title !== "string" || body.title.trim() === "") {
+    if (!name || !slug || !Number.isInteger(price) || price <= 0 || !Number.isInteger(stock) || stock < 0) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
     }
-    // Generate a urlId from the title (Slugify)
-    const urlId = body.title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
 
-    const newPost = await prisma.post.create({
+    const newProduct = await prisma.product.create({
       data: {
-        title: body.title,
-        urlId: urlId,
-        description: body.description,
-        content: body.content,
-        imageUrl: body.imageUrl,
-        category: body.category,
-        tags: body.tags,
-        active: true, // Default to active for new posts
+        name,
+        slug,
+        description: String(body.description ?? "").trim(),
+        imageUrl: String(body.imageUrl ?? "").trim(),
+        category: String(body.category ?? "").trim(),
+        price,
+        stock,
+        featured: Boolean(body.featured),
+        active: body.active === undefined ? true : Boolean(body.active),
       },
     });
 
-    return NextResponse.json(newPost);
+    return NextResponse.json(newProduct);
   } catch (error) {
-    return NextResponse.json({ error: "Could not create post" }, { status: 400 });
+    return NextResponse.json({ error: "Could not create product" }, { status: 400 });
   }
 }

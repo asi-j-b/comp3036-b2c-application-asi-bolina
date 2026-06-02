@@ -1,6 +1,6 @@
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { Main } from "@/components/Main";
-import { mockProducts } from "@repo/db/data";
+import { prisma } from "@repo/db";
 
 export default async function Page({
     params,
@@ -9,10 +9,16 @@ export default async function Page({
 }) {
     const { name } = await params;
 
-    const filteredProducts = mockProducts.filter((product) => {
-    const tagName = name.toLowerCase();
-    
-    return product.active;
+    const filteredProducts = await prisma.product.findMany({
+        where: {
+            active: true,
+            OR: [
+                { category: { contains: name } },
+                { name: { contains: name } },
+                { description: { contains: name } },
+            ],
+        },
+        orderBy: { name: "asc" },
     });
 
     return (

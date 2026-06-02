@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import { mockProducts } from "@repo/db/data";
 
-const likedProducts = new Set<number>();
+const likedProducts = new Set<string>();
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as { productId?: number };
-    const productId = Number(body.productId);
+    const body = (await request.json()) as { productId?: string };
+    const productId = String(body.productId ?? "");
 
-    if (!Number.isInteger(productId)) {
+    if (!productId) {
       return NextResponse.json({ error: "Invalid product id" }, { status: 400 });
     }
 

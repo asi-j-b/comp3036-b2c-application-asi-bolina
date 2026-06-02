@@ -4,11 +4,12 @@ import { useEffect, useState, type PropsWithChildren } from "react";
 import { LeftMenu } from "../Menu/LeftMenu";
 import { Content } from "../Content";
 import { SidebarContext } from "@/context/SidebarContext";
-import { mockProducts } from "@repo/db/data";
+import type { Product } from "@repo/db/data";
 
 export function AppLayoutClient({
   children,
-}: PropsWithChildren) {
+  products,
+}: PropsWithChildren<{ products: Product[] }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export function AppLayoutClient({
   return (
     <SidebarContext.Provider value={{ isOpen: sidebarOpen, toggle: () => setSidebarOpen(!sidebarOpen) }}>
       <div className="flex min-h-screen w-full flex-col lg:flex-row">
-        <LeftMenu isOpen={sidebarOpen} products={mockProducts} />
+        <LeftMenu isOpen={sidebarOpen} products={products} />
         <Content>
           {children}
         </Content>
