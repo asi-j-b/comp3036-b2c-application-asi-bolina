@@ -83,24 +83,6 @@ export function AdminList({ products }: { products: Product[] }) {
     }
   };
 
-  const handleDelete = async (id: string, name: string) => {
-    const confirmed = window.confirm(`Delete ${name}? This cannot be undone.`);
-
-    if (!confirmed) {
-      return;
-    }
-
-    const response = await fetch(`/api/posts/${id}`, {
-      method: "DELETE",
-    });
-
-    if (response.ok) {
-      router.refresh();
-    } else {
-      alert("Failed to delete product");
-    }
-  };
-
   const filteredProducts = useMemo(() => {
     const parsedDate = parseDateFilter(dateFilter);
     const query = contentFilter.trim().toLowerCase();
@@ -240,14 +222,6 @@ export function AdminList({ products }: { products: Product[] }) {
                 }`}
               >
                 {product.active ? "Active" : "Inactive"}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleDelete(product.id, product.name)}
-                className="rounded bg-red-50 px-3 py-1 text-sm font-medium text-red-700 hover:bg-red-100"
-              >
-                Delete
               </button>
             </div>
           </article>
