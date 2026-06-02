@@ -1,34 +1,14 @@
 import { NextResponse } from "next/server";
-import { mockProducts } from "@repo/db/data";
 
-const likedProducts = new Set<string>();
+const deprecated = {
+  error: "Deprecated endpoint",
+  message: "Likes endpoint is no longer used. Use cart and orders endpoints instead.",
+};
 
-export async function POST(request: Request) {
-  try {
-    const body = (await request.json()) as { productId?: string };
-    const productId = String(body.productId ?? "");
+export async function GET() {
+  return NextResponse.json(deprecated, { status: 410 });
+}
 
-    if (!productId) {
-      return NextResponse.json({ error: "Invalid product id" }, { status: 400 });
-    }
-
-    const product = mockProducts.find((item) => item.id === productId);
-
-    if (!product) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    }
-
-    if (likedProducts.has(productId)) {
-      likedProducts.delete(productId);
-    } else {
-      likedProducts.add(productId);
-    }
-
-    return NextResponse.json({
-      liked: likedProducts.has(productId),
-      likeCount: likedProducts.has(productId) ? 1 : 0,
-    });
-  } catch {
-    return NextResponse.json({ error: "Unable to update like" }, { status: 400 });
-  }
+export async function POST() {
+  return NextResponse.json(deprecated, { status: 410 });
 }
