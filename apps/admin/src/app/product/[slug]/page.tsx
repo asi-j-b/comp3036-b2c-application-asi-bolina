@@ -8,7 +8,7 @@ import styles from "../../page.module.css";
 export default async function UpdatePage({
   params,
 }: {
-  params: Promise<{ urlId: string }>;
+  params: Promise<{ slug: string }>;
 }) {
   const loggedIn = await isLoggedIn();
 
@@ -20,9 +20,9 @@ export default async function UpdatePage({
     );
   }
 
-  const { urlId } = await params;
+  const { slug } = await params;
   const product = await prisma.product.findUnique({
-    where: { slug: urlId },
+    where: { slug },
   });
 
   if (!product) {

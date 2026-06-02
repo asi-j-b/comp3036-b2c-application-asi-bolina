@@ -138,7 +138,7 @@ export function ProductEditorForm({
       return;
     }
 
-    const requestUrl = productId ? `/api/posts/${productId}` : "/api/posts";
+    const requestUrl = productId ? `/api/products/${productId}` : "/api/products";
     const requestMethod = productId ? "PUT" : "POST";
 
     void (async () => {

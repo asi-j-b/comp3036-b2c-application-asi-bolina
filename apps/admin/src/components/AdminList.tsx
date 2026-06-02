@@ -68,7 +68,7 @@ export function AdminList({ products }: { products: Product[] }) {
   const router = useRouter();
 
   const handleToggleActive = async (id: string, currentStatus: boolean) => {
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/products/${id}`, {
       method: "PATCH",
       body: JSON.stringify({ active: !currentStatus }),
       headers: {
@@ -80,6 +80,24 @@ export function AdminList({ products }: { products: Product[] }) {
       router.refresh();
     } else {
       alert("Failed to update product status");
+    }
+  };
+
+  const handleDelete = async (id: string, name: string) => {
+    const confirmed = window.confirm(`Delete ${name}? This cannot be undone.`);
+
+    if (!confirmed) {
+      return;
+    }
+
+    const response = await fetch(`/api/products/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      router.refresh();
+    } else {
+      alert("Failed to delete product");
     }
   };
 
@@ -183,7 +201,7 @@ export function AdminList({ products }: { products: Product[] }) {
 
       <div>
         <Link
-          href="/posts/create"
+          href="/products/create"
           className="inline-flex items-center justify-center rounded bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
         >
           Create Product
@@ -204,7 +222,7 @@ export function AdminList({ products }: { products: Product[] }) {
 
             <div className="space-y-2">
               <h2 className="text-lg font-semibold text-slate-900">
-                <Link href={`/post/${product.slug}`}>{product.name}</Link>
+                <Link href={`/product/${product.slug}`}>{product.name}</Link>
               </h2>
               <p className="text-sm text-slate-600">{product.description}</p>
               <p className="text-sm text-slate-600">
@@ -222,6 +240,14 @@ export function AdminList({ products }: { products: Product[] }) {
                 }`}
               >
                 {product.active ? "Active" : "Inactive"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDelete(product.id, product.name)}
+                className="rounded bg-red-50 px-3 py-1 text-sm font-medium text-red-700 hover:bg-red-100"
+              >
+                Delete
               </button>
             </div>
           </article>
