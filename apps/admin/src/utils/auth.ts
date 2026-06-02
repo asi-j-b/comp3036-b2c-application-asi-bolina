@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
+import { Role } from "@prisma/client";
 import { env } from "@repo/env/admin";
 import { cookies } from "next/headers";
 
+const ADMIN_AUTH_COOKIE = "admin_auth_token";
+
 export async function isLoggedIn() {
   const userCookies = await cookies();
-  const token = userCookies.get("auth_token")?.value;
+  const token = userCookies.get(ADMIN_AUTH_COOKIE)?.value;
 
   if(!token) {
     return false;
@@ -12,7 +15,7 @@ export async function isLoggedIn() {
 
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET || "") as { role?: string };
-    return decoded.role === "admin";
+    return decoded.role === Role.ADMIN;
   } catch (error) {
     return false;
   }

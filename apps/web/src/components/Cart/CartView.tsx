@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { mockProducts } from "@repo/db/data";
+import type { Product } from "@repo/db/data";
 import { useCart } from "@/hooks/useCart";
 
 function formatCurrency(value: number) {
@@ -12,8 +12,8 @@ function formatCurrency(value: number) {
   }).format(value);
 }
 
-export function CartView() {
-  const { cartItems, cartTotal, addToCart, removeFromCart, clearCart } = useCart(mockProducts);
+export function CartView({ products }: { products: Product[] }) {
+  const { cartItems, cartTotal, addToCart, removeFromCart, clearCart } = useCart(products);
 
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-8">

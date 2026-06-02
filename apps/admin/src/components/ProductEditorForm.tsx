@@ -1,30 +1,42 @@
 "use client";
 
-import { marked } from "marked";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useState } from "react";
 
 type ProductEditorValues = {
-  title: string;
+  name: string;
+  slug: string;
   category: string;
   description: string;
-  content: string;
   imageUrl: string;
   price: number;
-  tags: string;
+  stock: number;
+  featured: boolean;
+  active: boolean;
 };
 
 type EditorErrors = Partial<Record<keyof ProductEditorValues, string>>;
 
 const emptyValues: ProductEditorValues = {
-  title: "",
+  name: "",
+  slug: "",
   category: "",
   description: "",
-  content: "",
   imageUrl: "",
   price: 0,
-  tags: "",
+  stock: 0,
+  featured: false,
+  active: true,
 };
+
+function slugify(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/-+/g, "-");
+}
 
 function isValidUrl(value: string) {
   try {
@@ -38,18 +50,20 @@ function isValidUrl(value: string) {
 function validate(values: ProductEditorValues): EditorErrors {
   const errors: EditorErrors = {};
 
-  if (!values.title.trim()) {
-    errors.title = "Title is required";
+  if (!values.name.trim()) {
+    errors.name = "Name is required";
+  }
+
+  if (!values.slug.trim()) {
+    errors.slug = "Slug is required";
+  }
+
+  if (!values.category.trim()) {
+    errors.category = "Category is required";
   }
 
   if (!values.description.trim()) {
     errors.description = "Description is required";
-  } else if (values.description.length > 200) {
-    errors.description = "Description is too long. Maximum is 200 characters";
-  }
-
-  if (!values.content.trim()) {
-    errors.content = "Content is required";
   }
 
   if (!values.imageUrl.trim()) {
@@ -58,12 +72,12 @@ function validate(values: ProductEditorValues): EditorErrors {
     errors.imageUrl = "This is not a valid URL";
   }
 
-  if (!values.tags.trim()) {
-    errors.tags = "At least one tag is required";
+  if (!Number.isInteger(values.price) || values.price <= 0) {
+    errors.price = "Price must be a positive whole number";
   }
 
-  if (values.price <= 0) {
-    errors.price = "Price must be a positive number";
+  if (!Number.isInteger(values.stock) || values.stock < 0) {
+    errors.stock = "Stock must be zero or more";
   }
 
   return errors;
@@ -71,10 +85,10 @@ function validate(values: ProductEditorValues): EditorErrors {
 
 export function ProductEditorForm({
   initialValues,
-  postId,
+  productId,
 }: {
   initialValues?: Partial<ProductEditorValues>;
-  postId?: number;
+  productId?: string;
 }) {
   const router = useRouter();
   const [values, setValues] = useState<ProductEditorValues>({
@@ -83,22 +97,7 @@ export function ProductEditorForm({
   });
   const [errors, setErrors] = useState<EditorErrors>({});
   const [showErrorUi, setShowErrorUi] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const contentRef = useRef<HTMLTextAreaElement>(null);
-  const selectionRef = useRef<{ start: number; end: number } | null>(null);
-
-  const previewHtml = useMemo(() => {
-    return marked.parse(values.content) as string;
-  }, [values.content]);
-
-  useEffect(() => {
-    if (!showPreview && selectionRef.current && contentRef.current) {
-      const current = selectionRef.current;
-      contentRef.current.focus();
-      contentRef.current.setSelectionRange(current.start, current.end);
-    }
-  }, [showPreview]);
 
   function updateValue<K extends keyof ProductEditorValues>(
     key: K,
@@ -110,9 +109,26 @@ export function ProductEditorForm({
     }));
   }
 
+  function handleNameChange(nextName: string) {
+    setValues((current) => ({
+      ...current,
+      name: nextName,
+      slug: current.slug ? current.slug : slugify(nextName),
+    }));
+  }
+
   function handleSave(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextErrors = validate(values);
+
+    const payload = {
+      ...values,
+      name: values.name.trim(),
+      slug: slugify(values.slug),
+      category: values.category.trim(),
+      description: values.description.trim(),
+      imageUrl: values.imageUrl.trim(),
+    };
+    const nextErrors = validate(payload);
 
     setErrors(nextErrors);
     setShowErrorUi(Object.keys(nextErrors).length > 0);
@@ -122,8 +138,8 @@ export function ProductEditorForm({
       return;
     }
 
-    const requestUrl = postId ? `/api/posts/${postId}` : "/api/posts";
-    const requestMethod = postId ? "PUT" : "POST";
+    const requestUrl = productId ? `/api/products/${productId}` : "/api/products";
+    const requestMethod = productId ? "PUT" : "POST";
 
     void (async () => {
       const response = await fetch(requestUrl, {
@@ -131,27 +147,18 @@ export function ProductEditorForm({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
         setSuccessMessage("");
+        setShowErrorUi(true);
         return;
       }
 
-      setSuccessMessage("Product updated successfully");
+      setSuccessMessage(productId ? "Product updated successfully" : "Product created successfully");
       router.refresh();
     })();
-  }
-
-  function togglePreview() {
-    if (!showPreview && contentRef.current) {
-      selectionRef.current = {
-        start: contentRef.current.selectionStart,
-        end: contentRef.current.selectionEnd,
-      };
-    }
-    setShowPreview((current) => !current);
   }
 
   return (
@@ -172,16 +179,29 @@ export function ProductEditorForm({
       ) : null}
 
       <div>
-        <label htmlFor="title" className="mb-1 block text-sm font-medium">
-          Title
+        <label htmlFor="name" className="mb-1 block text-sm font-medium">
+          Name
         </label>
         <input
-          id="title"
-          value={values.title}
-          onChange={(event) => updateValue("title", event.target.value)}
+          id="name"
+          value={values.name}
+          onChange={(event) => handleNameChange(event.target.value)}
           className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
         />
-        {errors.title ? <p className="mt-1 text-sm text-red-600">{errors.title}</p> : null}
+        {errors.name ? <p className="mt-1 text-sm text-red-600">{errors.name}</p> : null}
+      </div>
+
+      <div>
+        <label htmlFor="slug" className="mb-1 block text-sm font-medium">
+          Slug
+        </label>
+        <input
+          id="slug"
+          value={values.slug}
+          onChange={(event) => updateValue("slug", event.target.value)}
+          className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+        />
+        {errors.slug ? <p className="mt-1 text-sm text-red-600">{errors.slug}</p> : null}
       </div>
 
       <div>
@@ -194,6 +214,7 @@ export function ProductEditorForm({
           onChange={(event) => updateValue("category", event.target.value)}
           className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
         />
+        {errors.category ? <p className="mt-1 text-sm text-red-600">{errors.category}</p> : null}
       </div>
 
       <div>
@@ -212,34 +233,38 @@ export function ProductEditorForm({
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="content" className="mb-1 block text-sm font-medium">
-          Content
-        </label>
-        <button
-          type="button"
-          onClick={togglePreview}
-          className="mb-2 rounded border border-slate-300 px-3 py-1 text-sm"
-        >
-          {showPreview ? "Close Preview" : "Preview"}
-        </button>
-        {showPreview ? (
-          <div
-            data-test-id="content-preview"
-            className="prose max-w-none rounded border border-slate-200 bg-slate-50 p-3 text-sm"
-            dangerouslySetInnerHTML={{ __html: previewHtml }}
-          />
-        ) : (
-          <textarea
-            id="content"
-            ref={contentRef}
-            rows={8}
-            value={values.content}
-            onChange={(event) => updateValue("content", event.target.value)}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="price" className="mb-1 block text-sm font-medium">
+            Price
+          </label>
+          <input
+            id="price"
+            type="number"
+            min="1"
+            step="1"
+            value={values.price}
+            onChange={(event) => updateValue("price", Number(event.target.value))}
             className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
           />
-        )}
-        {errors.content ? <p className="mt-1 text-sm text-red-600">{errors.content}</p> : null}
+          {errors.price ? <p className="mt-1 text-sm text-red-600">{errors.price}</p> : null}
+        </div>
+
+        <div>
+          <label htmlFor="stock" className="mb-1 block text-sm font-medium">
+            Stock
+          </label>
+          <input
+            id="stock"
+            type="number"
+            min="0"
+            step="1"
+            value={values.stock}
+            onChange={(event) => updateValue("stock", Number(event.target.value))}
+            className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+          />
+          {errors.stock ? <p className="mt-1 text-sm text-red-600">{errors.stock}</p> : null}
+        </div>
       </div>
 
       <div>
@@ -259,22 +284,29 @@ export function ProductEditorForm({
         <img
           data-test-id="image-preview"
           src={values.imageUrl || "about:blank"}
-          alt="Image Preview"
+          alt="Product preview"
           className="mt-2 h-28 w-full rounded border border-slate-200 object-cover"
         />
       </div>
 
-      <div>
-        <label htmlFor="tags" className="mb-1 block text-sm font-medium">
-          Tags
+      <div className="flex flex-wrap gap-4">
+        <label className="inline-flex items-center gap-2 text-sm font-medium">
+          <input
+            type="checkbox"
+            checked={values.featured}
+            onChange={(event) => updateValue("featured", event.target.checked)}
+          />
+          Featured
         </label>
-        <input
-          id="tags"
-          value={values.tags}
-          onChange={(event) => updateValue("tags", event.target.value)}
-          className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
-        />
-        {errors.tags ? <p className="mt-1 text-sm text-red-600">{errors.tags}</p> : null}
+
+        <label className="inline-flex items-center gap-2 text-sm font-medium">
+          <input
+            type="checkbox"
+            checked={values.active}
+            onChange={(event) => updateValue("active", event.target.checked)}
+          />
+          Active
+        </label>
       </div>
 
       <button

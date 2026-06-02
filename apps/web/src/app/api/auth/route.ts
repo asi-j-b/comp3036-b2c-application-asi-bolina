@@ -1,28 +1,43 @@
-// import { hashPassword } from '@/utils/hash';
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { Role } from "@prisma/client";
+import { prisma } from "@repo/db";
 import { env } from "@repo/env/web";
+import { verifyCustomerToken } from "@/utils/auth";
+import { verifyPassword } from "@/utils/hash";
+
+const WEB_AUTH_COOKIE = "web_auth_token";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { email, password } = body;
+    const normalizedEmail = String(email ?? "").trim().toLowerCase();
 
-    if (body.email === env.USER_EMAIL && body.password === env.USER_PASSWORD) {
+    const user = await prisma.user.findUnique({
+      where: { email: normalizedEmail },
+    });
+
+    if (
+      user &&
+      user.active &&
+      user.role === Role.CUSTOMER &&
+      await verifyPassword(user.password, String(password ?? ""))
+    ) {
       const token = jwt.sign(
-        { email, role: "user" }, 
-        process.env.JWT_SECRET!, 
+        { sub: user.id, email: user.email, role: user.role },
+        env.JWT_SECRET, 
         { expiresIn: '24h' }
       );
 
       const cookieStore = await cookies();
-      cookieStore.set('auth_token', token, {
+      cookieStore.set(WEB_AUTH_COOKIE, token, {
         path: '/',
         httpOnly: true, // Prevents XSS
         sameSite: 'strict', // Prevents CSRF
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 15, // 15 minutes
+        maxAge: 60 * 60 * 24, // 24 hours
       });
       return NextResponse.json({ success: true });
     }
@@ -34,23 +49,24 @@ export async function POST(request: Request) {
 
 export async function GET() {
   const cookieStore = await cookies();
-  const token = cookieStore.get("auth_token")?.value;
+  const token = cookieStore.get(WEB_AUTH_COOKIE)?.value;
 
   if (!token) {
     return NextResponse.json({ email: null, role: null });
   }
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { email: string; role: string };
-    return NextResponse.json({ email: decoded.email, role: decoded.role });
-  } catch (error) {
-    cookieStore.delete("auth_token");
+  const session = verifyCustomerToken(token);
+
+  if (!session) {
+    cookieStore.delete(WEB_AUTH_COOKIE);
     return NextResponse.json({ email: null, role: null });
   }
+
+  return NextResponse.json(session);
 }
 
 export async function DELETE() {
   const cookieStore = await cookies();
-  cookieStore.delete("auth_token");
+  cookieStore.delete(WEB_AUTH_COOKIE);
   return NextResponse.json({ success: true });
 }

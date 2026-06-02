@@ -10,15 +10,79 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  CUSTOMER 
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   
+  name      String?
+  role      Role     @default(CUSTOMER)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders    Order[]
+}
+
 model Product {
-  id     Int      @id @default(autoincrement())
-  urlId  String   @unique
-  title       String
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
   description String
-  content     String
-  category    String
-  imageUrl    String
   price       Int
-  active Boolean  @default(true)
-  tags String
+  category    String
+  stock       Int      @default(0)
+  imageUrl    String
+  rating      Float    @default(0.0)
+  reviews     Int      @default(0)
+  featured    Boolean  @default(false)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems  OrderItem[]
+
+  @@index([category])
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  totalAmount Int         
+  status      OrderStatus @default(COMPLETED)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  items       OrderItem[]
+
+  @@index([userId])
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  pricePaid Int      
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
 }

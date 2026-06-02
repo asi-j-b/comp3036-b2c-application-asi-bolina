@@ -1,6 +1,6 @@
 import { isLoggedIn } from "../utils/auth";
 import { AdminLoginForm } from "../components/auth/AdminLoginForm";
-import { LogoutButton } from "../components/auth/LogoutButton";
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -14,12 +14,5 @@ export default async function Home() {
     );
   }
 
-  return (
-    <main className={styles.main}>
-      <header className="mb-6 flex w-full max-w-5xl items-center justify-between gap-4">
-        <h1>Admin Dashboard</h1>
-        <LogoutButton />
-      </header>
-    </main>
-  );
+  redirect("/admin-dashboard");
 }

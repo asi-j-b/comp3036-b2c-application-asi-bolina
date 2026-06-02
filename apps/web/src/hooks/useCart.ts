@@ -11,31 +11,36 @@ export type CartItem = {
 const CART_STORAGE_KEY = "b2c_cart_items";
 
 export function useCart(products: Product[]) {
-  const [cart, setCart] = useState<Record<number, number>>(() => {
-    if (typeof window === "undefined") {
-      return {};
-    }
-
-    try {
-      const stored = window.localStorage.getItem(CART_STORAGE_KEY);
-      return stored ? (JSON.parse(stored) as Record<number, number>) : {};
-    } catch {
-      return {};
-    }
-  });
+  const [cart, setCart] = useState<Record<string, number>>({});
+  const [hasLoadedCart, setHasLoadedCart] = useState(false);
 
   useEffect(() => {
-    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-  }, [cart]);
+    try {
+      const stored = window.localStorage.getItem(CART_STORAGE_KEY);
+      setCart(stored ? (JSON.parse(stored) as Record<string, number>) : {});
+    } catch {
+      setCart({});
+    } finally {
+      setHasLoadedCart(true);
+    }
+  }, []);
 
-  function addToCart(productId: number) {
+  useEffect(() => {
+    if (!hasLoadedCart) {
+      return;
+    }
+
+    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart, hasLoadedCart]);
+
+  function addToCart(productId: string) {
     setCart((current) => ({
       ...current,
       [productId]: (current[productId] ?? 0) + 1,
     }));
   }
 
-  function removeFromCart(productId: number) {
+  function removeFromCart(productId: string) {
     setCart((current) => {
       const nextQuantity = (current[productId] ?? 0) - 1;
 

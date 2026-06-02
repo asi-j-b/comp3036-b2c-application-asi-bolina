@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppLayout } from "@/components/Layout/AppLayout";
-import { mockProducts } from "@repo/db/data";
+import { prisma } from "@repo/db";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-AU", {
@@ -14,12 +14,14 @@ function formatCurrency(value: number) {
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
-  const product = mockProducts.find((item) => item.slug === slug);
+  const { slug } = await params;
+  const product = await prisma.product.findUnique({
+    where: { slug },
+  });
 
-  if (!product) {
+  if (!product || !product.active) {
     notFound();
   }
 

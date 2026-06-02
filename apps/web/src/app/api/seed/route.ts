@@ -1,11 +1,12 @@
-import { seed } from "@repo/db/seed";
 import { NextResponse } from "next/server";
+import { prisma } from "@repo/db";
 
 export async function GET() {
-  if (!process.env.E2E) {
-    return new Response("Not Available", { status: 501 });
-  }
+  const productCount = await prisma.product.count();
 
-  await seed();
-  return NextResponse.json({ message: "Seeded" }, { status: 200 });
+  return NextResponse.json({
+    ok: true,
+    message: "Database product data is available.",
+    productCount,
+  });
 }

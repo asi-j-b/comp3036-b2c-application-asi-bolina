@@ -44,7 +44,7 @@
       "dependsOn": ["dev:test"]
     },
     "test-b2c": {
-      "dependsOn": ["check-types"]
+      "dependsOn": ["@repo/web#check-types"]
     },
     "dev:test-b2c": {
       "dependsOn": ["dev:test"]

@@ -1,11 +1,13 @@
 "use client";
 
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function AdminLoginForm() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -18,7 +20,7 @@ export function AdminLoginForm() {
     });
 
     if (response.ok) {
-      router.push("/dashboard");
+      router.push("/admin-dashboard");
       router.refresh();
       return;
     }
@@ -47,13 +49,23 @@ export function AdminLoginForm() {
             className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
           />
           <label className="text-xs font-semibold uppercase text-slate-400">Password</label>
-          <input
-            id="admin-password"
-            name="password"
-            type="password"
-            required
-            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
-          />
+          <div className="relative">
+            <input
+              id="admin-password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              required
+              className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 pr-11 text-sm text-slate-950 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-200"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((value) => !value)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              className="absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 transition hover:text-slate-900"
+            >
+              {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         <button

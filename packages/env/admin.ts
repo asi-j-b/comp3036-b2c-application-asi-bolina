@@ -7,8 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    ADMIN_EMAIL: z.string().email(),
-    ADMIN_PASSWORD: z.string(),
+    DATABASE_URL: z.string().url(),
     JWT_SECRET: z.string(),
   },
 
@@ -27,8 +26,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     // E2E: process.env.E2E,
-    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+    DATABASE_URL: process.env.DATABASE_URL,
     JWT_SECRET: process.env.JWT_SECRET,
   },
   /**

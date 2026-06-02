@@ -3,7 +3,7 @@ import { render } from "vitest-browser-react";
 import { ProductCard } from "./ProductCard";
 import { mockProducts } from "@repo/db/data";
 
-const product = mockProducts[0];
+const product = mockProducts[0]!;
 
 test("renders product data and calls add handler", async () => {
   const onAdd = vi.fn();

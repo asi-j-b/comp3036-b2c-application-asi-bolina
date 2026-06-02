@@ -34,7 +34,17 @@ pnpx playwright install
 
 ## Environment
 
-In all packages `apps/admin` and `packages/db` find `.env.example` files and copy them to `.env`. Set your environment variables accordingly!
+In `apps/web`, `apps/admin`, and `packages/db`, copy `.env.example` to `.env` and keep `DATABASE_URL` aligned to the same SQLite file:
+
+```
+DATABASE_URL="file:../../packages/db/prisma/dev.db"
+```
+
+For the db package Prisma CLI, use the package-local equivalent path in `packages/db/.env`:
+
+```
+DATABASE_URL="file:./dev.db"
+```
 
 ## Running the project
 

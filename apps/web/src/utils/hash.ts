@@ -1,10 +1,11 @@
-import { createHash } from 'node:crypto';
+import argon2 from "argon2";
 
-/**
- * Creates a SHA-256 hash of a password for secure comparison.
- * Design Choice: We use node:crypto to ensure passwords are never 
- * compared as plain-text in server memory.
- */
 export function hashPassword(password: string) {
-  return createHash('sha256').update(password).digest('hex');
+  return argon2.hash(password, {
+    type: argon2.argon2id,
+  });
+}
+
+export function verifyPassword(hash: string, password: string) {
+  return argon2.verify(hash, password);
 }

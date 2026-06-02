@@ -5,11 +5,12 @@ import { mockProducts } from "@repo/db/data";
 
 function TestComponent({ products }: { products: typeof mockProducts }) {
   const { addToCart, removeFromCart, cartCount, cartTotal, clearCart } = useCart(products);
+  const firstProduct = products[0]!;
 
   return (
     <div>
-      <button onClick={() => addToCart(products[0].id)}>Add</button>
-      <button onClick={() => removeFromCart(products[0].id)}>Remove</button>
+      <button onClick={() => addToCart(firstProduct.id)}>Add</button>
+      <button onClick={() => removeFromCart(firstProduct.id)}>Remove</button>
       <button onClick={() => clearCart()}>Clear</button>
       <span data-testid="count">{cartCount}</span>
       <span data-testid="total">{cartTotal}</span>
@@ -18,6 +19,7 @@ function TestComponent({ products }: { products: typeof mockProducts }) {
 }
 
 test("useCart add/remove/clear behave correctly", async () => {
+  window.localStorage.clear();
   const comp = render(<TestComponent products={mockProducts} />);
   const base = comp.baseElement as HTMLElement;
   const addBtn = base.querySelector('button:nth-of-type(1)') as HTMLElement;

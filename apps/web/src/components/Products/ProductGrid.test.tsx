@@ -1,20 +1,32 @@
 import { test, expect } from "vitest";
 import { render } from "vitest-browser-react";
 import { ProductGrid } from "./ProductGrid";
-import { mockProducts } from "../../data/mockProducts";
+import { mockProducts } from "@repo/db/data";
+import { SidebarContext } from "@/context/SidebarContext";
+
+function renderProductGrid() {
+  return render(
+    <SidebarContext.Provider value={{ isOpen: false, toggle: () => {} }}>
+      <ProductGrid products={mockProducts} />
+    </SidebarContext.Provider>,
+  );
+}
 
 test("renders all products initially", async () => {
-  const component = render(<ProductGrid products={mockProducts} />);
+  const component = renderProductGrid();
   const articles = component.baseElement.getElementsByTagName("article");
   expect(articles.length).toBe(mockProducts.length);
 });
 
 test("category filter hides non-matching items", async () => {
-  const component = render(<ProductGrid products={mockProducts} />);
+  const component = renderProductGrid();
   const base = component.baseElement as HTMLElement;
-  const electronicsBtn = Array.from(base.querySelectorAll("button")).find((b) => b.textContent === "Electronics");
-  expect(electronicsBtn).toBeTruthy();
-  (electronicsBtn as HTMLElement).click();
+  const categoryButton = Array.from(base.querySelectorAll("button")).find(
+    (button) => button.textContent?.trim() === "Electronics",
+  ) as HTMLButtonElement | undefined;
+  expect(categoryButton).toBeTruthy();
+
+  categoryButton?.click();
   await new Promise((r) => setTimeout(r, 0));
 
   const filtered = mockProducts.filter((p) => p.category === "Electronics");
