@@ -9,16 +9,18 @@ export default async function Page({
 }) {
   const { name } = await params;
 
-  const filteredProducts = await prisma.product.findMany({
+  // 1. Fetch active products from the database (Safe for SQLite and Postgres)
+  const allActiveProducts = await prisma.product.findMany({
     where: {
       active: true,
-      category: {
-        equals: name,
-        mode: "insensitive", // So ELECTRONICS and electronics are treated the same
-      },
     },
     orderBy: { name: "asc" },
   });
+
+  // 2. Perform safe, environment-independent case-insensitive array filtering in memory
+  const filteredProducts = allActiveProducts.filter(
+    (product) => product.category.toLowerCase() === name.toLowerCase()
+  );
 
   return (
     <AppLayout>
