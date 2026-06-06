@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PayNowButton } from "./PayNowButton";
 
 export default async function PaymentPage({
   params,
@@ -25,13 +26,54 @@ export default async function PaymentPage({
         <p className="mt-2 text-secondary">
           This payment page is for demonstration purposes.
         </p>
+        <form className="mt-4">
+          <div className="mb-4">
+            <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700">
+              Card Number
+            </label>
+            <input
+              type="text"
+              id="cardNumber"
+              name="cardNumber"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="expiry" className="block text-sm font-medium text-gray-700">
+              Expiry Date
+            </label>
+            <input
+              type="text"
+              id="expiry"
+              name="expiry"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="cvc" className="block text-sm font-medium text-gray-700">
+              CVC
+            </label>
+            <input
+              type="text"
+              id="cvc"
+              name="cvc"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              Cardholder Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
 
-        <button
-          type="button"
-          className="mt-6 rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
-        >
-          Pay Now
-        </button>
+          <PayNowButton orderId={orderId} />
+        </form>
       </div>
     </div>
   );
