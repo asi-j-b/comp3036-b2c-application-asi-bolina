@@ -1,236 +1,180 @@
-# Assignment 2 - Blog - Client App
+# COMP3036 B2C Store Application
 
-The goal of this assignment is to implement all the client side functionality.
-Example implementation is in the image below.
+A full-stack Business-to-Consumer store built as a continuation of the COMP3036 blog assignment. Customers browse products, manage a cart, complete mock payments, and view purchase history. Administrators manage products, inventory, and purchase records.
 
-## Success Criteria
+## Architecture
 
-- ✅ All of the tests must be passing
-- ✅ You must be able to explain any code in the codebase
+Monorepo managed with **pnpm** and **Turborepo**:
+
+| App / Package | Port | Purpose |
+|---|---|---|
+| `apps/web` | 3001 | Customer storefront |
+| `apps/admin` | 3002 | Admin dashboard |
+| `packages/db` | — | Prisma schema, seed data, database client |
+| `tests/playwright` | — | B2C and legacy E2E tests |
+
+**Stack:** Next.js (App Router), TypeScript, Prisma, SQLite (local) / PostgreSQL (deploy), JWT cookies (`web_auth_token`, `admin_auth_token`), Tailwind CSS, Vitest, Playwright.
 
 ## Prerequisites
 
-First, make sure that "pnpm" and "turbo" is installed in your computer. If not, please follow installation instructions for pnpm. If turbo is not installed, please install it using pnpm with the following command:
+- Node.js 20+
+- pnpm 10+
+- Turborepo (`pnpm add -g turbo`)
 
-Then, run the following command to install turborepo.
+## Setup
 
-```
-pnpm add -g turbo
-```
+1. Install dependencies from the repository root:
 
-## Installing the project
-
-Once the pnpm is installed, in the root of the project install the packages
-
-```
+```bash
 pnpm i
 ```
 
-To run end to end tests you need to install headless browsers. Please run the following command in the `tests/playwright-web` directory
+2. Copy environment files and align the database path:
 
-```
-pnpx playwright install
-```
-
-## Environment
-
-In `apps/web`, `apps/admin`, and `packages/db`, copy `.env.example` to `.env` and keep `DATABASE_URL` aligned to the same SQLite file:
-
-```
+```bash
+# apps/web/.env
 DATABASE_URL="file:../../packages/db/prisma/dev.db"
-```
+JWT_SECRET=secret
 
-For the db package Prisma CLI, use the package-local equivalent path in `packages/db/.env`:
+# apps/admin/.env
+DATABASE_URL="file:../../packages/db/prisma/dev.db"
+JWT_SECRET=secret
 
-```
+# packages/db/.env
 DATABASE_URL="file:./dev.db"
+JWT_SECRET=secret
 ```
 
-## Running the project
+3. Create and seed the database:
 
-To run the project, run the following command in the root directory of your project:
-
+```bash
+pnpm --filter @repo/db db:push
+pnpm --filter @repo/db db:seed
 ```
+
+4. Install Playwright browsers for E2E tests:
+
+```bash
+cd tests/playwright
+pnpm exec playwright install chromium
+```
+
+## Running the Application
+
+Start both apps:
+
+```bash
 turbo dev
 ```
 
-This will run:
+- Storefront: [http://localhost:3001](http://localhost:3001)
+- Admin: [http://localhost:3002](http://localhost:3002)
 
-- Client application at [http://localhost:3001](http://localhost:3001)
-- Admin application at [http://localhost:3002](http://localhost:3002)
+## Seed Users
 
-### Running Tests in Console
+| Role | Email | Password |
+|---|---|---|
+| Customer | `alicekingsley@gmail.com` | `P@ssword123!` |
+| Customer | `marcuschen@yahoo.com` | `Secure#2026` |
+| Admin | `johnathanbradley@admin.com` | `AdminPortal#1` |
+| Admin | `elenarostova@admin.com` | `M@sterKey99!` |
 
-If you only wish to visualise the test results in console, please run the following command in the root of your project for the Storefront assignment
+## Testing
 
-```
+### B2C submission tests (primary gate)
+
+With both apps running (`turbo dev`), from the repository root:
+
+```bash
 turbo test-b2c
 ```
 
-If you want to run all tests, please run
+This runs:
 
-```
-turbo all:test
-```
+- **Vitest** unit/browser tests in `apps/web`
+- **Playwright** B2C E2E tests in `tests/playwright` (storefront, mock payment, admin flows)
 
-This will launch the End to End testing framework Playwright's test UI similar to below, please use the Play buttons to run individual tests:
+Run only Playwright B2C tests:
 
-## 🛍️ Iteration 1: B2C Frontend with Mock Data
-
-This iteration pivots the blog application into a B2C e-commerce store with a focus on frontend-first development using static mock data. The following features have been implemented:
-
-### What's New (Steps 1-4)
-
-#### Step 1: Mock Product Data Layer
-- **File**: `packages/db/src/data.ts`
-- **Features**:
-  - Product type definition with id, name, price, category, stock, imageUrl, rating, and reviews
-  - 8 realistic mock products across 6 categories (Electronics, Clothing, Home, Kitchen, Footwear, Accessories)
-  - Helper functions: `getCategories()`, `filterByCategory()`, `searchProducts()`, `sortProducts()`
-- **Purpose**: Decouples UI from database until backend integration in Iteration 2
-
-#### Step 2: Product Discovery UI
-- **Files**: `apps/web/src/components/Products/ProductCard.tsx`, `apps/web/src/components/Products/ProductGrid.tsx`
-- **Features**:
-  - Responsive grid layout (1 col on mobile → 2 cols on tablet → 3 cols on desktop)
-  - Product cards with image, name, category, description, price (AUD format), stock level, and star rating
-  - Hero section with category introduction message
-  - "Add to Cart" button on each product card
-  - "Featured" badge for featured products
-- **Purpose**: Provides polished storefront UI for product browsing
-
-#### Step 3: Category & Search Filtering
-- **Integrated into**: `apps/web/src/components/Products/ProductGrid.tsx`
-- **Features**:
-  - Category filter pills (shows all categories + "All" option)
-  - Real-time search input (filters by product name and description, case-insensitive)
-  - Active filter display showing current selections
-  - Empty state message when no products match filters
-  - Live product count updates
-- **Purpose**: Enables customers to discover products efficiently
-
-#### Step 4: Local Shopping Cart
-- **File**: `apps/web/src/hooks/useCart.ts`
-- **Features**:
-  - React hook managing cart state with `useState`
-  - Methods: `addToCart(productId)`, `removeFromCart(productId)`, `clearCart()`
-  - Cart summary: `getCartTotal()`, `getCartCount()`, `getCartItems()`
-  - Integrated with ProductCard (Add to Cart button triggers cart updates)
-- **Purpose**: Provides session-level cart management (persistence to localStorage planned for Iteration 2)
-
-### How to Test Steps 1-4
-
-#### Running B2C Unit Tests
-
-To run only the B2C storefront tests:
-
-```
-turbo test-b2c
+```bash
+cd tests/playwright
+pnpm test-b2c
 ```
 
-This runs the following test suites:
+### Other test commands
 
-- **mockProducts.test.ts** (4 tests):
-  - ✅ getCategories() returns unique categories
-  - ✅ filterByCategory() filters products correctly
-  - ✅ searchProducts() matches by name and description
-  - ✅ sortProducts() sorts by name, price, and rating
-
-- **ProductCard.test.tsx** (1 browser test):
-  - ✅ Renders product card with all details and triggers add-to-cart callback
-
-- **ProductGrid.test.tsx** (2 browser tests):
-  - ✅ Renders all products and category filters
-  - ✅ Filters products by category when pill is clicked
-
-- **useCart.test.tsx** (1 browser test):
-  - ✅ Adds/removes items, calculates total and count correctly
-
-#### Running B2C Tests with UI
-
-To see the tests in the Vitest UI:
-
+```bash
+turbo all:test    # All unit + legacy + B2C tests
+turbo test        # Package unit tests
+turbo test-1      # Legacy blog client E2E (@a1)
+turbo test-2      # Legacy blog admin E2E (@a2)
+turbo test-3      # Legacy auth E2E (@a3)
 ```
+
+Vitest UI for storefront component tests:
+
+```bash
 turbo dev:test-b2c
 ```
 
-This launches the Vitest and Playwright test interfaces where you can run individual tests with play buttons.
+## Features
 
-#### Manual Testing in Browser
+### Customer (storefront)
 
-1. Start the development server:
-   ```
-   turbo dev
-   ```
+- Product catalogue with search and category filtering
+- Product detail pages
+- Local-storage shopping cart
+- Registration and JWT login
+- Checkout with mock payment gateway
+- Purchase history on the account page
+- `GET /api/orders` for authenticated order retrieval
 
-2. Visit [http://localhost:3001](http://localhost:3001) to see the B2C storefront
+### Admin
 
-3. Test the following scenarios:
-   - Browse products in the grid
-   - Click category filter pills to filter by category
-   - Type in the search box to filter by product name/description
-   - Click "Add to Cart" on products (cart count will update)
-   - Remove items from cart using the remove button
-   - Verify "Featured" badge appears on featured products
-   - Check responsive layout on mobile, tablet, and desktop
+- JWT staff login
+- Product create, update, delete, and active toggle
+- Inventory overview
+- Purchase records dashboard
 
-### New Project Files
+## API Documentation
 
-```
-apps/web/src/
-├── data/
-│   └── mockProducts.ts                 # Mock product data + helpers
-├── components/
-│   └── Products/
-│       ├── ProductCard.tsx             # Reusable product card component
-│       ├── ProductGrid.tsx             # Main discovery UI with filters
-│       ├── ProductCard.test.tsx        # Browser tests for ProductCard
-│       └── ProductGrid.test.tsx        # Browser tests for ProductGrid
-└── hooks/
-    ├── useCart.ts                      # Cart state management hook
-    └── useCart.test.tsx                # Browser tests for useCart
+See [API.md](./API.md) for request/response details.
+
+## Deployment
+
+1. Set `DATABASE_URL` to your hosted database (e.g. Neon PostgreSQL).
+2. Set `JWT_SECRET` in both `apps/web` and `apps/admin`.
+3. Run migrations and seed:
+
+```bash
+pnpm --filter @repo/db db:push
+pnpm --filter @repo/db db:seed
 ```
 
-Additionally, `mockProducts.test.ts` provides unit tests for the data layer.
+4. Build and start:
 
-### Next Steps (Iteration 2+)
+```bash
+turbo build
+pnpm --filter web start
+pnpm --filter admin start
+```
 
-- Add E2E tests for complete user workflows (browse → filter → add to cart → checkout)
-- Persist cart to localStorage for session recovery
-- Integrate with backend API for real product data
-- Implement checkout flow and payment integration
-- Clean up blog components (deferred, doesn't block Iteration 1)
+Deploy each Next.js app to your platform of choice (e.g. Vercel). Use separate deployments or ports for storefront and admin.
 
-## Project structure
+## CI
 
-The project is monorepo with the following packages split into three categories:
+GitHub Actions workflow `.github/workflows/grading.yml` builds the project, seeds the database, runs unit tests, and executes B2C E2E tests via `pnpm test-b2c` in `tests/playwright`.
 
-**Applications**
+## Project Structure
 
-Contains the following web applications:
-
-- **apps/admin** - Admin Website
-- **apps/web** - Client website
-
-**Packages**
-
-Contains the following packages with shared code and configurations:
-
-- **packages/ui** - Library of UI elements shared between admin and client
-- **packages/utils** - Library of utility functions shared between other projects
-- **packages/db** - Library handling the database connection
-- **packages/eslint-config**, **packages/tailwind-config** and **packages/typescript-config** contain configuration files for build pipelines for this project
-
-**Tests**
-
-Contains the following test applications:
-
-- **tests/playwright-admin** - End to End tests for the admin application
-- **tests/playwright-web** - End to End tests for the client application
-- **tests/storybook** - Configured storybook instance for development and testing of React components in isolation
-
-## Application Structure
-
-The client application comes with pre-defined router (only one route is missing for your learning).
-The client application also comes with pre defined structure of components and utilities for you to complete.
-Tha admin application is much more bare with most functionality AND structure needed to be completed by you.
+```
+apps/
+  web/          Storefront Next.js app
+  admin/        Admin Next.js app
+packages/
+  db/           Prisma schema, seed, shared data types
+  ui/           Shared UI components
+  utils/        Shared utilities
+tests/
+  playwright/   Playwright E2E tests (B2C + legacy assignments)
+```

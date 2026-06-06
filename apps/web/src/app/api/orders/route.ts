@@ -8,6 +8,28 @@ type IncomingCartItem = {
   quantity?: unknown;
 };
 
+export async function GET() {
+  const session = await getCustomerSession();
+
+  if (!session?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const orders = await prisma.order.findMany({
+    where: { userId: session.id },
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return NextResponse.json({ orders });
+}
+
 export async function POST(request: Request) {
   const session = await getCustomerSession();
 

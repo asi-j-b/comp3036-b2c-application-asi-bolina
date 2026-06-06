@@ -397,6 +397,20 @@ Which assignment requirements are satisfied by the change.
 
 ---
 
+# Autonomous Decision Making
+
+When implementing requested work:
+
+1. Prefer completing the task over requesting user decisions.
+2. Use AGENTS.md and existing code patterns as the decision framework.
+3. If multiple valid solutions exist, choose the one that:
+   - requires the smallest safe change,
+   - aligns with existing architecture,
+   - minimizes maintenance burden.
+4. Only ask the user for input when:
+   - requirements conflict,
+   - required information is missing,
+   - implementation would cause significant architectural change.
 
 --------------------
 

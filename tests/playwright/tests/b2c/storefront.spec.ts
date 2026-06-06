@@ -1,8 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const userEmail = process.env.USER_EMAIL ?? "alicekingsley@gmail.com";
-const userPassword = process.env.USER_PASSWORD ?? "P@ssword123!";
-
 async function clearCart(page: Page) {
   await page.addInitScript(() => window.localStorage.clear());
 }
@@ -110,42 +107,5 @@ test.describe("B2C storefront", () => {
       "href",
       "/login",
     );
-  });
-
- // With auth.setup.ts working properly, Alice is already logged in when the browser opens!
-  test("login, add item to cart, complete mock payment checkout flow", async ({
-    page,
-  }) => {
-    // 1. Go straight to the home page—you will already see your account session active!
-    await page.goto("/");
-    
-    // 2. Add an item to the cart
-    await page
-      .locator("article", { hasText: "AeroPulse Smart Watch" })
-      .getByRole("button", { name: "Add to cart" })
-      .click();
-
-    // 3. Move directly to checkout
-    await page.goto("/checkout");
-    await expect(page.getByText(`You are signed in as ${userEmail}.`)).toBeVisible();
-
-    // 4. Trigger order creation
-    await page.getByRole("button", { name: "Create order" }).click();
-
-    // 5. Land on payment gateway view screen
-    await expect(page).toHaveURL(/\/payment\//);
-    await expect(page.getByRole("heading", { name: "Mock Payment" })).toBeVisible();
-    
-    // 6. Fill out the mock payment form
-    await page.locator("#cardNumber").fill("4242424242424242");
-    await page.locator("#expiry").fill("12/28");
-    await page.locator("#cvc").fill("123");
-    await page.locator("#name").fill("Alice Kingsley");
-
-    // 7. Commit payment PATCH action
-    await page.getByRole("button", { name: "Pay Now" }).click();
-
-    // 8. Confirms successful database update and safe redirection
-    await expect(page).toHaveURL(/\/account$/);
   });
 });

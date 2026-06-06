@@ -1,36 +1,30 @@
 import { test as setup } from "@playwright/test";
-import { Role } from "@prisma/client";
+
+const customerEmail = process.env.USER_EMAIL ?? "alicekingsley@gmail.com";
+const customerPassword = process.env.USER_PASSWORD ?? "P@ssword123!";
 
 setup(
   "authenticate assignment 3",
   { tag: "@a3" },
   async ({ playwright }) => {
-  const authFile = ".auth/user.json";
-  const apiContext = await playwright.request.newContext();
+    const authFile = ".auth/user.json";
+    const apiContext = await playwright.request.newContext();
 
-  // Hit your genuine authentication route with matching seeded customer details
-  const response = await apiContext.post("http://localhost:3001/api/auth", {
-    data: {
-      email: "alicekingsley@gmail.com",
-      password: "P@ssword123!",
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    const response = await apiContext.post("http://localhost:3001/api/auth", {
+      data: {
+        email: customerEmail,
+        password: customerPassword,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  await apiContext.storageState({ path: authFile });
-  await apiContext.dispose();
-  }
-  /*
-  await apiContext.post("/api/auth", {
-    data: JSON.stringify({ password: "123" }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    if (!response.ok()) {
+      throw new Error(`Legacy auth setup failed: ${response.status()}`);
+    }
 
-  await apiContext.storageState({ path: authFile });
+    await apiContext.storageState({ path: authFile });
+    await apiContext.dispose();
   },
-  */
 );
