@@ -14,6 +14,7 @@ export default async function Page({
       active: true,
       category: {
         equals: name,
+        mode: "insensitive", // So ELECTRONICS and electronics are treated the same
       },
     },
     orderBy: { name: "asc" },
