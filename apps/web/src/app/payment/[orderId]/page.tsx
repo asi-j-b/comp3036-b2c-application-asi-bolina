@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function PaymentPage({
   params,
 }: {
@@ -7,7 +9,9 @@ export default async function PaymentPage({
 
   return (
     <div className="mx-auto max-w-2xl p-6">
-      <h1 className="text-3xl font-bold">Mock Payment</h1>
+      <h1 className="text-3xl font-bold">
+        Mock Payment
+      </h1>
 
       <p className="mt-4 text-secondary">
         Order ID: {orderId}
@@ -15,12 +19,19 @@ export default async function PaymentPage({
 
       <div className="mt-6 rounded-md border border-[var(--ring)] p-6">
         <p className="font-semibold">
-          This is a mock payment page.
+          Test Payment Gateway
         </p>
 
         <p className="mt-2 text-secondary">
-          Payment functionality will be added next.
+          This payment page is for demonstration purposes.
         </p>
+
+        <button
+          type="button"
+          className="mt-6 rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
+        >
+          Pay Now
+        </button>
       </div>
     </div>
   );
