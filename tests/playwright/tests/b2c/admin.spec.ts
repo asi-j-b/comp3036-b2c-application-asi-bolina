@@ -61,11 +61,9 @@ test.describe("Admin purchase records", () => {
     await expect(page.getByRole("heading", { name: "Purchase Records" })).toBeVisible();
     await expect(page.getByText("Customer orders and item totals.")).toBeVisible();
 
-    const hasOrders = await page.getByRole("columnheader", { name: "Product" }).isVisible();
-    const hasEmptyState = await page
-      .getByText("No orders have been placed yet.")
-      .isVisible();
+    const orderRecord = page.locator("article").filter({ hasText: /^Order / });
+    const emptyState = page.getByText("No orders have been placed yet.");
 
-    expect(hasOrders || hasEmptyState).toBeTruthy();
+    await expect(orderRecord.first().or(emptyState)).toBeVisible();
   });
 });

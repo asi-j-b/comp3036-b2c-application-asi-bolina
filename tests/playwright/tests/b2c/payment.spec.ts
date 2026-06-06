@@ -1,13 +1,10 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { customerEmail } from "./helpers";
-
-async function clearCart(page: Page) {
-  await page.addInitScript(() => window.localStorage.clear());
-}
 
 test.describe("Mock payment flow", () => {
   test.beforeEach(async ({ page }) => {
-    await clearCart(page);
+    await page.goto("/");
+    await page.evaluate(() => window.localStorage.clear());
   });
 
   test("customer completes checkout, mock payment, and order history", async ({
@@ -19,8 +16,10 @@ test.describe("Mock payment flow", () => {
       .locator("article", { hasText: "AeroPulse Smart Watch" })
       .getByRole("button", { name: "Add to cart" })
       .click();
+    await expect(page.getByRole("link", { name: "Cart" })).toContainText("1");
 
     await page.goto("/checkout");
+    await expect(page.getByRole("button", { name: "Create order" })).toBeVisible();
     await expect(page.getByText(`You are signed in as ${customerEmail}.`)).toBeVisible();
 
     await page.getByRole("button", { name: "Create order" }).click();
@@ -36,8 +35,10 @@ test.describe("Mock payment flow", () => {
     await page.getByRole("button", { name: "Pay Now" }).click();
 
     await expect(page).toHaveURL(/\/account$/);
-    await expect(page.getByText("AeroPulse Smart Watch")).toBeVisible();
-    await expect(page.getByText("COMPLETED")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Purchase history" })).toBeVisible();
+    await expect(
+      page.locator("article").filter({ hasText: "COMPLETED" }).first(),
+    ).toBeVisible();
 
     const ordersResponse = await page.request.get("/api/orders");
     expect(ordersResponse.ok()).toBeTruthy();

@@ -1,12 +1,9 @@
-import { expect, test, type Page } from "@playwright/test";
-
-async function clearCart(page: Page) {
-  await page.addInitScript(() => window.localStorage.clear());
-}
+import { expect, test } from "@playwright/test";
 
 test.describe("B2C storefront", () => {
   test.beforeEach(async ({ page }) => {
-    await clearCart(page);
+    await page.goto("/");
+    await page.evaluate(() => window.localStorage.clear());
   });
 
   test("home page loads product cards and navbar cart count starts at 0", async ({
