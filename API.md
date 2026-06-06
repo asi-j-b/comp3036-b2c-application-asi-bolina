@@ -136,6 +136,27 @@ Errors:
 - `401` unauthorized
 - `400` invalid item/cart/stock state
 
+### `PATCH /api/orders/:orderId/pay`
+Complete mock payment for a pending order owned by the current customer.
+
+Success: `200`
+```json
+{
+	"success": true,
+	"order": {
+		"id": "clx_order_1",
+		"totalAmount": 787,
+		"status": "COMPLETED",
+		"userId": "clx_user_1"
+	}
+}
+```
+
+Errors:
+- `401` unauthorized
+- `403` forbidden (order belongs to another user)
+- `404` order not found
+
 ### `GET /api/likes` and `POST /api/likes`
 Deprecated endpoint.
 
@@ -240,40 +261,7 @@ Success:
 { "success": true }
 ```
 
-### `GET /api/orders`
-Get all orders for admin purchase records.
-
-Success: `200`
-```json
-{
-	"orders": [
-		{
-			"id": "clx_order_1",
-			"totalAmount": 787,
-			"status": "PENDING",
-			"createdAt": "2026-06-02T10:00:00.000Z",
-			"user": {
-				"id": "clx_user_1",
-				"email": "alice@example.com",
-				"name": "Alice Kingsley"
-			},
-			"items": [
-				{
-					"id": "clx_item_1",
-					"quantity": 2,
-					"pricePaid": 219,
-					"product": {
-						"id": "clx_product_1",
-						"slug": "aeropulse-smart-watch",
-						"name": "AeroPulse Smart Watch",
-						"category": "Electronics"
-					}
-				}
-			]
-		}
-	]
-}
-```
+Admin purchase records are available through the admin dashboard UI at `/admin-dashboard/purchase-records`. There is no separate admin orders API route.
 
 ### `GET /api/likes` and `POST /api/likes`
 Deprecated endpoint.

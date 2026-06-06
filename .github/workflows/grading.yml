@@ -47,6 +47,8 @@ jobs:
         run: pnpm playwright install chromium --with-deps
       - name: Push Database 📦
         run: pnpm --filter @repo/db db:push
+      - name: Seed Database 🌱
+        run: pnpm --filter @repo/db db:seed
       - name: Build the project 🏗
         run: pnpm turbo build
 
@@ -85,6 +87,20 @@ jobs:
           test-name: Unit 3 - Web Components
           command: pnpm test
           timeout: 10
+          max-score: 1
+
+      ####################
+      # B2C STORE SUBMISSION
+      ####################
+      - name: Test B2C Store E2E
+        id: testB2c
+        uses: WesternSydneyUniversity/autograding-command-grader@v2
+        continue-on-error: true
+        with:
+          working-directory: tests/playwright
+          test-name: B2C Store E2E
+          command: pnpm test-b2c
+          timeout: 20
           max-score: 1
 
       ####################
@@ -164,5 +180,6 @@ jobs:
           TESTUTILS_RESULTS: "${{steps.testUtils.outputs.result}}"
           TESTUI_RESULTS: "${{steps.testUi.outputs.result}}"
           TESTWEB_RESULTS: "${{steps.testWeb.outputs.result}}"
+          TESTB2C_RESULTS: "${{steps.testB2c.outputs.result}}"
         with:
-          runners: npm1,npm2,npm3,testUtils,testUi,testWeb
+          runners: testB2c,npm1,npm2,npm3,testUtils,testUi,testWeb

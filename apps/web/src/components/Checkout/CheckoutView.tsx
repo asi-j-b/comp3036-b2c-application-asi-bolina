@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Product } from "@repo/db/data";
 import { useCart } from "@/hooks/useCart";
+import { useRouter } from "next/navigation";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-AU", {
@@ -21,9 +22,10 @@ export function CheckoutView({
   userEmail: string | null;
 }) {
   const { cartItems, cartTotal, clearCart } = useCart(products);
+  const router = useRouter();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [createdOrderId, setCreatedOrderId] = useState<string | null>(null);
 
   async function handleCreateOrder() {
     setIsSubmitting(true);
@@ -57,9 +59,9 @@ export function CheckoutView({
       return;
     }
 
-    setCreatedOrderId(data.order.id);
     clearCart();
     setIsSubmitting(false);
+    router.push(`/payment/${data.order.id}`);
   }
 
   if (!userEmail) {
@@ -74,24 +76,6 @@ export function CheckoutView({
           </Link>
         </div>
       </>
-    );
-  }
-
-  if (createdOrderId) {
-    return (
-      <div className="mt-4 space-y-4">
-        <p className="text-secondary">
-          Order {createdOrderId} was created and is pending payment.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/account" className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light">
-            View purchase history
-          </Link>
-          <Link href="/" className="rounded-md border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu">
-            Continue shopping
-          </Link>
-        </div>
-      </div>
     );
   }
 

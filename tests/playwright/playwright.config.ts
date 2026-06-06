@@ -56,7 +56,11 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: "setup", testMatch: /.*\.setup\.ts/ },
+    { name: "setup", testMatch: /tests\/auth\.setup\.ts/ },
+    {
+      name: "b2c-setup",
+      testMatch: /tests\/b2c\/auth\.setup\.ts/,
+    },
     {
       name: "chromium",
       testDir: "./tests/admin",
@@ -78,10 +82,33 @@ export default defineConfig({
     {
       name: "b2c-chromium",
       testDir: "./tests/b2c",
+      testIgnore: [/admin\.spec\.ts/, /payment\.spec\.ts/],
       use: {
         ...devices["Desktop Chrome"],
         baseURL: "http://localhost:3001",
       },
+      dependencies: ["b2c-setup"],
+    },
+    {
+      name: "b2c-auth-chromium",
+      testDir: "./tests/b2c",
+      testMatch: /payment\.spec\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:3001",
+        storageState: ".auth/customer.json",
+      },
+      dependencies: ["b2c-setup"],
+    },
+    {
+      name: "b2c-admin-chromium",
+      testDir: "./tests/b2c",
+      testMatch: /admin\.spec\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:3002",
+      },
+      dependencies: ["b2c-setup"],
     },
 
     // {
