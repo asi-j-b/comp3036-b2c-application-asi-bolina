@@ -31,7 +31,7 @@ export function UserLoginForm() {
   return (
     <div className="mx-auto w-full max-w-md rounded-[2rem] border border-[var(--ring)] bg-[var(--surface)] p-10 shadow-lg">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-primary">Full Stack Store</h1>
+        <h1 className="text-3xl font-bold text-primary">FSD</h1>
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
@@ -53,7 +53,7 @@ export function UserLoginForm() {
           </div>
         </div>
         <div className="text-center text-sm text-primary">
-          Don't have an account? <a href="/register" className="font-medium text-wsu hover:underline">Register</a>
+          New to FSD? <a href="/register" className="font-medium text-wsu hover:underline">Create account</a>
         </div>
         <button type="submit" className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110">
           Sign In

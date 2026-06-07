@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Full stack B2C Store Admin",
+  title: "Admin Portal | FSD",
   description: "Administration of Full Stack B2C Store",
 };
 
