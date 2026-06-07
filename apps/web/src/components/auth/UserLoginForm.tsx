@@ -8,23 +8,34 @@ export function UserLoginForm() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  // 1. ADDED IS_SUBMITTING STATE TRACKING FOR LOADING SESSIONS
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError("");
+    setIsSubmitting(true); // 2. TRIGGER LOADING FEEDBACK STATS IMMEDIATELY
+
     const formData = new FormData(event.currentTarget);
 
-    const response = await fetch("/api/auth", {
-      method: "POST",
-      body: JSON.stringify(Object.fromEntries(formData)),
-      headers: { "Content-Type": "application/json" },
-    });
+    try {
+      const response = await fetch("/api/auth", {
+        method: "POST",
+        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    if (response.ok) {
-      router.push("/");
-      router.refresh();
-      return;
-    } else {
-      setError("Invalid email or password.");
+      if (response.ok) {
+        router.push("/");
+        router.refresh();
+        return;
+      } else {
+        setError("Invalid email or password.");
+        setIsSubmitting(false); // RELEASE STATE ONLY ON VALIDATION FAILS
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      setIsSubmitting(false);
     }
   }
 
@@ -35,13 +46,23 @@ export function UserLoginForm() {
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">Email Address</label>
-          <input id="email" name="email" type="email" className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu"/>
+          <label htmlFor="email" className="text-sm font-medium">Email address</label>
+          <input 
+            id="email" 
+            name="email" 
+            type="email" 
+            className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" 
+          />
         </div>
         <div className="space-y-2">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
           <div className="relative">
-            <input id="password" name="password" type={showPassword ? "text" : "password"} className="w-full rounded-xl border border-[var(--ring)] p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+            <input 
+              id="password" 
+              name="password" 
+              type={showPassword ? "text" : "password"} 
+              className="w-full rounded-xl border border-[var(--ring)] p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu" 
+            />
             <button
               type="button"
               onClick={() => setShowPassword((value) => !value)}
@@ -52,11 +73,17 @@ export function UserLoginForm() {
             </button>
           </div>
         </div>
-        <button type="submit" className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110">
-          Sign In
+        
+        {/* 3. DYNAMIC BUTTON TEXT & SUBMISSION DISABLER */}
+        <button 
+          type="submit" 
+          disabled={isSubmitting}
+          className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {isSubmitting ? "Signing in..." : "Sign In"}
         </button>
-
       </form>
+      
       <div className="my-4 border-t border-[var(--ring)]">
         {error && <p className="mt-4 text-center text-sm text-red-500">{error}</p>}
       </div>
