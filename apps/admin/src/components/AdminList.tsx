@@ -97,7 +97,7 @@ export function AdminList({ products }: { products: Product[] }) {
     if (response.ok) {
       router.refresh();
     } else {
-      alert("Failed to delete product");
+      alert("Failed to delete product, please deactivate it first if it's active");
     }
   };
 
