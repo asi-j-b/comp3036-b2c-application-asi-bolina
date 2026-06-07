@@ -48,7 +48,12 @@ export function UserRegisterForm() {
   // Individual Error Condition Calculations
   const firstNameError = (touched.firstName || firstName.length > 0) && (firstName.trim().length < 1 || firstName.length > 60);
   const lastNameError = (touched.lastName || lastName.length > 0) && (lastName.trim().length < 1 || lastName.length > 60);
-  const emailError = (touched.email || email.length > 0) && !isEmailValid;
+  
+  // FIXED DUAL-LAYER EMAIL ERROR LOGIC MATCHING THE LOGIN FORM
+  const isEmailEmpty = email.trim().length === 0;
+  const showEmailEmptyError = touched.email && isEmailEmpty;
+  const showEmailFormatError = touched.email && !isEmailEmpty && !isEmailValid;
+
   const passwordError = (touched.password || password.length > 0) && metRequirementsCount < 3;
   const confirmPasswordError = (touched.confirmPassword || confirmPassword.length > 0) && password !== confirmPassword;
 
@@ -114,7 +119,7 @@ export function UserRegisterForm() {
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-primary">Create Account</h1>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
         
         {/* SIDE-BY-SIDE NAME INPUTS WITH FIELD ERRORS */}
         <div className="grid grid-cols-2 gap-4">
@@ -155,7 +160,7 @@ export function UserRegisterForm() {
           </div>
         </div>
 
-        {/* EMAIL ADDRESS WITH SPECIFIC FIELD ERROR */}
+        {/* EMAIL ADDRESS WITH CONDITIONAL DUAL-LAYER ERRORS */}
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">Email</label>
           <input 
@@ -166,11 +171,14 @@ export function UserRegisterForm() {
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => handleBlur("email")}
             className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 bg-white ${
-              emailError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
+              showEmailEmptyError || showEmailFormatError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
             }`}
           />
-          {emailError && (
-            <p className="text-xs text-red-500 font-medium">Please enter your email address</p>
+          {showEmailEmptyError && (
+            <p className="text-xs text-red-500 font-medium">Please enter your email address.</p>
+          )}
+          {showEmailFormatError && (
+            <p className="text-xs text-red-500 font-medium">Invalid email address. Please enter a valid email.</p>
           )}
         </div>
 
