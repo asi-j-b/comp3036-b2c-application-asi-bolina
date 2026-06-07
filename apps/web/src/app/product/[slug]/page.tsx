@@ -25,12 +25,21 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  // 🟢 Defensive Safeguard: Prevent malformed images from executing script string injects
+  const safeImageUrl = String(product.imageUrl ?? "").replace(/[<>"]/g, "");
+
   return (
     <AppLayout>
-      <section className="w-full px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 rounded-2xl border border-[var(--ring)] bg-[var(--surface)] p-6 md:grid-cols-2">
+      {/* 🟢 ACCESSIBILITY FIX: Wrapped page content in semantic main and article structural landmarks */}
+      <main role="main" id="main-content" className="w-full px-4 py-8 sm:px-6 lg:px-8">
+        <article className="grid gap-8 rounded-2xl border border-[var(--ring)] bg-[var(--surface)] p-6 md:grid-cols-2">
+          
           <div className="overflow-hidden rounded-xl bg-[var(--surface-muted)]">
-            <img src={product.imageUrl} alt={product.name} className="h-full w-full object-cover" />
+            <img 
+              src={safeImageUrl} 
+              alt={`Photo of ${product.name}`} // 🟢 ACCESSIBILITY FIX: Explicit descriptive alt tag text
+              className="h-full w-full object-cover" 
+            />
           </div>
 
           <div className="space-y-4">
@@ -41,23 +50,29 @@ export default async function ProductDetailPage({
             <p className="leading-7 text-secondary">{product.description}</p>
             <p className="text-sm text-secondary">{product.stock} in stock</p>
 
-            <div className="flex flex-wrap gap-3 pt-2">
+            {/* 🟢 ACCESSIBILITY FIX: Explicit aria-labels and sequential tabIndex loops for keyboard navigation */}
+            <div className="flex flex-wrap gap-3 pt-2" role="navigation" aria-label="Product Actions">
               <Link
                 href="/"
-                className="rounded-md border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary hover:border-wsu hover:text-wsu"
+                tabIndex={1}
+                aria-label="Return to the main product list catalog"
+                className="rounded-md border border-[var(--ring)] px-4 py-2 text-sm font-semibold text-primary outline-none focus:ring-2 focus:ring-wsu hover:border-wsu hover:text-wsu"
               >
                 Back to products
               </Link>
               <Link
                 href="/cart"
-                className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white hover:bg-wsu-light"
+                tabIndex={2}
+                aria-label="View items added to your shopping cart"
+                className="rounded-md bg-wsu px-4 py-2 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wsu hover:bg-wsu-light"
               >
                 Go to cart
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+
+        </article>
+      </main>
     </AppLayout>
   );
 }
