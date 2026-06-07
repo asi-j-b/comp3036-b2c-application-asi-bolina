@@ -2,6 +2,10 @@ import { redirect } from "next/navigation";
 import { UserRegisterForm } from "@/components/auth/UserRegisterForm";
 import { isCustomerAuthenticated } from "@/utils/auth";
 
+export const metadata = {
+  title: "Register | FSD",
+};
+
 export default async function RegisterPage() {
   if (await isCustomerAuthenticated()) {
     redirect("/account");

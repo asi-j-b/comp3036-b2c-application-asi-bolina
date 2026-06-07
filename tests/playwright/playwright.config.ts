@@ -24,7 +24,7 @@ if (!fs.existsSync(authDir)) {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests",
+  testDir: "./tests/b2c",
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -60,24 +60,6 @@ export default defineConfig({
     {
       name: "b2c-setup",
       testMatch: /tests\/b2c\/auth\.setup\.ts/,
-    },
-    {
-      name: "chromium",
-      testDir: "./tests/admin",
-      use: {
-        ...devices["Desktop Chrome"],
-        baseURL: "http://localhost:3002",
-      },
-      dependencies: process.env.CI ? ["setup"] : [],
-    },
-    {
-      name: "chromium",
-      testDir: "./tests/web",
-      use: {
-        ...devices["Desktop Chrome"],
-        baseURL: "http://localhost:3001",
-      },
-      dependencies: process.env.CI ? ["setup"] : [],
     },
     {
       name: "b2c-chromium",

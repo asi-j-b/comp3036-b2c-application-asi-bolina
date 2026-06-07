@@ -43,6 +43,23 @@ const seedUsers = [
 ] as const;
 
 export async function seed() {
+  console.log("⏳ Initializing database teardown...");
+
+  try {
+    // 🟢 STRONGLY TYPED TEARDOWN: Clears old mock orders first.
+    // Thanks to your onDelete: Cascade configuration, deleting Orders automatically flushes all OrderItems cleanly!
+    await prisma.order.deleteMany({});
+    
+    // Clear out baseline product listings and user accounts completely
+    await prisma.product.deleteMany({});
+    await prisma.user.deleteMany({});
+    
+    console.log("🧹 Tables cleared successfully. Rebuilding pristine seed entries...");
+  } catch (error) {
+    console.warn("⚠️ Teardown warning:", error);
+  }
+
+  // Populate Users
   for (const user of seedUsers) {
     const hashedPassword = await argon2.hash(user.password, { type: argon2.argon2id });
 
@@ -64,6 +81,7 @@ export async function seed() {
     });
   }
 
+  // Populate Products
   for (const product of mockProducts) {
     await prisma.product.upsert({
       where: { slug: product.slug },
@@ -94,6 +112,8 @@ export async function seed() {
       },
     });
   }
+  
+  console.log("✅ Database successfully reset and rebuilt with pristine mock data records!");
 }
 
 export async function seedAndDisconnect() {

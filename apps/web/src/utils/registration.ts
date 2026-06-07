@@ -6,12 +6,12 @@ export const registerSchema = z
       .string()
       .trim()
       .min(1, "First name is required")
-      .max(40, "First name must be 40 characters or fewer"),
+      .max(60, "First name must be 60 characters or fewer"), // Aligned with your form limit
     lastName: z
       .string()
       .trim()
       .min(1, "Last name is required")
-      .max(40, "Last name must be 40 characters or fewer"),
+      .max(60, "Last name must be 60 characters or fewer"), // Aligned with your form limit
     email: z
       .string()
       .trim()
@@ -21,11 +21,10 @@ export const registerSchema = z
     password: z
       .string()
       .min(8, "Password must be at least 8 characters")
-      .max(128, "Password must be 128 characters or fewer")
-      .regex(/[A-Z]/, "Password must include an uppercase letter")
-      .regex(/[a-z]/, "Password must include a lowercase letter")
+      .max(60, "Password must be 60 characters or fewer") // Aligned with your form limit
+      // 🟢 The uppercase and lowercase constraints have been removed here to match your form checkboxes
       .regex(/[0-9]/, "Password must include a number")
-      .regex(/[^A-Za-z0-9]/, "Password must include a special character"),
+      .regex(/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, "Password must include a special character"),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
