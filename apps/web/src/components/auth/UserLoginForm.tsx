@@ -52,14 +52,17 @@ export function UserLoginForm() {
             </button>
           </div>
         </div>
-        <div className="text-center text-sm text-primary">
-          New to FSD? <a href="/register" className="font-medium text-wsu hover:underline">Create account</a>
-        </div>
         <button type="submit" className="w-full rounded-full bg-wsu py-3 font-semibold text-white transition hover:brightness-110">
           Sign In
         </button>
+
       </form>
-      {error && <p className="mt-4 text-center text-sm text-red-500">{error}</p>}
+      <div className="my-4 border-t border-[var(--ring)]">
+        {error && <p className="mt-4 text-center text-sm text-red-500">{error}</p>}
+      </div>
+      <div className="text-center text-sm text-primary">
+        New to FSD? <a href="/register" className="font-medium text-wsu hover:underline">Create account</a>
+      </div>
     </div>
   );
 }
