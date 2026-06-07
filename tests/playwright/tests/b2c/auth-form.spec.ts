@@ -49,7 +49,7 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
     // Verify border shifts to red and the specific requirement indicator turns into a red '✕'
     await expect(passwordInput).toHaveClass(/border-red-500/);
     
-    // 🟢 FIXED SELECTORS: Binds cleanly to test IDs to isolate validation text changes
+    // FIXED SELECTORS: Binds cleanly to test IDs to isolate validation text changes
     const lengthIndicator = page.locator('[data-test-id="req-length"]');
     const numberIndicator = page.locator('[data-test-id="req-number"]');
     const symbolIndicator = page.locator('[data-test-id="req-symbol"]');
@@ -147,5 +147,41 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
     // Click alternative masked variant step block to seal input details back down
     await page.getByRole("button", { name: "Hide password" }).click();
     await expect(passwordInput).toHaveAttribute("type", "password");
+  });
+
+  // 🟢 NEW ADDED CUSTOMER LOGIN HAPPY PATH TEST CASE
+  test("Login: valid authentication credentials route user to home page catalog", async ({ page }) => {
+    await page.goto("http://localhost:3001/login");
+
+    // Seed data corresponding to an active customer account in your mock DB/environment
+    await page.locator("#email").fill("alicekingsley@gmail.com");
+    await page.locator("#password").fill("P@ssword123!");
+
+    // Execute submission trigger
+    await page.getByRole("button", { name: "Sign In" }).click();
+
+    // 🟢 Verifies that the app satisfies the project core functionality redirection successfully
+    await expect(page).toHaveURL("http://localhost:3001/");
+  });
+
+  // 🔴 UNHAPPY PATH: Verifies UI displays backend authorization failures
+  test("Login: entering incorrect credentials displays localized error banner", async ({ page }) => {
+    // Mock a 401 Unauthorized database failure from your backend API
+    await page.route("**/api/auth", async (route) => {
+      await route.fulfill({
+        status: 401,
+        contentType: "application/json",
+        body: JSON.stringify({ message: "Invalid email or password" }),
+      });
+    });
+
+    await page.goto("http://localhost:3001/login");
+    await page.locator("#email").fill("wrong-user@westernsydney.edu.au");
+    await page.locator("#password").fill("WrongPassword123!");
+    await page.getByRole("button", { name: "Sign In" }).click();
+
+    // Verify the UI safely traps the backend error message and displays it to the user
+    await expect(page.getByText("Invalid email or password")).toBeVisible();
+    await expect(page).toHaveURL("http://localhost:3001/login"); // Ensures no redirection occurs
   });
 });
