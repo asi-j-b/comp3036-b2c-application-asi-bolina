@@ -132,6 +132,7 @@ export function UserRegisterForm() {
               id="firstName" 
               name="firstName" 
               type="text" 
+              maxLength={60}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               onBlur={() => handleBlur("firstName")}
@@ -151,6 +152,7 @@ export function UserRegisterForm() {
               name="lastName" 
               type="text" 
               value={lastName}
+              maxLength={60}
               onChange={(e) => setLastName(e.target.value)}
               onBlur={() => handleBlur("lastName")}
               className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 bg-white ${
@@ -193,6 +195,7 @@ export function UserRegisterForm() {
               id="password" 
               name="password" 
               type={showPassword ? "text" : "password"} 
+              maxLength={60}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onBlur={() => handleBlur("password")}
@@ -224,35 +227,44 @@ export function UserRegisterForm() {
             }}
           />
         </div>
-
-        {/* THE SINGLE, CLEAN PASSING CHECKLIST SYSTEM WITH DYNAMIC COLOUR CHANGER */}
+        {/* PASSWORD REQUIREMENT MATRIX */}
         <div className="text-xs space-y-1 p-3 bg-neutral-50 border rounded-xl text-neutral-600">
+          <div className="text-neutral-800 font-medium mb-1">Password requirements:</div>
           {/* Requirement 1: Length */}
           <div className="flex items-center gap-2">
-            <span className={isLongEnough ? "text-green-600 font-bold" : showPasswordRequirementsError && !isLongEnough ? "text-red-500 font-bold" : "text-neutral-300"}>
+            <span 
+              data-test-id="req-length"
+              className={isLongEnough ? "text-green-600 font-bold" : showPasswordRequirementsError ? "text-red-500 font-bold" : "text-neutral-300 font-bold"}
+            >
               {isLongEnough ? "✓" : "✕"}
             </span>
-            <span className={isLongEnough ? "text-green-600 font-medium" : showPasswordRequirementsError && !isLongEnough ? "text-red-500 font-medium" : "text-neutral-500"}>
+            <span className={isLongEnough ? "text-green-600 font-medium" : showPasswordRequirementsError ? "text-red-500 font-medium" : "text-neutral-500"}>
               At least 8 characters
             </span>
           </div>
 
           {/* Requirement 2: Numbers */}
           <div className="flex items-center gap-2">
-            <span className={hasNumber ? "text-green-600 font-bold" : showPasswordRequirementsError && !hasNumber ? "text-red-500 font-bold" : "text-neutral-300"}>
+            <span 
+              data-test-id="req-number"
+              className={hasNumber ? "text-green-600 font-bold" : showPasswordRequirementsError ? "text-red-500 font-bold" : "text-neutral-300 font-bold"}
+            >
               {hasNumber ? "✓" : "✕"}
             </span>
-            <span className={hasNumber ? "text-green-600 font-medium" : showPasswordRequirementsError && !hasNumber ? "text-red-500 font-medium" : "text-neutral-500"}>
+            <span className={hasNumber ? "text-green-600 font-medium" : showPasswordRequirementsError ? "text-red-500 font-medium" : "text-neutral-500"}>
               Contains at least 1 number
             </span>
           </div>
 
           {/* Requirement 3: Special Symbols */}
           <div className="flex items-center gap-2">
-            <span className={hasSymbol ? "text-green-600 font-bold" : showPasswordRequirementsError && !hasSymbol ? "text-red-500 font-bold" : "text-neutral-300"}>
+            <span 
+              data-test-id="req-symbol"
+              className={hasSymbol ? "text-green-600 font-bold" : showPasswordRequirementsError ? "text-red-500 font-bold" : "text-neutral-300 font-bold"}
+            >
               {hasSymbol ? "✓" : "✕"}
             </span>
-            <span className={hasSymbol ? "text-green-600 font-medium" : showPasswordRequirementsError && !hasSymbol ? "text-red-500 font-medium" : "text-neutral-500"}>
+            <span className={hasSymbol ? "text-green-600 font-medium" : showPasswordRequirementsError ? "text-red-500 font-medium" : "text-neutral-500"}>
               Contains at least 1 special character
             </span>
           </div>
@@ -272,7 +284,6 @@ export function UserRegisterForm() {
               className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 bg-white ${
                 confirmPasswordError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`}
-              required
             />
             <button
               type="button"

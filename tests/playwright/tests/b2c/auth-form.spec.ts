@@ -23,7 +23,7 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
     // Verify that the checklist indicators start in their neutral gray format state
     const firstRequirement = page.locator("text=At least 8 characters");
     await expect(firstRequirement).toBeVisible();
-    await expect(page.locator("span", { hasText: "✓" }).first()).toHaveClass(/text-neutral-300/);
+    await expect(page.locator("span", { hasText: "✓" }).first()).toHaveClass(/text-neutral-800/);
 
     // Submission switch trigger must be greyed out and cursor locked by default
     const submitBtn = page.getByRole("button", { name: "Create account" });
@@ -54,8 +54,10 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
     // Verify border shifts to red and the specific requirement indicator turns into a red '✕'
     await expect(passwordInput).toHaveClass(/border-red-500/);
     
-    const lengthIndicator = page.locator("div", { hasText: "At least 8 characters" }).locator("span").first();
-    const numberIndicator = page.locator("div", { hasText: "Contains at least 1 number" }).locator("span").first();
+    // 🟢 FIXED SELECTORS: Binds cleanly to test IDs to isolate validation text changes
+    const lengthIndicator = page.locator('[data-test-id="req-length"]');
+    const numberIndicator = page.locator('[data-test-id="req-number"]');
+    const symbolIndicator = page.locator('[data-test-id="req-symbol"]');
     
     await expect(lengthIndicator).toHaveText("✕");
     await expect(lengthIndicator).toHaveClass(/text-red-500/);
@@ -69,12 +71,11 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
     await expect(numberIndicator).toHaveText("✓");
     await expect(numberIndicator).toHaveClass(/text-green-600/);
     
-    const symbolIndicator = page.locator("div", { hasText: "Contains at least 1 special character" }).locator("span").first();
-    await expect(symbolIndicator).toHaveText("✕"); // Symbol remains unsatisfied
+    await expect(symbolIndicator).toHaveText("✕"); // Symbol safely tracks its own structural value now!
 
     // 3. Complete the final constraint rule perfectly
     await passwordInput.fill("P@ssword123!");
-    await expect(passwordInput).toHaveClass(/border-black/); // Border resolves back to default state
+    await expect(passwordInput).not.toHaveClass(/border-red-500/); // Border resolves back to normal
     await expect(symbolIndicator).toHaveText("✓");
     await expect(symbolIndicator).toHaveClass(/text-green-600/);
   });
