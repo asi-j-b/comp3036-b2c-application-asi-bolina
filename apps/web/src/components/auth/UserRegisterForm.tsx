@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { registerSchema } from "@/utils/registration";
-// 1. IMPORT THE HEROICONS TO MATCH YOUR LOGIN FORM
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export function UserRegisterForm() {
@@ -49,12 +48,16 @@ export function UserRegisterForm() {
   const firstNameError = (touched.firstName || firstName.length > 0) && (firstName.trim().length < 1 || firstName.length > 60);
   const lastNameError = (touched.lastName || lastName.length > 0) && (lastName.trim().length < 1 || lastName.length > 60);
   
-  // FIXED DUAL-LAYER EMAIL ERROR LOGIC MATCHING THE LOGIN FORM
+  // Dual-layer email checks
   const isEmailEmpty = email.trim().length === 0;
   const showEmailEmptyError = touched.email && isEmailEmpty;
   const showEmailFormatError = touched.email && !isEmailEmpty && !isEmailValid;
 
-  const passwordError = (touched.password || password.length > 0) && metRequirementsCount < 3;
+  // Password outline error tracking (triggers red outline if blurred empty OR if requirements are missing)
+  const isPasswordEmpty = password.length === 0;
+  const showPasswordEmptyError = touched.password && isPasswordEmpty;
+  const showPasswordRequirementsError = (touched.password || password.length > 0) && !isPasswordEmpty && metRequirementsCount < 3;
+
   const confirmPasswordError = (touched.confirmPassword || confirmPassword.length > 0) && password !== confirmPassword;
 
   // Global submission verification flag
@@ -182,7 +185,7 @@ export function UserRegisterForm() {
           )}
         </div>
 
-        {/* PASSWORD INPUT WITH NEW EYE ICONS */}
+        {/* PASSWORD INPUT WITH EYE ICONS */}
         <div className="space-y-2 relative">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
           <div className="relative">
@@ -194,7 +197,7 @@ export function UserRegisterForm() {
               onChange={(e) => setPassword(e.target.value)}
               onBlur={() => handleBlur("password")}
               className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 bg-white ${
-                passwordError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
+                showPasswordEmptyError || showPasswordRequirementsError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`}
             />
             <button
@@ -206,7 +209,8 @@ export function UserRegisterForm() {
               {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
             </button>
           </div>
-          {passwordError && (
+          
+          {showPasswordEmptyError && (
             <p className="text-xs text-red-500 font-medium">Please enter a password.</p>
           )}
         </div>
@@ -221,19 +225,36 @@ export function UserRegisterForm() {
           />
         </div>
 
-        {/* PASSWORD REQUIREMENT MATRIX */}
+        {/* THE SINGLE, CLEAN PASSING CHECKLIST SYSTEM WITH DYNAMIC COLOUR CHANGER */}
         <div className="text-xs space-y-1 p-3 bg-neutral-50 border rounded-xl text-neutral-600">
+          {/* Requirement 1: Length */}
           <div className="flex items-center gap-2">
-            <span className={isLongEnough ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={isLongEnough ? "text-green-600 font-medium" : "text-neutral-500"}>At least 8 characters</span>
+            <span className={isLongEnough ? "text-green-600 font-bold" : showPasswordRequirementsError && !isLongEnough ? "text-red-500 font-bold" : "text-neutral-300"}>
+              {isLongEnough ? "✓" : "✕"}
+            </span>
+            <span className={isLongEnough ? "text-green-600 font-medium" : showPasswordRequirementsError && !isLongEnough ? "text-red-500 font-medium" : "text-neutral-500"}>
+              At least 8 characters
+            </span>
           </div>
+
+          {/* Requirement 2: Numbers */}
           <div className="flex items-center gap-2">
-            <span className={hasNumber ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={hasNumber ? "text-green-600 font-medium" : "text-neutral-500"}>Contains at least 1 number</span>
+            <span className={hasNumber ? "text-green-600 font-bold" : showPasswordRequirementsError && !hasNumber ? "text-red-500 font-bold" : "text-neutral-300"}>
+              {hasNumber ? "✓" : "✕"}
+            </span>
+            <span className={hasNumber ? "text-green-600 font-medium" : showPasswordRequirementsError && !hasNumber ? "text-red-500 font-medium" : "text-neutral-500"}>
+              Contains at least 1 number
+            </span>
           </div>
+
+          {/* Requirement 3: Special Symbols */}
           <div className="flex items-center gap-2">
-            <span className={hasSymbol ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={hasSymbol ? "text-green-600 font-medium" : "text-neutral-500"}>Contains at least 1 special character</span>
+            <span className={hasSymbol ? "text-green-600 font-bold" : showPasswordRequirementsError && !hasSymbol ? "text-red-500 font-bold" : "text-neutral-300"}>
+              {hasSymbol ? "✓" : "✕"}
+            </span>
+            <span className={hasSymbol ? "text-green-600 font-medium" : showPasswordRequirementsError && !hasSymbol ? "text-red-500 font-medium" : "text-neutral-500"}>
+              Contains at least 1 special character
+            </span>
           </div>
         </div>
 
