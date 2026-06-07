@@ -127,8 +127,8 @@ export function UserRegisterForm() {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               onBlur={() => handleBlur("firstName")}
-              className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
-                firstNameError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
+              className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 bg-white ${
+                firstNameError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`} 
             />
             {firstNameError && (
@@ -145,8 +145,8 @@ export function UserRegisterForm() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               onBlur={() => handleBlur("lastName")}
-              className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
-                lastNameError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
+              className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 bg-white ${
+                lastNameError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`} 
             />
             {lastNameError && (
@@ -165,8 +165,8 @@ export function UserRegisterForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => handleBlur("email")}
-            className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
-              emailError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
+            className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 bg-white ${
+              emailError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
             }`}
           />
           {emailError && (
@@ -185,11 +185,10 @@ export function UserRegisterForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onBlur={() => handleBlur("password")}
-              className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu ${
-                passwordError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
+              className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 bg-white ${
+                passwordError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`}
             />
-            {/* 2. REPLACED SHOW/HIDE TEXT WITH NATIVE EYE BUTTON CONTAINER MATCHING LOGIN */}
             <button
               type="button"
               onClick={() => setShowPassword((value) => !value)}
@@ -214,7 +213,7 @@ export function UserRegisterForm() {
           />
         </div>
 
-        {/* 3. UPDATED PASSWORD REQUIREMENT MATRIX (REMOVED STRIKETHROUGH, ADDS GREEN HIGHLIGHT) */}
+        {/* PASSWORD REQUIREMENT MATRIX */}
         <div className="text-xs space-y-1 p-3 bg-neutral-50 border rounded-xl text-neutral-600">
           <div className="flex items-center gap-2">
             <span className={isLongEnough ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
@@ -241,12 +240,11 @@ export function UserRegisterForm() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               onBlur={() => handleBlur("confirmPassword")}
-              className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu ${
-                confirmPasswordError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
+              className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 bg-white ${
+                confirmPasswordError ? "border-red-500 focus:ring-red-500" : "border-[var(--ring)] focus:ring-wsu"
               }`}
               required
             />
-            {/* 4. REPLACED CONFIRM SHOW/HIDE TEXT WITH EYE BUTTON */}
             <button
               type="button"
               onClick={() => setShowConfirmPassword((value) => !value)}
@@ -276,7 +274,7 @@ export function UserRegisterForm() {
           }`}
           style={{ cursor: isFormValid && !isSubmitting ? "pointer" : "not-allowed" }}
         >
-          {isSubmitting ? "Creating..." : "Create Account"}
+          {isSubmitting ? "Creating..." : "Create account"}
         </button>
       </form>
       
