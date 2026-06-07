@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite" // Changed from sqlite to satisfy Neon postgres DB requirements
+  provider = "postgresql" // Changed from sqlite to satisfy Neon postgres DB requirements
   url      = env("DATABASE_URL")
 }
 
