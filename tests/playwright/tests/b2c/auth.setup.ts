@@ -6,6 +6,9 @@ const customerPassword = process.env.USER_PASSWORD ?? "P@ssword123!";
 const adminEmail = process.env.ADMIN_EMAIL ?? "johnathanbradley@admin.com";
 const adminPassword = process.env.ADMIN_PASSWORD ?? "AdminPortal#1";
 
+// 🟢 The correct Playwright API syntax to enforce execution order, makes sure seeding occurs before testing
+setup.describe.configure({ mode: 'serial' });
+
 setup("seed database", async () => {
   await seed();
 });

@@ -36,12 +36,12 @@ export function UserLoginForm() {
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">Email Address</label>
-          <input id="email" name="email" type="email" required className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu" placeholder="alice@example.com" />
+          <input id="email" name="email" type="email" className="w-full rounded-xl border border-[var(--ring)] p-3 text-sm outline-none focus:ring-2 focus:ring-wsu"/>
         </div>
         <div className="space-y-2">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
           <div className="relative">
-            <input id="password" name="password" type={showPassword ? "text" : "password"} required className="w-full rounded-xl border border-[var(--ring)] p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu" />
+            <input id="password" name="password" type={showPassword ? "text" : "password"} className="w-full rounded-xl border border-[var(--ring)] p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu" />
             <button
               type="button"
               onClick={() => setShowPassword((value) => !value)}
