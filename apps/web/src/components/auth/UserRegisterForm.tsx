@@ -229,7 +229,7 @@ export function UserRegisterForm() {
         </div>
         {/* PASSWORD REQUIREMENT MATRIX */}
         <div className="text-xs space-y-1 p-3 bg-neutral-50 border rounded-xl text-neutral-600">
-          <div className="text-neutral-800 font-medium mb-1">Password requirements:</div>
+          <div className="text-neutral-300">Password requirements:</div>
           {/* Requirement 1: Length */}
           <div className="flex items-center gap-2">
             <span 

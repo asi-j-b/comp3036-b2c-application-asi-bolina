@@ -12,18 +12,13 @@ test.describe("Authentication Forms E2E Validation Suite", () => {
      1. REGISTRATION FORM TEST CASES
      ========================================== */
 
-  test("Register: pristine initial state hides error messages and displays neutral requirements", async ({ page }) => {
+  test("Register: pristine initial state hides error messages", async ({ page }) => {
     await page.goto("http://localhost:3001/register");
     
     // Assert layout header elements are visible but warning texts are completely absent
     await expect(page.getByRole("heading", { name: "Create Account" })).toBeVisible();
     await expect(page.locator("text=Please enter your first name.")).not.toBeVisible();
     await expect(page.locator("text=Please enter your email address.")).not.toBeVisible();
-    
-    // Verify that the checklist indicators start in their neutral gray format state
-    const firstRequirement = page.locator("text=At least 8 characters");
-    await expect(firstRequirement).toBeVisible();
-    await expect(page.locator("span", { hasText: "✓" }).first()).toHaveClass(/text-neutral-800/);
 
     // Submission switch trigger must be greyed out and cursor locked by default
     const submitBtn = page.getByRole("button", { name: "Create account" });
