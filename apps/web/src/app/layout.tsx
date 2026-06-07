@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Full-Stack Blog",
-  description: "Blog about full stack development",
+  title: "B2C Store | FSD",
+  description: "Full Stack Store - A modern e-commerce application built with Next.js, Express, and PostgreSQL.",
 };
 
 export default async function RootLayout({

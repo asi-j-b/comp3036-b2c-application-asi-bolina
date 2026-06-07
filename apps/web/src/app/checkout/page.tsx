@@ -3,6 +3,10 @@ import { CheckoutView } from "@/components/Checkout/CheckoutView";
 import { getCustomerEmail } from "@/utils/auth";
 import { prisma } from "@repo/db";
 
+export const metadata = {
+  title: "Checkout | FSD",
+};
+
 export default async function CheckoutPage() {
   const userEmail = await getCustomerEmail();
   const products = await prisma.product.findMany({
