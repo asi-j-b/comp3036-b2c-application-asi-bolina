@@ -2,6 +2,14 @@ import { prisma } from "@repo/db";
 import { NextResponse } from "next/server";
 import { isLoggedIn } from "../../../../utils/auth";
 
+// 🟢 LECTURE SECURE DEFENSIIVE SYNTAX: Clean malicious inline script elements out of strings
+function cleanInput(source: string): string {
+  if (!source) return "";
+  return source
+    .replace(/[<>]/g, "") // Prevents raw HTML embedding
+    .replace(/\s+on\w+=\s*(['"][^'"]*['"]|[^\s>]+)/gi, ""); // Strips execution triggers (onerror, onload)
+}
+
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -37,13 +45,14 @@ export async function PUT(
   const price = Number(body.price);
   const stock = Number(body.stock);
 
+  // 🟢 FIXED VALIDATION: Changed Number.isInteger(price) to standard number constraints to support cents/decimals
   if (
     !body ||
     typeof body.name !== "string" ||
     body.name.trim() === "" ||
     typeof body.slug !== "string" ||
     body.slug.trim() === "" ||
-    !Number.isInteger(price) ||
+    isNaN(price) ||
     price <= 0 ||
     !Number.isInteger(stock) ||
     stock < 0
@@ -52,19 +61,25 @@ export async function PUT(
   }
 
   try {
+    // 🟢 LECTURE SECURITY FIX: Apply defensive sanitization wrappers against Stored XSS vectors
+    const safeName = cleanInput(body.name);
+    const safeDescription = cleanInput(body.description ?? "");
+    const safeCategory = cleanInput(body.category ?? "");
+    const safeImageUrl = String(body.imageUrl ?? "").replace(/[<>"]/g, ""); // Strip brackets to neutralize URL injections
+
     const updatedProduct = await prisma.product.update({
       where: { id },
       data: {
-        name: String(body.name ?? "").trim(),
+        name: safeName.trim(),
         slug: String(body.slug ?? "")
           .trim()
           .toLowerCase()
           .replace(/\s+/g, "-")
           .replace(/[^\w-]+/g, "")
           .replace(/-+/g, "-"),
-        description: String(body.description ?? "").trim(),
-        imageUrl: String(body.imageUrl ?? "").trim(),
-        category: String(body.category ?? "").trim(),
+        description: safeDescription.trim(),
+        imageUrl: safeImageUrl.trim(),
+        category: safeCategory.trim(),
         price,
         stock,
         featured: Boolean(body.featured),
