@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { registerSchema } from "@/utils/registration";
+// 1. IMPORT THE HEROICONS TO MATCH YOUR LOGIN FORM
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export function UserRegisterForm() {
   const router = useRouter();
@@ -117,7 +119,7 @@ export function UserRegisterForm() {
         {/* SIDE-BY-SIDE NAME INPUTS WITH FIELD ERRORS */}
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
+            <label htmlFor="firstName" className="text-sm font-medium">First name</label>
             <input 
               id="firstName" 
               name="firstName" 
@@ -128,15 +130,14 @@ export function UserRegisterForm() {
               className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
                 firstNameError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
               }`} 
-              required
             />
             {firstNameError && (
-              <p className="text-xs text-red-500 font-medium">First name is required (max 60 characters).</p>
+              <p className="text-xs text-red-500 font-medium">Please enter your first name.</p>
             )}
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
+            <label htmlFor="lastName" className="text-sm font-medium">Last name</label>
             <input 
               id="lastName" 
               name="lastName" 
@@ -147,17 +148,16 @@ export function UserRegisterForm() {
               className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
                 lastNameError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
               }`} 
-              required
             />
             {lastNameError && (
-              <p className="text-xs text-red-500 font-medium">Last name is required (max 60 characters).</p>
+              <p className="text-xs text-red-500 font-medium">Please enter your last name.</p>
             )}
           </div>
         </div>
 
         {/* EMAIL ADDRESS WITH SPECIFIC FIELD ERROR */}
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+          <label htmlFor="email" className="text-sm font-medium">Email</label>
           <input 
             id="email" 
             name="email" 
@@ -168,15 +168,13 @@ export function UserRegisterForm() {
             className={`w-full rounded-xl border p-3 text-sm outline-none focus:ring-2 focus:ring-wsu ${
               emailError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
             }`}
-            placeholder="alice@example.com" 
-            required
           />
           {emailError && (
-            <p className="text-xs text-red-500 font-medium">Please enter a valid format structured as name@domain.com</p>
+            <p className="text-xs text-red-500 font-medium">Please enter your email address</p>
           )}
         </div>
 
-        {/* PASSWORD INPUT WITH INLINE ERRORS */}
+        {/* PASSWORD INPUT WITH NEW EYE ICONS */}
         <div className="space-y-2 relative">
           <label htmlFor="password" className="text-sm font-medium">Password</label>
           <div className="relative">
@@ -189,19 +187,20 @@ export function UserRegisterForm() {
               onBlur={() => handleBlur("password")}
               className={`w-full rounded-xl border p-3 pr-12 text-sm outline-none focus:ring-2 focus:ring-wsu ${
                 passwordError ? "border-red-500 bg-red-50 focus:ring-red-500" : "border-[var(--ring)]"
-              }`} 
-              required
+              }`}
             />
+            {/* 2. REPLACED SHOW/HIDE TEXT WITH NATIVE EYE BUTTON CONTAINER MATCHING LOGIN */}
             <button
               type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-neutral-500 hover:text-neutral-800"
+              onClick={() => setShowPassword((value) => !value)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              className="absolute inset-y-0 right-0 flex items-center px-4 text-primary transition hover:text-wsu"
             >
-              {showPassword ? "Hide" : "Show"}
+              {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
             </button>
           </div>
           {passwordError && (
-            <p className="text-xs text-red-500 font-medium">Password does not meet all strength requirements below.</p>
+            <p className="text-xs text-red-500 font-medium">Please enter a password.</p>
           )}
         </div>
 
@@ -215,25 +214,25 @@ export function UserRegisterForm() {
           />
         </div>
 
-        {/* PASSWORD REQUIREMENT MATRIX */}
+        {/* 3. UPDATED PASSWORD REQUIREMENT MATRIX (REMOVED STRIKETHROUGH, ADDS GREEN HIGHLIGHT) */}
         <div className="text-xs space-y-1 p-3 bg-neutral-50 border rounded-xl text-neutral-600">
           <div className="flex items-center gap-2">
             <span className={isLongEnough ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={isLongEnough ? "line-through text-neutral-400" : ""}>At least 8 characters</span>
+            <span className={isLongEnough ? "text-green-600 font-medium" : "text-neutral-500"}>At least 8 characters</span>
           </div>
           <div className="flex items-center gap-2">
             <span className={hasNumber ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={hasNumber ? "line-through text-neutral-400" : ""}>At least 1 number</span>
+            <span className={hasNumber ? "text-green-600 font-medium" : "text-neutral-500"}>Contains at least 1 number</span>
           </div>
           <div className="flex items-center gap-2">
             <span className={hasSymbol ? "text-green-600 font-bold" : "text-neutral-300"}>✓</span>
-            <span className={hasSymbol ? "line-through text-neutral-400" : ""}>At least 1 special character</span>
+            <span className={hasSymbol ? "text-green-600 font-medium" : "text-neutral-500"}>Contains at least 1 special character</span>
           </div>
         </div>
 
-        {/* CONFIRM PASSWORD INPUT WITH SPECIFIC MISMATCH FIELD ERROR */}
+        {/* CONFIRM PASSWORD INPUT WITH EYE ICONS */}
         <div className="space-y-2 relative">
-          <label htmlFor="confirmPassword" className="text-sm font-medium">Confirm Password</label>
+          <label htmlFor="confirmPassword" className="text-sm font-medium">Confirm password</label>
           <div className="relative">
             <input 
               id="confirmPassword" 
@@ -247,12 +246,14 @@ export function UserRegisterForm() {
               }`}
               required
             />
+            {/* 4. REPLACED CONFIRM SHOW/HIDE TEXT WITH EYE BUTTON */}
             <button
               type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-neutral-500 hover:text-neutral-800"
+              onClick={() => setShowConfirmPassword((value) => !value)}
+              aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
+              className="absolute inset-y-0 right-0 flex items-center px-4 text-primary transition hover:text-wsu"
             >
-              {showConfirmPassword ? "Hide" : "Show"}
+              {showConfirmPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
             </button>
           </div>
           {confirmPasswordError && (
@@ -279,7 +280,6 @@ export function UserRegisterForm() {
         </button>
       </form>
       
-      {/* General API failure message backup hook */}
       {error && <p className="mt-4 text-center text-sm text-red-500 font-medium">{error}</p>}
     </div>
   );
